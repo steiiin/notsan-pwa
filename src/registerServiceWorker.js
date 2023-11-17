@@ -5,28 +5,27 @@ import { register } from 'register-service-worker'
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready () {
-      console.log(
-        'App is being served from cache by a service worker.\n' +
-        'For more details, visit https://goo.gl/AFskqB'
-      )
+      console.log('NotSan-PWA: ServiceWorker bereit.')
     },
     registered () {
-      console.log('Service worker has been registered.')
+      console.log('NotSan-PWA: ServiceWorker wurde registriert.')
     },
     cached () {
-      console.log('Content has been cached for offline use.')
+      console.log('NotSan-PWA: Daten zwischengespeichert.')
     },
     updatefound () {
-      console.log('New content is downloading.')
+      console.log('NotSan-PWA: Neue Daten gefunden.')
     },
     updated () {
-      console.log('New content is available; please refresh.')
+      console.log('NotSan-PWA: Neue Daten gespeichert. Bitte neuladen.')
+      document.dispatchEvent(new CustomEvent('pwaUpdated'))
+      console.warn('NotSan-PWA: Update-Event gesendet.')
     },
     offline () {
-      console.log('No internet connection found. App is running in offline mode.')
+      console.log('NotSan-PWA: Offline-Modus.')
     },
     error (error) {
-      console.error('Error during service worker registration:', error)
+      console.error('NotSan-PWA: Fehler bei Registrierung: ', error)
     }
   })
 }

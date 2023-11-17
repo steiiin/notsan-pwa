@@ -1,22 +1,48 @@
 {
   "name": "notsan-pwa",
   "version": "0.1.0",
+  "versionSAA": "15.05.2023",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "node build.js && vue-cli-service serve",
+    "build": "node build.js && vue-cli-service build"
   },
   "dependencies": {
+    "@mdi/font": "5.9.55",
     "register-service-worker": "^1.7.2",
+    "roboto-fontface": "*",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuetify": "^3.0.0-beta.0",
+    "vuex": "^4.0.2",
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "dotenv-webpack": "^8.0.1",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+  },
+  "vue": {
+    "pwa": {
+      "name": "NotSan-Taschenbuch",
+      "themeColor": "#000000",
+      "msTileColor": "#000000",
+      "appleMobileWebAppCapable": true,
+      "appleMobileWebAppStatusBarStyle": "black",
+      "workboxPluginMode": "GenerateSW",
+      "workboxOptions": {
+        "skipWaiting": true,
+        "clientsClaim": true
+      }
+    },
+    "pluginOptions": {
+      "vuetify": {}
+    }
   },
   "browserslist": [
     "> 1%",

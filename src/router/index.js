@@ -1,21 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MenuMainView from '../views/MenuMainView.vue'
+import MenuSubView from '../views/MenuSubView.vue'
+import ContentWrapper from '../views/ContentWrapper.vue'
+import SearchView from '../views/SearchView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'MenuMainView',
+    component: MenuMainView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
+    path: '/menu/:menu',
+    name: 'MenuSubView-MainMenu',
+    component: MenuSubView,
+    props: (route) => ({
+      menu: route.params.menu,
+      submenu: false
+    })
+  },
+  {
+    path: '/submenu/:menu',
+    name: 'MenuSubView-Submenu',
+    component: MenuSubView,
+    props: (route) => ({
+      menu: route.params.menu,
+      submenu: true
+    })
+  },
+  {
+    path: '/content/:key',
+    name: 'ContentWrapper',
+    component: ContentWrapper
+  },
+  {
+    path: '/search',
+    name: 'SearchView',
+    component: SearchView
   }
 ]
 
