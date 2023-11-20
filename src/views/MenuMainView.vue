@@ -6,7 +6,7 @@
         :value="entry"
         color="#000"
         class="nos-mainmenu-item"
-        :to="entry.route"
+        @click="delayedRoute(entry.route)"
       >
         <template v-slot:prepend>
           <v-icon :icon="entry.icon"></v-icon>
@@ -36,6 +36,13 @@ export default {
         icon: value.icon,
         route: "/menu/" + key,
       }));
+    },
+  },
+  methods: {
+    delayedRoute: function (route) {
+      setTimeout(() => {
+        this.$router.push(route);
+      }, 250); // RouteDelay
     },
   },
 };

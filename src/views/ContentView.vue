@@ -11,10 +11,8 @@
 <script>
 import NosAppbar from "../components/NosAppbar.vue";
 import { mapState } from "vuex";
-import { defineAsyncComponent } from "vue";
-import { kebabToPascalCase } from "../plugins/storeworker";
 export default {
-  name: "ContentWrapper",
+  name: "ContentView",
   components: {
     NosAppbar,
   },
@@ -46,9 +44,10 @@ export default {
   },
   methods: {
     goBack: function () {
-      this.$router.back();
+      setTimeout(() => {
+        this.$router.back();
+      }, 100); // RouteDelay
     },
-    kebabToPascalCase,
   },
   mounted: function () {
     let fromSearch = this.$route.query.search != null;

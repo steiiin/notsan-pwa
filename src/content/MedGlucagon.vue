@@ -1,36 +1,38 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+  
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Hypoglykämie (intramuskuläre Therapie)</nos-li-point>
+    <nos-li>Hypoglykämie (intramuskuläre Therapie)</nos-li>
   </nos-list>
+
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Unverträglichkeit ggb. Glucagon</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="known">
-    <nos-li-point>Phäochromocytom (vgl. Nieren-Ca)</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Glucagon</nos-li>
+  </nos-list>
+  <nos-list contragroup="known">
+    <nos-li>Phäochromocytom (vgl. Nieren-Ca)</nos-li>
+  </nos-list>
+
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-cave>Übelkeit, Erbrechen</nos-li-cave>
+    <nos-li variant="cave">Übelkeit, Erbrechen</nos-li>
+    <nos-li variant="todo">Andere Algorithmen beachten:</nos-li>
+    <nos-btn-link content="med-vomex"></nos-btn-link>
   </nos-list>
-  <nos-list>
-    <nos-li-todo> Andere Algorithmen beachten: </nos-li-todo>
-    <div><v-btn>TODO: SAA Vomex</v-btn></div>
-  </nos-list>
+
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul">1 Ampulle Glucagon</nos-content>
-        <nos-content mode="med-size-mono">1mg Pulver</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle Glucagon</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '1mg (Pulver)' }]"></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Hypoglykämie" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Hypoglykämie" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -44,34 +46,35 @@
     <nos-tab-row>
       <template v-slot:caption>(i.m.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
             { label: 'Ab 8 Jahren', unit: '1mg (i.m.)', color: 'adult' },
             { label: '< 8 Jahren', unit: '0,5mg (i.m.)', color: 'child' },
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
         <v-divider class="my-2"></v-divider>
-        <p class="nos-u">Nach 5min Kontrollmessung</p>
         <p>
-          <div>Keine Repetition vorgesehen. Andere Algorithmen beachten: </div>
-          <div><v-btn>TODO: SAA Vomex</v-btn></div>
+          <div class="nos-u">Nach 5min Kontrollmessung</div>
+          <div>Keine Repetition vorgesehen.</div>
+          <nos-btn-link content="med-glucose"></nos-btn-link>
         </p>
       </template>
     </nos-tab-row>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~5min</template>
     <template v-slot:span>~30min</template>
-  </nos-pharmakin>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header>
+  <nos-paragraphs>
+    <template v-slot:heading>
       Glucagon wirkt im Körper entgegengesetzt zu Insulin.
     </template>
-    <p>
+    <template v-slot:text>
+      <p>
       Glucagon führt zu einer Erhöhung der Blutglucose-Konzentration 
       durch Aktivierung der Glucagon-Rezeptoren in der Leber. Die 
       Rezeptor-Aktivierung bedingt wiederum den Glykogen-Abbau und die 
@@ -85,44 +88,37 @@
       Alkoholmissbrauch oder chronischer Hypoglykämie wenig bis gar 
       nicht wirkt, sollte in solchen Fällen mit Glucose behandelt werden.
     </p>
-  </nos-card>
+    </template>
+</nos-paragraphs>
 </template>
 
 <script>
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
+import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
+import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
 import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+import NosMedLabel from "../components/NosMedLabel.vue";
+import NosMedDose from "../components/NosMedDose.vue";
+import NosMedEffects from "../components/NosMedEffects.vue";
+import NosBtnLink from "../components/NosBtnLink.vue";
 
 export default {
   name: "MedGlucagon",
   components: {
     NosTitle,
     NosHeader,
-    NosCard,
+    NosParagraphs,
     NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
+    NosLi,
     NosTable,
     NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin,
+    NosMedLabel,
+    NosMedDose,
+    NosMedEffects,
+    NosBtnLink
   },
   computed: {
     meta() {

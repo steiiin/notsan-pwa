@@ -2,21 +2,19 @@
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Asthmaanfall / COPD</nos-li-point>
-    <nos-li-point>Anaphylaxie</nos-li-point>
-    <nos-li-point>Pseudokrupp</nos-li-point>
+    <nos-li>Asthmaanfall / COPD</nos-li>
+    <nos-li>Anaphylaxie</nos-li>
+    <nos-li>Pseudokrupp</nos-li>
   </nos-list>
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Unverträglichkeit ggb. Prednisolon</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Prednisolon</nos-li>
+  </nos-list>
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-check>Präklinisch Irrelevant</nos-li-check>
-  </nos-list>
-  <nos-list>
-    <nos-li-point>Blut- / Haut- / Skelettveränderungen</nos-li-point>
-    <nos-li-point>Gewichtszunahme</nos-li-point>
+    <nos-li variant="check">Präklinisch Irrelevant</nos-li>
+    <nos-li>Blut- / Haut- / Skelettveränderungen</nos-li>
+    <nos-li>Gewichtszunahme</nos-li>
   </nos-list>
 
   <nos-header title="Dosierung &amp; Anwendung"></nos-header>
@@ -24,20 +22,30 @@
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul"
-          >Ampullen-Set &bdquo;Prednisolut&rdquo;</nos-content
+        <nos-med-label type="ampulle"
+          >Ampullen-Set &bdquo;Prednisolut&rdquo;</nos-med-label
         >
-        <nos-content mode="med-size-mono">100mg Pulver</nos-content>
-        <nos-content mode="med-size-mono">&nbsp;&nbsp;5ml Wasser</nos-content>
-        <nos-content mode="med-size-supp" class="mt-2"
-          >1 Zäpfchen &bdquo;Rectodelt&rdquo;</nos-content
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '100mg (Pulver)' },
+            { unit: '5ml (Wasser)', prefix: '+' },
+          ]"
+        ></nos-med-dose>
+        <nos-med-label type="suppositorium" class="mt-2"
+          >1 Zäpfchen &bdquo;Rectodelt&rdquo;</nos-med-label
         >
-        <nos-content mode="med-size-mono">100mg</nos-content>
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '100mg' },
+          ]"
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Asthmaanfall / COPD" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Asthmaanfall / COPD" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -51,26 +59,26 @@
     <nos-tab-row>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
             { unit: '100mg (1 Ampulle)', color: 'adult' },
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
     <nos-tab-row>
       <template v-slot:caption>(rect.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
             { unit: '100mg (1 Zäpfchen)', color: 'baby' },
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Anaphylaxie" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Anaphylaxie" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -83,99 +91,91 @@
     <nos-tab-row>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
-            { label: 'Ab 12J', unit: '250mg (2½ Ampullen)', color: 'adult' },
-            { label: '< 12J', unit: '100mg (1 Ampulle)', color: 'child' }
+            { label: 'Ab 12 Jahren', unit: '250mg (2½ Ampullen)', color: 'adult' },
+            { label: '<12 Jahre', unit: '100mg (1 Ampulle)', color: 'child' }
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
     <nos-tab-row>
       <template v-slot:caption>(rect.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
-            { label: '< 12J', unit: '100mg (1 Zäpfchen)', color: 'child' }
+            { label: '<12 Jahre', unit: '100mg (1 Zäpfchen)', color: 'child' }
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Pseudokrupp" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Pseudokrupp" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>(rect.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
             { unit: '100mg (1 Zäpfchen)', color: 'child' }
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~30min</template>
     <template v-slot:span>~1Tag</template>
-  </nos-pharmakin>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header>
+  <nos-paragraphs>
+    <template v-slot:heading>
       Prednisolon ist ein Kortikosteroid.
     </template>
-    <p>
-      Prednisolon wirkt antiallergisch, entzündungshemmend, membranstabilisierend 
-      und antiödematös. Zudem verstärkt es die Wirkung von β2-Sympathomimetika.
-    </p>
-    <p>
-      Bei Nahrungsmittelknappheit, bzw. Erkrankungen schüttet der Körper Kortison 
-      aus, damit der Körper trotz Schmerzen &amp; Entzündungsreaktionen funktionell 
-      bleibt. Rettungsdienstrelevant ist die entzündungshemmende &amp; 
-      membranstabilisierende Wirkung.
-    </p>
-  </nos-card>
+    <template v-slot:text>
+      <p>
+        Prednisolon wirkt antiallergisch, entzündungshemmend, membranstabilisierend 
+        und antiödematös. Zudem verstärkt es die Wirkung von β2-Sympathomimetika.
+      </p>
+      <p>
+        Bei Nahrungsmittelknappheit, bzw. Erkrankungen schüttet der Körper Kortison 
+        aus, damit der Körper trotz Schmerzen &amp; Entzündungsreaktionen funktionell 
+        bleibt. Rettungsdienstrelevant ist die entzündungshemmende &amp; 
+        membranstabilisierende Wirkung.
+      </p>
+    </template>
+</nos-paragraphs>
 </template>
 
 <script>
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
+import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
+import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
 import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+import NosMedLabel from "../components/NosMedLabel.vue";
+import NosMedDose from "../components/NosMedDose.vue";
+import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
   name: "MedPrednisolon",
   components: {
     NosTitle,
     NosHeader,
-    NosCard,
+    NosParagraphs,
     NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
+    NosLi,
     NosTable,
     NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin,
+    NosMedLabel,
+    NosMedDose,
+    NosMedEffects,
   },
   computed: {
     meta() {

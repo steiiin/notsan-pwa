@@ -1,31 +1,24 @@
-/* eslint-disable no-console */
+import {Workbox} from 'workbox-window';
 
-import { register } from 'register-service-worker'
+if ('serviceWorker' in navigator) {
+  const wb = new Workbox(`${process.env.BASE_URL}service-worker.js`);
 
-if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
-    ready () {
-      console.log('NotSan-PWA: ServiceWorker bereit.')
-    },
-    registered () {
-      console.log('NotSan-PWA: ServiceWorker wurde registriert.')
-    },
-    cached () {
-      console.log('NotSan-PWA: Daten zwischengespeichert.')
-    },
-    updatefound () {
-      console.log('NotSan-PWA: Neue Daten gefunden.')
-    },
-    updated () {
-      console.log('NotSan-PWA: Neue Daten gespeichert. Bitte neuladen.')
-      document.dispatchEvent(new CustomEvent('pwaUpdated'))
-      console.warn('NotSan-PWA: Update-Event gesendet.')
-    },
-    offline () {
-      console.log('NotSan-PWA: Offline-Modus.')
-    },
-    error (error) {
-      console.error('NotSan-PWA: Fehler bei Registrierung: ', error)
-    }
-  })
+  wb.addEventListener('activated', event => {
+
+    console.log('notsan-pwa: ServiceWorker ' + (event.isUpdate ? 'aktualisiert & ' : '') + 'gestartet.')
+
+  });
+  wb.addEventListener('waiting', event => {
+    console.log('notsan-pwa: ServiceWorker wartet auf Aktivierung.')
+    document.dispatchEvent(
+      new CustomEvent('swUpdated', { detail: event })
+    )
+  });
+  wb.addEventListener('controlling', () => {
+    console.log('notsan-pwa: App lädt neu.')
+    window.location.replace("/")
+  });
+
+
+  wb.register();
 }

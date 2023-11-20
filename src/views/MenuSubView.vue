@@ -8,7 +8,7 @@
   <v-list class="my-2">
     <template v-for="(item, index) in loadMenu" :key="item.key">
       <v-list-subheader v-if="item.header" :title="item.header"></v-list-subheader>
-      <v-list-item v-else :value="item" color="#000" :to="item.route">
+      <v-list-item v-else :value="item" color="#000" @click="delayedRoute(item.route)">
         <v-list-item-title v-text="item.title"></v-list-item-title>
         <v-list-item-subtitle
           v-if="item.subtitle"
@@ -21,7 +21,7 @@
 
 <script>
 import NosAppbar from "../components/NosAppbar.vue";
-import { mapStoreDataToListItem, groupListItems } from "@/plugins/storeworker";
+import { mapStoreDataToListItem, groupListItems, sortListItems } from "@/plugins/storeworker";
 export default {
   name: "MenuSubView",
   components: {
@@ -32,6 +32,7 @@ export default {
     return {
       submenutitle: "",
       hideAppbarActions: false,
+      groupItems: true,
     };
   },
   computed: {
@@ -48,7 +49,7 @@ export default {
 
       // map items to listitems
       let menuItems = this.mapStoreDataToListItem(this.$store.state, storeItems);
-      return this.groupListItems(menuItems, "title", "title", true);
+      return this.groupItems ? this.groupListItems(menuItems, "title", "title", true, true) : this.sortListItems(menuItems, "title");
     },
   },
   methods: {
@@ -64,15 +65,24 @@ export default {
       if (this.$store.state.submenu.hasOwnProperty(name)) {
         let branch = this.$store.state.submenu[name];
         this.submenutitle = branch.title;
+        if (branch.nogroups) { this.groupItems = false; }
         return branch.items;
       }
       return null;
     },
     mapStoreDataToListItem,
     groupListItems,
+    sortListItems,
 
     goBack: function () {
-      this.$router.back();
+      setTimeout(() => {
+        this.$router.back();
+      }, 100); // RouteDelay
+    },
+    delayedRoute: function (route) {
+      setTimeout(() => {
+        this.$router.push(route);
+      }, 250); // RouteDelay
     },
   },
   mounted: function () {

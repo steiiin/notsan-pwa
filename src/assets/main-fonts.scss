@@ -1,29 +1,14 @@
 /* Fonts */
 @font-face {
   font-family: 'Mukta';
-  src: url(~@/assets/fonts/Mukta-Regular.ttf);
-}
-@font-face {
-  font-family: 'Mukta';
-  font-weight: lighter;
-  src: url(~@/assets/fonts/Mukta-Light.ttf);
-}
-@font-face {
-  font-family: 'Mukta';
-  font-weight: bold;
-  src: url(~@/assets/fonts/Mukta-Bold.ttf);
+  src:  url('~@/assets/fonts/subset-Mukta-Regular.woff2') format('woff2'),
+        url('~@/assets/fonts/subset-Mukta-Regular.woff') format('woff');
 }
 @font-face {
   font-family: 'Teko';
-  src: url(~@/assets/fonts/Teko-Regular.ttf);
+  src:  url('~@/assets/fonts/subset-Teko-Regular.woff2') format('woff2'),
+        url('~@/assets/fonts/subset-Teko-Regular.woff') format('woff');
 }
-@font-face {
-  font-family: 'Teko';
-  font-weight: lighter;
-  src: url(~@/assets/fonts/Teko-Light.ttf);
-}
-@font-face {
-  font-family: 'Teko';
-  font-weight: bold;
-  src: url(~@/assets/fonts/Teko-Bold.ttf);
-}
+
+// url(~@/assets/fonts/Teko-Regular.ttf);
+// src: url(~@/assets/fonts/Mukta-Regular.ttf);

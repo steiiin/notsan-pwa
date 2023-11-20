@@ -1,55 +1,58 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Anaphylaxie</nos-li-point>
+    <nos-li>Anaphylaxie</nos-li>
   </nos-list>
+
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Unverträglichkeit ggb. Dimetinden</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="acute">
-    <nos-li-point>Engwinkelglaukom (Glaukomanfall), d.h.:</nos-li-point>
-    <nos-li-point class="nos-li-decent"
-      >Sehstörungen / Farbspiele beim Sehen</nos-li-point
-    >
-    <nos-li-point class="nos-li-decent"
-      >Starke Kopfschmerzen &amp; Erbrechen</nos-li-point
-    >
-    <nos-li-point class="nos-li-decent">Gerötetes Auge</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="family">
-    <nos-li-point>Schwangerschaft</nos-li-point>
-    <nos-li-point>Stillzeit</nos-li-point>
-    <nos-li-point>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Dimetinden</nos-li>
+  </nos-list>
+  <nos-list contragroup="acute">
+    <nos-li>Engwinkelglaukom (Glaukomanfall), d.h.:</nos-li>
+    <nos-li :decent="true">Sehstörungen / Farbspiele beim Sehen</nos-li>
+    <nos-li :decent="true">Starke Kopfschmerzen &amp; Erbrechen</nos-li>
+    <nos-li :decent="true">Gerötetes Auge</nos-li>
+  </nos-list>
+  <nos-list contragroup="family">
+    <nos-li>Schwangerschaft</nos-li>
+    <nos-li>Stillzeit</nos-li>
+    <nos-li>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li>
+  </nos-list>
+
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-cave>Sedierung, insb. bei Alkoholeinfluss</nos-li-cave>
+    <nos-li variant="cave">Sedierung, insb. bei Alkoholeinfluss</nos-li>
+    <nos-li>Müdigkeit (bis 24h: <b>Aufklärung des Patienten</b>)</nos-li>
+    <nos-li variant="todo"> Verstärkte Vigilanzkontrolle </nos-li>
   </nos-list>
   <nos-list>
-    <nos-li-point>Müdigkeit (<b>bis 24h: Aufklärung des Pat.!</b>)</nos-li-point>
-    <nos-li-point>Sehstörungen</nos-li-point>
-    <nos-li-point>Mund- &amp; Hauttrockenheit</nos-li-point>
-    <nos-li-point>Gastrointestinale Beschwerden</nos-li-point>
-    <nos-li-point>Unruhe, Angst</nos-li-point>
+    <nos-li>Sehstörungen</nos-li>
+    <nos-li>Mund- &amp; Hauttrockenheit</nos-li>
+    <nos-li>Gastrointestinale Beschwerden</nos-li>
+    <nos-li>Unruhe, Angst</nos-li>
   </nos-list>
-  <nos-list>
-    <nos-li-todo> Verstärkte Vigilanzkontrolle </nos-li-todo>
-  </nos-list>
+
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul">1 Ampulle &bdquo;Histakut&rdquo;</nos-content>
-        <nos-content mode="med-size-mono">4mg / 4ml</nos-content>
-        <nos-content mode="med-size-mono">1mg / ml</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Histakut&rdquo;</nos-med-label>
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '4mg', per: '4ml' },
+            { unit: '1mg', per: 'ml', prefix: '=' },
+          ]"
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="ANAPHYLAXIE" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="ANAPHYLAXIE" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -60,12 +63,11 @@
     <nos-tab-row>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
-            { label: 'Ab 12J', unit: '1mg', per: '10kg', color: 'adult' },
-            { unit: '8mg maximal' },
-          ]"
-        ></nos-dose>
+          { label: 'Ab 12 Jahren', unit: '1mg', per: '10kg', color: 'adult' }, 
+          { unit: '8mg maximal' }]"
+        ></nos-med-dose>
         <v-divider class="my-2"></v-divider>
         <p>Langsam spritzen. <br /><b>Keine</b> Wiederholungsgabe nach SAA.</p>
       </template>
@@ -73,70 +75,59 @@
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~15min</template>
-    <template v-slot:span
-      >~12h (<b>cave:</b>&nbsp;24h vermindetes Reaktionsvermögen)</template
-    >
-  </nos-pharmakin>
+    <template v-slot:span>~12h (<b>cave:</b>&nbsp;24h vermindetes Reaktionsvermögen)</template>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header> Dimetinden ist ein Antihistaminikum. </template>
-    <p>
-      Dimetinden ist ein nichtkompetitiver Histamin-Antagonist am H1-Rezeptor und wirkt
-      nicht auf H2-Rezeptoren. Erst in Kombination mit einem H2-Blocker (z.B. Ranitidin)
-      kann die gesamte Wirkung des Histamins unterdrückt werden.
-    </p>
-    <p>
-      Im Gegensatz zu anderen Antihistaminika blockiert Dimetinden bereits mit Histamin
-      besetzte H1-Rezeptoren. Es nimmt damit eine Sonderstellung unter den Antihistaminika
-      ein, da diese sonst nur die noch nicht besetzte Rezeptoren blockieren.
-    </p>
-  </nos-card>
+  <nos-paragraphs>
+    <template v-slot:heading> Dimetinden ist ein Antihistaminikum. </template>
+    <template v-slot:text>
+      <p>
+        Dimetinden ist ein nichtkompetitiver Histamin-Antagonist am H1-Rezeptor und wirkt nicht auf H2-Rezeptoren. Erst
+        in Kombination mit einem H2-Blocker (z.B. Ranitidin) kann die gesamte Wirkung des Histamins unterdrückt werden.
+      </p>
+      <p>
+        Im Gegensatz zu anderen Antihistaminika blockiert Dimetinden bereits mit Histamin besetzte H1-Rezeptoren. Es
+        nimmt damit eine Sonderstellung unter den Antihistaminika ein, da diese sonst nur die noch nicht besetzte
+        Rezeptoren blockieren.
+      </p>
+    </template>
+  </nos-paragraphs>
 </template>
 
 <script>
-import NosTitle from "../components/NosTitle.vue";
-import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
-import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
-import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+  import NosTitle from "../components/NosTitle.vue";
+  import NosHeader from "../components/NosHeader.vue";
+  import NosParagraphs from "../components/NosParagraphs.vue";
+  import NosList from "../components/NosList.vue";
+  import NosLi from "../components/NosLi.vue";
+  import NosTable from "../components/NosTable.vue";
+  import NosTabRow from "../components/NosTabRow.vue";
+  import NosMedLabel from "../components/NosMedLabel.vue";
+  import NosMedDose from "../components/NosMedDose.vue";
+  import NosMedEffects from "../components/NosMedEffects.vue";
 
-export default {
-  name: "MedDimetinden",
-  components: {
-    NosTitle,
-    NosHeader,
-    NosCard,
-    NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
-    NosTable,
-    NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin,
-  },
-  computed: {
-    meta() {
-      return this.$store.getters.getContentMeta("med-dimetinden");
+  export default {
+    name: "MedDimetinden",
+    components: {
+      NosTitle,
+      NosHeader,
+      NosParagraphs,
+      NosList,
+      NosLi,
+      NosTable,
+      NosTabRow,
+      NosMedLabel,
+      NosMedDose,
+      NosMedEffects,
     },
-  },
-  methods: {},
-};
+    computed: {
+      meta() {
+        return this.$store.getters.getContentMeta("med-dimetinden");
+      },
+    },
+    methods: {},
+  };
 </script>

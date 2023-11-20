@@ -1,12 +1,11 @@
 # notsan-pwa #
 ### Notfallsanitäter-Taschenbuch ###
 
-
 #### Inhalt ####
 - [ ] NotSan-Medikamente nach SAA
-    - [x] Acetylsalicylsäure
-    - [x] Amiodaron
-    - [x] Atropin
+    - [x] Acetylsalicylsäure            
+    - [x] Amiodaron                
+    - [x] Atropin                                                  
     - [x] Butylscopolamin
     - [x] Dimenhydrinat
     - [x] Dimetinden
@@ -19,66 +18,84 @@
     - [x] Heparin
     - [x] Ibuprofen
     - [x] Ipratropiumbromid
-    - [x] Ipramol
-    - [ ] Lidocain
+    - [x] Ipramol        
     - [x] Midazolam
     - [x] Naloxon
     - [x] Paracetamol
     - [x] Prednisolon
     - [x] Salbutamol
     - [x] Urapidil
+    - [x] Sauerstoff
+    - [ ] Lidocain (PrioIII: Nur noch als Alternative zu Cordarex)
 
-- [ ] Notarzt-Medikamente
-    - [ ] Noradrenalin
-    - [ ] Dobutamin
-    - [ ] Akrinor
-    - [ ] Nifedipin
-    - [ ] Clonidin
-    - [ ] Verapamil
-    - [ ] Adrekar
-    - [ ] Beloc
-    - [ ] Nabi
-    - [ ] Cormagnesium
-    - [ ] Metalyse
-    - [ ] Bronchospasmin
-    - [ ] Bricanyl
-    - [ ] Berlosin
-    - [ ] Morphin
-    - [ ] Dipi
-    - [ ] Fentanyl 7
-    - [ ] Haldol
-    - [ ] Tavor
-    - [ ] Propofol
-    - [ ] Eketamin
-    - [ ] Lystenon
-    - [ ] Esmeron
-    - [ ] Anticholium
-    - [ ] Anexate
-    - [ ] 4-DMAP
-    - [ ] SabSimplex
-    - [ ] NaThiosulfat
-    - [ ] Atropin
-    - [ ] KohlePulver
-    - [ ] Methylenblau
-    - [ ] Zofran
-    - [ ] Cimetidin
-    - [ ] Ocytocin
-    - [ ] Fenoterol
-    - [ ] Calcium
-    - [ ] Tranexamsäure
+    - [ ] Notarzt-Medikamente
+        - [x] Noradrenalin      
+        - [x] Dobutamin         
+        - [x] Akrinor           
+        - [ ] Nifedipin        
+        - [ ] Clonidin         
+        - [ ] Verapamil         
+        - [ ] Adrekar
+        - [ ] Beloc
+        - [ ] Nabi
+        - [ ] Cormagnesium
+        - [ ] Metalyse
+        - [ ] Bronchospasmin
+        - [ ] Bricanyl
+        - [ ] Berlosin
+        - [ ] Morphin
+        - [ ] Dipi
+        - [ ] Fentanyl 7
+        - [ ] Haldol
+        - [ ] Tavor
+        - [ ] Propofol
+        - [ ] Eketamin
+        - [ ] Lystenon
+        - [ ] Esmeron
+        - [ ] Anticholium
+        - [ ] Anexate
+        - [ ] 4-DMAP
+        - [ ] SabSimplex
+        - [ ] NaThiosulfat
+        - [ ] Atropin
+        - [ ] KohlePulver
+        - [ ] Methylenblau
+        - [ ] Zofran
+        - [ ] Cimetidin
+        - [ ] Ocytocin
+        - [ ] Fenoterol
+        - [ ] Calcium
+        - [ ] Tranexamsäure
 
-
-
-- [ ] SAA
-    - [ ] EZ-IO
-    - [ ] Thoraxentlastungspunktion
+- [ ] Behandlungspfade
+    - [ ] Einwilligunsfähigkeit     (S.15)
+    - [ ] EZ-IO                     (S.21)
+    - [ ] CPAP                      (S.28)
+    - [ ] Thoraxentlastungspunktion (S.32)
     - [ ] EKG
 
+    
 - [ ] Schemata
-    - [ ] Übergabeschemata
-    - [ ] APGAR
-    - [ ] qSOFA
+    - [ ] Schockraum
+        - [ ] Schockraumindikation
+        - [ ] Trauma-Übergabe
+        - [ ] Internistische Übergabe
+        - [ ] Anmeldung (ZOABCDE)   (S.77)
 
-- [ ] BPR
-    - [ ] Starke Schmerzen
-    - [ ] 
+    - [ ] Beurteilung
+        - [ ] Gefahren
+            - [ ] WWVD
+            - [ ] AAAA-C-EEEE
+        - [ ] ABCDE
+        - [ ] WASB
+        - [ ] GCS
+        - [ ] SAMPLER
+        - [ ] OPQRST
+
+    - [ ] Scores
+        - [ ] Wells
+        - [ ] APGAR
+        - [ ] qSOFA
+
+- [ ] Notfall (Interaktiv)
+    - [ ] Kinderlineal

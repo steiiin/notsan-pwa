@@ -18,3 +18,4 @@ console.log('Setup Version-info:');
 console.log('-- BuildDate: ', buildDate);
 console.log('-- BuildVersion: ', buildVersion);
 console.log('-- SaaVersion: ', saaVersion);
+console.log('')

@@ -1,37 +1,45 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+  
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Opiod-Intoxikation</nos-li-point>
+    <nos-li>Opiod-Intoxikation</nos-li>
   </nos-list>
+  
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Unverträglichkeit ggb. Naloxon</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="family">
-    <nos-li-point>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Naloxon</nos-li>
+  </nos-list>
+  <nos-list contragroup="family">
+    <nos-li>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li>
+  </nos-list>
+  
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-point>Starke Entzugsreaktion</nos-li-point>
-    <nos-li-point class="nos-li-decent">Tremor, Muskelkrämpfe</nos-li-point>
-    <nos-li-point class="nos-li-decent">Tachykardie, Blutdruckanstieg</nos-li-point>
-    <nos-li-point class="nos-li-decent">Unruhe, Aggressivität</nos-li-point>
+    <nos-li>Starke Entzugsreaktion</nos-li>
+    <nos-li :decent="true">Tremor, Muskelkrämpfe</nos-li>
+    <nos-li :decent="true">Tachykardie, Blutdruckanstieg</nos-li>
+    <nos-li :decent="true">Unruhe, Aggressivität</nos-li>
+    <nos-li variant="todo">Vorsichtig Titrieren</nos-li>
   </nos-list>
+  
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul"
-          >1 Ampulle Naloxon</nos-content
-        >
-        <nos-content mode="med-size-mono">0,4mg</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle Naloxon</nos-med-label>
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '0,4mg', per: '1ml' },
+          ]"
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Opioid-Intoxikation" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Opioid-Intoxikation" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -51,17 +59,17 @@
         </p>
         <p>
           <div class="nos-u">Initialdosis</div>
-          <nos-dose
+          <nos-med-dose
             :items="[{  unit: '2,5ml (¼ Spritze)', color: 'adult' },
             { unit: '0,1mg', color: 'adult'}]"
-          ></nos-dose>
+          ></nos-med-dose>
         </p>
         <v-divider class="my-2"></v-divider>
         <p>
           <div class="nos-u">Alle 2min: Repetition</div>
-          <nos-dose
+          <nos-med-dose
             :items="[{ unit: '1ml (0,04mg)', color: 'adult' } ]"
-          ></nos-dose>
+          ></nos-med-dose>
           <div>Sehr langsam über die 2min spritzen.<br/>
           Bis Schutzreflexe vorhanden &amp; Atmung suffizient.</div>
         </p>
@@ -71,69 +79,61 @@
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~2min</template>
     <template v-slot:span>~30min</template>
-  </nos-pharmakin>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header>
+  <nos-paragraphs>
+    <template v-slot:heading>
       Kompetitiver Opioid-Antagonist an den zentralen Opioid-Rezeptoren.
     </template>
-    <p>
-      Naloxon hat eine höhere Affinität zu den Opioidrezeptorstellen als sämtliche 
-      Opioid-Agonisten und partielle Antagonisten, es verdrängt andere Moleküle vom 
-      Rezeptor und blockiert deren Wirkung. 
-    </p>
-    <p>
-      In Abwesenheit von Opioiden oder agonistischen Effekten anderer 
-      Opioid-Antagonisten zeigt Naloxon im Wesentlichen keine pharmakologische 
-      Eigenwirkung, so dass eine Gabe bei Verdacht auf eine Opiatintoxikation keine 
-      negativen Folgen hat, sollte sich der Verdacht nicht bestätigen.
-    </p>
-    <p>
-      Aufgrund der kürzeren Wirkdauer als andere Opioide kann es nach 15-45min zu 
-      einer erneuten Opioid-Intoxikation kommen <b>(Rebound-Effekt)</b>.
-    </p>
-  </nos-card>
+    <template v-slot:text>
+      <p>
+        Naloxon hat eine höhere Affinität zu den Opioidrezeptorstellen als sämtliche 
+        Opioid-Agonisten und partielle Antagonisten, es verdrängt andere Moleküle vom 
+        Rezeptor und blockiert deren Wirkung. 
+      </p>
+      <p>
+        In Abwesenheit von Opioiden oder agonistischen Effekten anderer 
+        Opioid-Antagonisten zeigt Naloxon im Wesentlichen keine pharmakologische 
+        Eigenwirkung, so dass eine Gabe bei Verdacht auf eine Opiatintoxikation keine 
+        negativen Folgen hat, sollte sich der Verdacht nicht bestätigen.
+      </p>
+      <p>
+        Aufgrund der kürzeren Wirkdauer als andere Opioide kann es nach 15-45min zu 
+        einer erneuten Opioid-Intoxikation kommen <b>(Rebound-Effekt)</b>.
+      </p>
+    </template>
+</nos-paragraphs>
 </template>
 
 <script>
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
+import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
+import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
 import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+import NosMedLabel from "../components/NosMedLabel.vue";
+import NosMedDose from "../components/NosMedDose.vue";
+import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
   name: "MedNaloxon",
   components: {
     NosTitle,
     NosHeader,
-    NosCard,
+    NosParagraphs,
     NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
+    NosLi,
     NosTable,
     NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin
+    NosMedLabel,
+    NosMedDose,
+    NosMedEffects
   },
   computed: {
     meta() {

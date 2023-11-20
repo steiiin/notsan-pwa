@@ -1,37 +1,44 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+  
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Hypoglykämie</nos-li-point>
+    <nos-li>Hypoglykämie</nos-li>
   </nos-list>
+
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci>
-    <nos-li-point>
+  <nos-list>
+    <nos-li>
       Keine i.v.-Gabe, wenn Wach und &bdquo;Schluckfähig&rdquo;
-    </nos-li-point>
-    <nos-li-todo>Orale Gabe bevorzugen</nos-li-todo>
-  </nos-list-ci>
+    </nos-li>
+    <nos-li variant="todo">Orale Gabe bevorzugen</nos-li>
+  </nos-list>
+
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-cave>Venenreizung, Nekrose bei Parasavat</nos-li-cave>
+    <nos-li variant="cave">Venenreizung, Nekrose bei Parasavat</nos-li>
+    <nos-li variant="todo"> Bei Parasavat: Infusion entfernen, im Krankenhaus melden </nos-li>
+    <nos-li variant="todo"> Maximal 20%ige Lösung </nos-li>
+    <nos-li variant="todo"> Bei laufender Infusion spritzen &amp; nachspülen </nos-li>
   </nos-list>
-  <nos-list>
-    <nos-li-todo> Bei Parasavat: Infusion entfernen, im Krankenhaus melden </nos-li-todo>
-    <nos-li-todo> Maximal 20%ige Lösung </nos-li-todo>
-    <nos-li-todo> Bei laufender Infusion spritzen &amp; nachspülen </nos-li-todo>
-  </nos-list>
+
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul">1 Ampulle G20</nos-content>
-        <nos-content mode="med-size-mono">2g / 10ml</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle G20</nos-med-label>
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '2g', per: '10ml' },
+          ]"
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Hypoglykämie" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Hypoglykämie" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -45,31 +52,35 @@
     <nos-tab-row>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
             { label: 'Ab 30kg', unit: '10g (5 Ampullen)', color: 'adult' },
             { label: 'Kindergarten', unit: '4g (2 Ampullen)', color: 'child' },
             { label: 'Kleinkind', unit: '2g (2 Ampullen)', color: 'baby' }
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
         <v-divider class="my-2"></v-divider>
-        <p class="nos-u">Nach 5min Kontrollmessung &amp; Repetition</p>
+        <p>
+          <div class="nos-u">Nach 5min Kontrollmessung</div>
+          <div>Ggf. Repetition</div>
+        </p>
       </template>
     </nos-tab-row>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~3min</template>
     <template v-slot:span>wenige Minuten bis 1h (je nach Stoffwechsel)</template>
-  </nos-pharmakin>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header>
+  <nos-paragraphs>
+    <template v-slot:heading>
       Glucose ist Zucker.
     </template>
-    <p>
+    <template v-slot:text>
+      <p>
       In jeder Form der Gabe (intravenös oder oral) bewirkt der Einsatz 
       von Glukose eine Erhöhung der Blutglukosekonzentration und stellt 
       dem Körper somit ausreichend Zucker für die Aufrechterhaltung des 
@@ -84,44 +95,35 @@
       (Brot, Kräcker etc.) zu sich nehmen, um einem folgenden 
       BZ-Abfall entgegenzuwirken.
     </p>
-  </nos-card>
+    </template>
+</nos-paragraphs>
 </template>
 
 <script>
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
+import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
+import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
 import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+import NosMedLabel from "../components/NosMedLabel.vue";
+import NosMedDose from "../components/NosMedDose.vue";
+import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
   name: "MedGlucose",
   components: {
     NosTitle,
     NosHeader,
-    NosCard,
+    NosParagraphs,
     NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
+    NosLi,
     NosTable,
     NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin,
+    NosMedLabel,
+    NosMedDose,
+    NosMedEffects,
   },
   computed: {
     meta() {

@@ -66,14 +66,26 @@ export default {
   display: grid;
   grid-template-columns: 200px auto;
   grid-column-gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
+  font-size: 1rem;
+  line-height: 1.1rem;
   &__caption {
-    font-size: 1rem;
     font-style: italic;
-    line-height: 1.1rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 12px 0;
+  }
+  &__content {
+    padding: 12px 0;
+  }
+}
+.nos-tab-row:first-child {
+  .nos-tab-row__caption {
+    padding: 0 0 12px 0;
+  }
+  .nos-tab-row__content {
+    padding: 0 0 12px 0;
   }
 }
 .nos-tab-row:last-child {

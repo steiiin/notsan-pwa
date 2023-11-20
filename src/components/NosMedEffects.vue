@@ -1,25 +1,25 @@
 <template>
   <div class="mt-2 mb-4 mx-4">
-    <div class="nos-pharmakin-row">
-      <div class="nos-pharmakin-row__caption">
-        <v-icon icon="mdi-timer-outline" size="small"></v-icon>
+    <div class="nos-medeffects-row">
+      <div class="nos-medeffects-row__caption">
+        <v-icon icon="$timerOutline" size="small"></v-icon>
         <span class="nos--obsolete">Wirkeintritt:</span>
       </div>
-      <div class="nos-pharmakin-row__content"><slot name="onset"></slot></div>
+      <div class="nos-medeffects-row__content"><slot name="onset"></slot></div>
     </div>
-    <div class="nos-pharmakin-row">
-      <div class="nos-pharmakin-row__caption">
-        <v-icon icon="mdi-timer" size="small"></v-icon>
+    <div class="nos-medeffects-row">
+      <div class="nos-medeffects-row__caption">
+        <v-icon icon="$timer" size="small"></v-icon>
         <span class="nos--obsolete">Wirkdauer:</span>
       </div>
-      <div class="nos-pharmakin-row__content"><slot name="span"></slot></div>
+      <div class="nos-medeffects-row__content"><slot name="span"></slot></div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosPharmakin",
+  name: "NosMedEffects",
   props: {},
 };
 </script>
@@ -29,7 +29,7 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-.nos-pharmakin-row {
+.nos-medeffects-row {
   display: grid;
   grid-template-columns: 125px auto;
   &__caption {
@@ -48,12 +48,12 @@ export default {
   }
 }
 @media only screen and (max-width: 600px) {
-  .nos-pharmakin-row {
+  .nos-medeffects-row {
     grid-template-columns: 110px auto;
   }
 }
 @media only screen and (max-width: 550px) {
-  .nos-pharmakin-row {
+  .nos-medeffects-row {
     grid-template-columns: 45px auto;
     &__caption {
       justify-content: center;

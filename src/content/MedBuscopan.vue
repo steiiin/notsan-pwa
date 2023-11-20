@@ -1,152 +1,140 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Kolikartige Schmerzen</nos-li-point>
+    <nos-li>Kolikartige Schmerzen</nos-li>
   </nos-list>
+
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Unverträglichkeit ggb. Butylscopolamin</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="acute">
-    <nos-li-point>Tachyarrhythmie</nos-li-point>
-    <nos-li-point>Engwinkelglaukom (Glaukomanfall), d.h.:</nos-li-point>
-    <nos-li-point class="nos-li-decent"
-      >Sehstörungen / Farbspiele beim Sehen</nos-li-point
-    >
-    <nos-li-point class="nos-li-decent"
-      >Starke Kopfschmerzen &amp; Erbrechen</nos-li-point
-    >
-    <nos-li-point class="nos-li-decent">Gerötetes Auge</nos-li-point>
-    <nos-li-point>Ileus (Stuhlverhalt)</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="known">
-    <nos-li-point>Myasthenia gravis</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="family">
-    <nos-li-point>Schwangerschaft</nos-li-point>
-    <nos-li-point>Stillzeit</nos-li-point>
-    <nos-li-point>Kinder &lt; 12 Jahre</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Butylscopolamin</nos-li>
+  </nos-list>
+  <nos-list contragroup="acute">
+    <nos-li>Tachyarrhythmie</nos-li>
+    <nos-li>Engwinkelglaukom (Glaukomanfall), d.h.:</nos-li>
+    <nos-li :decent="true">Sehstörungen / Farbspiele beim Sehen</nos-li>
+    <nos-li :decent="true">Starke Kopfschmerzen &amp; Erbrechen</nos-li>
+    <nos-li :decent="true">Gerötetes Auge</nos-li>
+    <nos-li>Ileus (Stuhlverhalt)</nos-li>
+  </nos-list>
+  <nos-list contragroup="known">
+    <nos-li>Myasthenia gravis</nos-li>
+  </nos-list>
+  <nos-list contragroup="family">
+    <nos-li>Schwangerschaft</nos-li>
+    <nos-li>Stillzeit</nos-li>
+    <nos-li>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li>
+  </nos-list>
+
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-cave>Tachykardie</nos-li-cave>
-    <nos-li-cave>Blutdruckabfall</nos-li-cave>
+    <nos-li variant="cave">Tachykardie</nos-li>
+    <nos-li variant="cave">Blutdruckabfall</nos-li>
+    <nos-li>Schwindel</nos-li>
+    <nos-li variant="todo">Flüssigkeitsersatz, ggf. Schocklagerung</nos-li>
   </nos-list>
   <nos-list>
-    <nos-li-point>Schwindel</nos-li-point>
-    <nos-li-point>Mundtrockenheit</nos-li-point>
-    <nos-li-point>Sehstörungen</nos-li-point>
-    <nos-li-point>Unruhe, Angst</nos-li-point>
+    <nos-li>Mundtrockenheit</nos-li>
+    <nos-li>Sehstörungen</nos-li>
+    <nos-li>Unruhe, Angst</nos-li>
   </nos-list>
-  <nos-list>
-    <nos-li-todo>
-      Bei Blutdruckabfall: Flüssigkeitsersatz, <br />ggf. Schocklagerung
-    </nos-li-todo>
-  </nos-list>
+
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul">1 Ampulle &bdquo;Buscopan&rdquo;</nos-content>
-        <nos-content mode="med-size-mono">20mg</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Buscopan&rdquo;</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '20mg', per: '1ml' }]"></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Kolikartiger Schmerz" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Kolikartiger Schmerz" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
-        <p class="nos-u">NRS &gt; 6</p>
+        <p>
+          <div class="nos-u">NRS &gt; 6</div>
+          <div><i>Bei Nierenkolik kaum wirksam.</i></div>
+        </p>
       </template>
     </nos-tab-row>
     <nos-tab-row>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
-        <nos-dose
+        <nos-med-dose
           :items="[
-            { label: 'Jugendliche', unit: '15mg (¾ Ampulle)', color: 'teen' },
             { label: 'Erwachsene', unit: '20mg (1 Ampulle)', color: 'adult' },
+            { label: 'Jugendliche', unit: '15mg (¾ Ampulle)', color: 'teen' },
           ]"
-        ></nos-dose>
+        ></nos-med-dose>
         <v-divider class="my-2"></v-divider>
         <p>
           Auf 20ml NaCl aufziehen, langsam spritzen<br />
-          &amp; nachspülen
+          &amp; nachspülen.
         </p>
-        <p>Herzfrequenz mit EKG oder SpO<sub>2</sub>-Sensor überwachen.</p>
+        <p>Herzfrequenz mit EKG oder SpO<sub>2</sub>-Sensor <b>überwachen</b>.</p>
       </template>
     </nos-tab-row>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~5min</template>
     <template v-slot:span>~5h</template>
-  </nos-pharmakin>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header> Butylscopolamin ist ein Parasympatholytikum. </template>
-    <p>
-      Butylscopolamin wirkt anticholinerg und spasmolytisch auf die glatte Muskulatur des
-      Verdauungs- und Urogenitaltrakts und der Gallenwege. Die Wirkung beruht auf der
-      Hemmung von Muskarinrezeptoren der glatten Muskulatur und der Hemmung der
-      ganglionären Übertragung durch Acetylcholin.
-    </p>
-    <p class="font-italic">
-      Laut S2k-Leitlinie zur Diagnostik, Therapie und Metaphylaxe der Urolithiasis ist
-      Butylscopolamin in der Therapie von Harnleiterkoliken ineffektiv und sollte somit
-      nicht zur Therapie verwendet werden. Die Dosis, welche zur Hemmung der Peristaltik
-      von Harnleitern benötigt wird, sei demnach zu hoch.
-    </p>
-  </nos-card>
+  <nos-paragraphs>
+    <template v-slot:heading> Butylscopolamin ist ein Parasympatholytikum. </template>
+    <template v-slot:text>
+      <p>
+        Butylscopolamin wirkt anticholinerg und spasmolytisch auf die glatte Muskulatur des Verdauungs- und Urogenitaltrakts und der Gallenwege. Die
+        Wirkung beruht auf der Hemmung von Muskarinrezeptoren der glatten Muskulatur und der Hemmung der ganglionären Übertragung durch Acetylcholin.
+      </p>
+      <p class="font-italic">
+        Laut S2k-Leitlinie zur Diagnostik, Therapie und Metaphylaxe der Urolithiasis ist Butylscopolamin in der Therapie von Harnleiterkoliken
+        ineffektiv und sollte somit nicht zur Therapie verwendet werden. Die Dosis, welche zur Hemmung der Peristaltik von Harnleitern benötigt wird,
+        sei demnach zu hoch.
+      </p>
+    </template>
+  </nos-paragraphs>
 </template>
 
 <script>
-import NosTitle from "../components/NosTitle.vue";
-import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
-import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
-import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+  import NosTitle from "../components/NosTitle.vue";
+  import NosHeader from "../components/NosHeader.vue";
+  import NosParagraphs from "../components/NosParagraphs.vue";
+  import NosList from "../components/NosList.vue";
+  import NosLi from "../components/NosLi.vue";
+  import NosTable from "../components/NosTable.vue";
+  import NosTabRow from "../components/NosTabRow.vue";
+  import NosMedLabel from "../components/NosMedLabel.vue";
+  import NosMedDose from "../components/NosMedDose.vue";
+  import NosMedEffects from "../components/NosMedEffects.vue";
 
-export default {
-  name: "MedBuscopan",
-  components: {
-    NosTitle,
-    NosHeader,
-    NosCard,
-    NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
-    NosTable,
-    NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin,
-  },
-  computed: {
-    meta() {
-      return this.$store.getters.getContentMeta("med-buscopan");
+  export default {
+    name: "MedBuscopan",
+    components: {
+      NosTitle,
+      NosHeader,
+      NosParagraphs,
+      NosList,
+      NosLi,
+      NosTable,
+      NosTabRow,
+      NosMedLabel,
+      NosMedDose,
+      NosMedEffects,
     },
-  },
-  methods: {},
-};
+    computed: {
+      meta() {
+        return this.$store.getters.getContentMeta("med-buscopan");
+      },
+    },
+    methods: {},
+  };
 </script>

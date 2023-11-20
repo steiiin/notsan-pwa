@@ -1,8 +1,14 @@
 <template>
-  <div class="nos-dose" :class="{ 'nos-dose-withlabel': showLabels }">
+  <div
+    class="nos-meddose"
+    :class="{
+      'nos-meddose-withlabel': showLabels,
+      'nos-meddose-decent': decent,
+    }"
+  >
     <div
       v-for="line in lines"
-      class="nos-dose__line"
+      class="nos-meddose__line"
       :class="{
         'text-pink-accent-3': line.color === 'a1',
         'text-red-accent-3': line.color === 'a2',
@@ -16,10 +22,13 @@
         'text-light-blue-darken-4': line.color === 'adult',
       }"
     >
-      <div v-if="line.hint" class="nos-dose__hint">{{ line.hint }}</div>
+      <div v-if="line.hint" class="nos-meddose__hint">{{ line.hint }}</div>
       <template v-else>
-        <div class="nos-dose__label">{{ line.label ?? "" }}</div>
-        <div class="nos-dose__content">{{ line.text }}</div>
+        <div class="nos-meddose__label">{{ line.label ?? "" }}</div>
+        <div class="nos-meddose__content">
+          <template v-if="showPrefixes">{{ line.prefix ?? "&nbsp;" }}</template
+          >{{ line.text }}
+        </div>
       </template>
     </div>
   </div>
@@ -27,17 +36,23 @@
 
 <script>
 export default {
-  name: "NosDose",
+  name: "NosMeddose",
   props: {
     items: {
       type: Array,
       required: true,
+    },
+    decent: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {
     return {
       lines: [],
       showLabels: false,
+      showPrefixes: false,
     };
   },
   mounted() {
@@ -68,6 +83,10 @@ export default {
       if (item.color) {
         line.color = item.color;
       }
+      if (item.prefix) {
+        this.showPrefixes = true;
+        line.prefix = item.prefix;
+      }
       return line;
     });
   },
@@ -81,7 +100,7 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-.nos-dose {
+.nos-meddose {
   &__line {
     display: grid;
     grid-template-columns: 0px auto;
@@ -106,8 +125,13 @@ export default {
     padding: 4px 0 2px 0;
   }
 }
-.nos-dose-withlabel {
-  & .nos-dose {
+.nos-meddose-decent {
+  .nos-meddose__content {
+    font-weight: normal;
+  }
+}
+.nos-meddose-withlabel {
+  & .nos-meddose {
     &__line {
       grid-template-columns: 120px auto;
       grid-column-gap: 4px;
@@ -116,8 +140,8 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .nos-dose-withlabel {
-    & .nos-dose {
+  .nos-meddose-withlabel {
+    & .nos-meddose {
       &__line {
         grid-template-columns: 100px auto;
       }
@@ -125,19 +149,10 @@ export default {
   }
 }
 @media only screen and (max-width: 450px) {
-  .nos-dose-withlabel {
-    & .nos-dose {
+  .nos-meddose-withlabel {
+    & .nos-meddose {
       &__line {
-        grid-template-columns: 80px auto;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 350px) {
-  .nos-dose-withlabel {
-    & .nos-dose {
-      &__line {
-        grid-template-columns: 50px auto;
+        grid-template-columns: 90px auto;
       }
     }
   }

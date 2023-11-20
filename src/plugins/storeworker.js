@@ -11,7 +11,7 @@ export function kebabToPascalCase(str) {
     .join('');
 }
 
-export function mapStoreDataToListItem (state, items) {
+export function mapStoreDataToListItem (state, items, fillSubtitle = false) {
     return items.map((item) => {
       let obj = null;
       let objKey = "";
@@ -27,21 +27,21 @@ export function mapStoreDataToListItem (state, items) {
       }
 
       if (obj) {
-        return obj
-          ? {
-              key: objKey,
-              title: obj.title,
-              subtitle: obj.subtitle,
-              category:
-                state.category[obj.category ?? ""]?.title ?? "Andere",
-              route: objRoute,
-            }
-          : null;
+        let itemCategory = state.category[obj.category ?? ""]?.title ?? "Andere";
+        let listItem = {
+          key: objKey,
+          title: obj.title,
+          subtitle: obj.subtitle ?? (fillSubtitle ? itemCategory : null),
+          category: itemCategory,
+          route: objRoute,
+        };
+        if (item.accuracy) { listItem.accuracy = item.accuracy; }
+        return listItem;
       }
       return null;
     });
   }
-  export function groupListItems(items, groupProp, sortProp, onlyFirstLetter) {
+  export function groupListItems(items, groupProp, sortProp, onlyFirstLetter, sortGroup) {
     // group by groupProp
     const grouped = items.reduce((group, item) => {
       const groupname = onlyFirstLetter
@@ -53,10 +53,17 @@ export function mapStoreDataToListItem (state, items) {
     }, {});
 
     // create new array with headers
-    return Object.keys(grouped)
-      .sort((a, b) => a.localeCompare(b))
+    let groups = Object.keys(grouped);
+    if (sortGroup) { groups.sort((a, b) => a.localeCompare(b)); }
+
+    return groups
       .flatMap((groupname) => [
         { header: groupname },
-        ...grouped[groupname].sort((a, b) => a[sortProp].localeCompare(b[sortProp])),
-      ]);
+        ...grouped[groupname].sort((a, b) => (typeof a[sortProp] === 'string') ? a[sortProp].localeCompare(b[sortProp]) : b[sortProp] - a[sortProp]),
+      ]
+    );
+  }
+  export function sortListItems(items, sortProp) {
+    items.sort((a, b) => (typeof a[sortProp] === 'string') ? a[sortProp].localeCompare(b[sortProp]) : b[sortProp] - a[sortProp])
+    return items;
   }

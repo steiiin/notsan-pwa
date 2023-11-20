@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MenuMainView from '../views/MenuMainView.vue'
 import MenuSubView from '../views/MenuSubView.vue'
-import ContentWrapper from '../views/ContentWrapper.vue'
+import ContentView from '../views/ContentView.vue'
 import SearchView from '../views/SearchView.vue'
 
 const routes = [
@@ -30,8 +30,8 @@ const routes = [
   },
   {
     path: '/content/:key',
-    name: 'ContentWrapper',
-    component: ContentWrapper
+    name: 'ContentView',
+    component: ContentView
   },
   {
     path: '/search',

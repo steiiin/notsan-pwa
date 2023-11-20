@@ -1,55 +1,70 @@
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
+
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li-point>Starke Schmerzen nach Trauma</nos-li-point>
+    <nos-li>Starke Schmerzen nach Trauma</nos-li>
   </nos-list>
+  
   <nos-header title="Kontraindikationen"></nos-header>
-  <nos-list-ci type="intolerable">
-    <nos-li-point>Einfluss psychoaktiver Substanzen (z.B. Opiate)</nos-li-point>
-    <nos-li-point>Unverträglichkeit ggb. Esketamin</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="acute">
-    <nos-li-point>Kardiales Ereignis (z.B. ACS)</nos-li-point>
-    <nos-li-point>Schlaganfall</nos-li-point>
-    <nos-li-point>GCS &lt; 12</nos-li-point>
-    <nos-li-point>RR<sub>syst.</sub> &lt; 100mmHg / RR<sub>syst.</sub> &gt; 180mmHg</nos-li-point>
-    <nos-li-point>Atemfrequenz &lt; 10 / SpO<sub>2</sub> &lt; 90%</nos-li-point>
-  </nos-list-ci>
-  <nos-list-ci type="family">
-    <nos-li-point>Schwangerschaft</nos-li-point>
-    <nos-li-point>Kinder &lt; 30kg (Freigabe ab ~8 Jahre)</nos-li-point>
-  </nos-list-ci>
+  <nos-list contragroup="intolerable">
+    <nos-li>Unverträglichkeit ggb. Esketamin</nos-li>
+    <nos-li>Einfluss psychoaktiver Substanzen (z.B. Opiate)</nos-li>
+  </nos-list>
+  <nos-list contragroup="acute">
+    <nos-li>GCS &lt; 12</nos-li>
+    <nos-li>Kardiales Ereignis (z.B. ACS)</nos-li>
+    <nos-li>Hirndruckzeichen (Cushing-Reflex)</nos-li>
+    <nos-li :decent="true">Hypertonie, Bradykardie, Dyspnoe</nos-li>
+    <nos-li :decent="true">Anfangs: Erbrechen, Kopfschmerzen, Müdigkeit</nos-li>
+    <nos-li>RR<sub>syst.</sub> &lt; 100mmHg / RR<sub>syst.</sub> &gt; 180mmHg</nos-li>
+  </nos-list>
+  <nos-list contragroup="family">
+    <nos-li>Schwangerschaft</nos-li>
+    <nos-li>Kinder &lt; 30kg (Freigabe ab <b>~8</b> Jahre)</nos-li>
+  </nos-list>
+
   <nos-header title="Nebenwirkungen"></nos-header>
   <nos-list>
-    <nos-li-cave>Vigilanzminderung</nos-li-cave>
-    <nos-li-cave>Panikattacken, Unruhe</nos-li-cave>
-    <nos-li-cave>Blutdruckanstieg</nos-li-cave>
+    <nos-li variant="cave">Vigilanzminderung</nos-li>
+    <nos-li variant="cave">Ateminsuffizienz</nos-li>
+    <nos-li>Speichelfluss</nos-li>
+    <nos-li variant="todo">Engmaschige Überwachung</nos-li>
+    <nos-li variant="todo">Sauerstoffgabe, ggf. Assistierte Beatmung</nos-li>
   </nos-list>
   <nos-list>
-    <nos-li-point>Unruhe, Albträume</nos-li-point>
-    <nos-li-point>Euphorie &bdquo;Neben der Spur&rdquo;</nos-li-point>
+    <nos-li variant="cave">Panik, Erregung</nos-li>
+    <nos-li>Unruhe, Albträume, Angst</nos-li>
+    <nos-li>Euphorie &bdquo;Neben der Spur&rdquo;</nos-li>
+    <nos-li variant="todo">Ruhige Atmosphäre schaffen</nos-li>
+    <nos-li variant="todo">Ggf. Benzodiazepam-Repetition</nos-li>
+    <nos-btn-link content="med-midazolam"></nos-btn-link>
   </nos-list>
   <nos-list>
-    <nos-li-todo> Unruhe: Ruhige Atmosphäre schaffen </nos-li-todo>
-    <nos-li-todo> Vigilanz: Vitalzeichenüberwachung </nos-li-todo>
-    <nos-li-todo> Panik, Erregung: Evtl. Benzodiazepam-Repetition </nos-li-todo>
-    <div><v-btn>TODO: BPR Starke Schmerzen</v-btn></div>
+    <nos-li variant="cave">Blutdruckanstieg, Herzfrequenzanstieg</nos-li>
+    <nos-li>Übelkeit, Erbrechen</nos-li>
+    <nos-li variant="todo">Keine Dosiserhöhung.</nos-li>
+    <nos-li variant="todo">Blutdruckspitze nach 10min abwarten.</nos-li>
   </nos-list>
+  
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-content mode="med-size-ampul"
-          >1 Ampulle &bdquo;Ketanest S&rdquo;</nos-content
-        >
-        <nos-content mode="med-size-mono">25mg / 5ml</nos-content>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Ketanest S&rdquo;</nos-med-label>
+        <nos-med-dose
+          :decent="true"
+          :items="[
+            { unit: '25mg', per: '5ml' },
+            { unit: '5mg', per: 'ml', prefix: '=' },
+          ]"
+        ></nos-med-dose>
       </template>
     </nos-tab-row>
   </nos-table>
 
-  <nos-header title="Stärkste Schmerzen" :decent="true" icon="mdi-hospital-box" />
+  <nos-header title="Stärkste Schmerzen" :decent="true" icon="$hospitalBox" />
   <nos-table>
     <nos-tab-row>
       <template v-slot:caption>Einsatz</template>
@@ -62,7 +77,7 @@
       <template v-slot:content>
         <p>
           <div>Vor Esketamin-Gabe Ko-Medikation obligatorisch:</div>
-          <div><v-btn>TODO Med-Midazolam</v-btn></div>
+          <nos-btn-link content="med-midazolam"></nos-btn-link>
         </p>
         <p>
           <div class="nos-u mt-4">Vorbereitung</div>
@@ -81,21 +96,24 @@
         </p>
         <p>
           <div class="nos-u">Maximaldosis festlegen</div>
-          <div class="nos-mono">1ml / 10kgKG</div>
-          <div>Maximaldosis nach Körpergewicht auf Spritze markieren.<br/>
+          <nos-med-dose :items="[
+            { unit: '1ml', per: '10kg', color: 'adult' },
+            { unit: '2,5mg', per: '10kg', color: 'adult', prefix: '=' }]">
+          </nos-med-dose>
+          <div>Maximaldosis auf Spritze markieren.<br/>
           Rest für NA in der Spritze lassen, <b>nicht verwerfen</b>.</div>
         </p>
         <p>
           <div class="nos-u">Initialdosis</div>
           <div>
-            Hälfte der &bdquo;markierten Dosis&rdquo; spritzen.<br />
+            <b>Hälfte</b> der &bdquo;markierten Dosis&rdquo; spritzen.<br />
             Langsam spritzen.
           </div>
         </p>
         <p>
-          <div class="nos-u">Repetition</div>
+          <div class="nos-u">Repetition nach 4min</div>
           <div>
-            Nach 60s &rArr; <span class="nos-mono">0,5ml</span> spritzen,<br />
+            Alle 60s &rArr; <span class="nos-mono">0,5ml</span> spritzen,<br />
             bis Schmerzen gelindert, oder Maximum erreicht (Markierung).
           </div>
         </p>
@@ -118,10 +136,11 @@
         </p>
       </template>
     </nos-tab-row>
+
     <nos-tab-row group="l2">
       <template v-slot:caption>(i.m.)-Dosis</template>
       <template v-slot:content>
-        <p class="nos-u">Ko-Medikation optional, aufgrund niedriger Dosis</p>
+        <p class="nos-u">Ko-Medikation optional (niedrigere Dosis)</p>
         <p>
           <div class="nos-u mt-4">Vorbereitung</div>
           <div>
@@ -142,38 +161,22 @@
         </p>
       </template>
     </nos-tab-row>
-    <nos-tab-row group="l3">
-      <template v-slot:caption>(nasal)-Dosis</template>
-      <template v-slot:content>
-        <p class="nos-u">Ebenso Ko-Medikation (z.B. Midazolam nasal)</p>
-        <p>
-          <div class="nos-u mt-4">Nasenloch-Menge</div>
-          <div><span class="nos-mono">2ml</span>/Nasenloch</div>
-          <div><span class="nos-mono">20mg</span>Nasal möglich.</div>
-          <div class="font-italic">Letztes Mittel, wenn nichts anderes möglich.</div>
-        </p>
-        <nos-dose
-          :items="[
-            { unit: '25mg', per: '10kg' },
-            { label: 'Pro Nasenloch', unit: '2ml á 10mg', color: 'adult' }]"
-        ></nos-dose>
-      </template>
-    </nos-tab-row>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-pharmakin>
+  <nos-med-effects>
     <template v-slot:onset>~1min</template>
-    <template v-slot:span>~5-10min</template>
-  </nos-pharmakin>
+    <template v-slot:span>~20min</template>
+  </nos-med-effects>
 
   <nos-header title="Wirkweise"></nos-header>
-  <nos-card>
-    <template v-slot:header>  
+  <nos-paragraphs>
+    <template v-slot:heading>  
       Reversible Schmerzausschaltung und Sedierung bei 
       Vorhandenbleiben von Schutzreflexen. 
     </template>
-    <p>
+    <template v-slot:text>
+      <p>
       Dabei bindet Esketamin nur teilweise an den Opiatrezeptor, sondern 
       blockiert vorrangig NMDA-Rezeptoren (N-Methyl-D-Aspartat). Die 
       NMDA-Bindungsstelle sorgt für die Gedächnisfunktion und ist in 
@@ -192,44 +195,37 @@
       zudem eine zerebrale Vasodilatation und eine Zunahme des 
       Hirnstoffwechsels bei herabgesetzter Hirndurchblutung.
     </p>
-  </nos-card>
+    </template>
+</nos-paragraphs>
 </template>
 
 <script>
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
-import NosCard from "../components/NosCard.vue";
+import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
-import NosListCi from "../components/NosListCi.vue";
-import NosLiNone from "../components/NosLiNone.vue";
-import NosLiPoint from "../components/NosLiPoint.vue";
-import NosLiCheck from "../components/NosLiCheck.vue";
-import NosLiCave from "../components/NosLiCave.vue";
-import NosLiTodo from "../components/NosLiTodo.vue";
+import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
 import NosTabRow from "../components/NosTabRow.vue";
-import NosContent from "../components/NosContent.vue";
-import NosDose from "../components/NosDose.vue";
-import NosPharmakin from "../components/NosPharmakin.vue";
+import NosMedLabel from "../components/NosMedLabel.vue";
+import NosMedDose from "../components/NosMedDose.vue";
+import NosMedEffects from "../components/NosMedEffects.vue";
+import NosBtnLink from "../components/NosBtnLink.vue";
 
 export default {
   name: "MedEsketamin",
   components: {
     NosTitle,
     NosHeader,
-    NosCard,
+    NosParagraphs,
     NosList,
-    NosListCi,
-    NosLiNone,
-    NosLiPoint,
-    NosLiCheck,
-    NosLiCave,
-    NosLiTodo,
+    NosLi,
     NosTable,
     NosTabRow,
-    NosContent,
-    NosDose,
-    NosPharmakin
+    NosMedLabel,
+    NosMedDose,
+    NosMedEffects,
+    NosBtnLink
   },
   computed: {
     meta() {
