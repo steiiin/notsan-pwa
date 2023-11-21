@@ -28,14 +28,14 @@
     - [x] Sauerstoff
     - [ ] Lidocain (PrioIII: Nur noch als Alternative zu Cordarex)
 
-    - [ ] Notarzt-Medikamente
+    - [x] Notarzt-Medikamente
         - [x] Noradrenalin      
         - [x] Dobutamin         
         - [x] Akrinor           
-        - [ ] Nifedipin        
-        - [ ] Clonidin         
-        - [ ] Verapamil         
-        - [ ] Adrekar
+        - [x] Nifedipin        
+        - [x] Clonidin         
+        - [x] Verapamil         
+        - [x] Adrekar
         - [ ] Beloc
         - [ ] Nabi
         - [ ] Cormagnesium
@@ -66,14 +66,6 @@
         - [ ] Fenoterol
         - [ ] Calcium
         - [ ] Tranexamsäure
-
-- [ ] Behandlungspfade
-    - [ ] Einwilligunsfähigkeit     (S.15)
-    - [ ] EZ-IO                     (S.21)
-    - [ ] CPAP                      (S.28)
-    - [ ] Thoraxentlastungspunktion (S.32)
-    - [ ] EKG
-
     
 - [ ] Schemata
     - [ ] Schockraum
@@ -92,10 +84,18 @@
         - [ ] SAMPLER
         - [ ] OPQRST
 
-    - [ ] Scores
-        - [ ] Wells
+    - [x] Scores
+        - [x] Wells
+        - [x] sPESI
         - [ ] APGAR
         - [ ] qSOFA
+    
+    - [ ] Behandlungspfade
+        - [ ] Einwilligunsfähigkeit     (S.15)
+        - [ ] EZ-IO                     (S.21)
+        - [ ] CPAP                      (S.28)
+        - [ ] Thoraxentlastungspunktion (S.32)
+        - [ ] EKG
 
 - [ ] Notfall (Interaktiv)
     - [ ] Kinderlineal

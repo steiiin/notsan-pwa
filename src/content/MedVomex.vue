@@ -42,7 +42,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle &bdquo;Vomex&rdquo;</nos-med-label>
@@ -50,18 +50,18 @@
         <nos-med-label type="suppositorium" class="mt-2">1 Zäpfchen &bdquo;Vomex&rdquo;</nos-med-label>
         <nos-med-dose :decent="true" :items="[{ unit: '40mg' }]"></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Erbrechen" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p><span class="nos-u">Anhaltendes Erbrechen, </span><br />mit Erschöpfung oder Aspirationsgefahr</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose :items="[{ label: 'Ab 14 Jahren', unit: '62mg (1 Ampulle)', color: 'adult' }]"></nos-med-dose>
@@ -69,13 +69,13 @@
         <p>Langsam spritzen.</p>
         <p>Herzfrequenz mit EKG oder SpO<sub>2</sub>-Sensor überwachen.</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(rect.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose :items="[{ label: '<14 Jahre', unit: '40mg (1 Zäpfchen)', color: 'child' }]"></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -105,7 +105,7 @@
   import NosList from "../components/NosList.vue";
   import NosLi from "../components/NosLi.vue";
   import NosTable from "../components/NosTable.vue";
-  import NosTabRow from "../components/NosTabRow.vue";
+  import NosRowCaption from "../components/NosRowCaption.vue";
   import NosMedLabel from "../components/NosMedLabel.vue";
   import NosMedDose from "../components/NosMedDose.vue";
   import NosMedEffects from "../components/NosMedEffects.vue";
@@ -119,7 +119,7 @@
       NosList,
       NosLi,
       NosTable,
-      NosTabRow,
+      NosRowCaption,
       NosMedLabel,
       NosMedDose,
       NosMedEffects,

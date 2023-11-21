@@ -1,12 +1,13 @@
 // Styles
-// import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
+
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import 
 { 
   // MainMenu
   mdiNeedle,
   mdiShapeOutline,
+  mdiAlarmPanelOutline,
 
   // Ui
   mdiChevronLeft,
@@ -19,6 +20,8 @@ import
   mdiTimerOutline,
   mdiTimer,
   mdiHospitalBox,
+  mdiCloseThick,
+  mdiCheckBold,
 
   // Icons
   mdiFlask,
@@ -37,12 +40,18 @@ from '@mdi/js'
 // Vuetify
 import { createVuetify } from 'vuetify'
 export default createVuetify({
+  defaults: {
+    global: {
+      ripple: false,
+    },
+  },
   icons: {
     defaultSet: 'mdi',
     aliases: {
       ...aliases,
       needle: mdiNeedle,
       shapeOutline: mdiShapeOutline,
+      alarmPanelOutline: mdiAlarmPanelOutline,
 
       chevronLeft: mdiChevronLeft,
       chevronRight: mdiChevronRight,
@@ -54,6 +63,8 @@ export default createVuetify({
       timerOutline: mdiTimerOutline,
       timer: mdiTimer,
       hospitalBox: mdiHospitalBox,
+      closeThick: mdiCloseThick,
+      checkBold: mdiCheckBold,
       
       flask: mdiFlask,
       pill: mdiPill,

@@ -18,7 +18,6 @@ export default {
       installPrompt(event) {
         event.preventDefault();
         this.installTarget = event;
-        debugger
         if (typeof (this.installTarget?.prompt) === 'function')
         {
           this.installPromoted = true;        

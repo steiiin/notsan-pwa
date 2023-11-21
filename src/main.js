@@ -48,8 +48,16 @@ const store = createStore({
         'na-med-noradrenalin': { title: "Noradrenalin", subtitle: "Arterenol", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedNoradrenalin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
         'na-med-dobutamin': { title: "Dobutamin", subtitle: "Dobutrex", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedDobutamin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
         'na-med-akrinor': { title: "Akrinor", subtitle: "Cafedrin+Theodrenalin", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedAkrinor.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'na-med-nifedipin': { title: "Nifedipin", subtitle: "Adalat", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedNifedipin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'na-med-clonidin': { title: "Clonidin", subtitle: "Paracefan", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedClonidin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'na-med-verapamil': { title: "Verapamil", subtitle: "Verahexal, Isoptin", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedVerapamil.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'na-med-adenosin': { title: "Adenosin", subtitle: "Adrekar", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedAdenosin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
       
+        // Scores
+        'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: markRaw(defineAsyncComponent({ loader: () => import('./content/ScoreWells.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'score-pesi': { title: "sPESI-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: markRaw(defineAsyncComponent({ loader: () => import('./content/ScorePESI.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
       
+
       },
       submenu:
       {
@@ -85,11 +93,25 @@ const store = createStore({
         },
         'list-na-med':
         {
-          title: "Notarztmedikamente", hint: "", category: "med", items:
+          title: "Zusatz: Notarztmedikamente", hint: "", category: "med", items:
             [
               { content: 'na-med-noradrenalin' },
               { content: 'na-med-dobutamin' },
-              { content: 'na-med-akrinor' }
+              { content: 'na-med-akrinor' },
+              { content: 'na-med-nifedipin' },
+              { content: 'na-med-clonidin' },
+              { content: 'na-med-verapamil' },
+              { content: 'na-med-adenosin' },
+            ],
+          ignoreAtSearch: true
+        },
+
+        'list-scores':
+        {
+          title: "Medizinische Scores", hint: "", category: "score", items:
+            [
+              { content: 'score-wells' },
+              { content: 'score-pesi' },
             ]
         }
       },
@@ -98,16 +120,17 @@ const store = createStore({
         'med': { title: "Medikamente" },
         'na-med': { title: "Medikamente (Notarzt)" },
         'topic': { title: "Krankheitsbilder" },
+        'score': { title: "Medizinische Scores" },
       },
       menu:
       {
         'medis':
         {
-          name: 'Medikamente', icon: '$needle', items:
+          name: 'Medikamente (A-Z)', icon: '$needle', items:
             [
               { content: 'med-adrenalin' },
-              { content: 'med-aspirin' },
               { content: 'med-amiodaron' },
+              { content: 'med-aspirin' },
               { content: 'med-atropin' },
               { content: 'med-buscopan' },
               { content: 'med-vomex' },
@@ -129,26 +152,24 @@ const store = createStore({
               { content: 'med-urapidil' },
               { content: 'med-sauerstoff' },
               { list: 'list-na-med' }
-            ]
+            ],
         },
         'topics':
         {
-          name: 'Themen', icon: '$shapeOutline', items:
+          name: 'Medikamente (thematisch)', icon: '$needle', items:
             [
               { list: 'list-anaphylaxie' },
               { list: 'list-bradykardie' },
               { list: 'list-asthma' },
             ]
+        },
+        'scheme':
+        {
+          name: 'Schemata & Anweisungen', icon: '$alarmPanelOutline', items:
+            [
+              { list: 'list-scores' }
+            ]
         }
-        // 'test':
-        // {
-        //   name: 'Sub-Menü', icon: '', items:
-        //     [
-        //       { list: 'list-test1' },
-        //       { content: 'med-adrenalin' }
-        //     ]
-        // }
-
       },
     }
   },

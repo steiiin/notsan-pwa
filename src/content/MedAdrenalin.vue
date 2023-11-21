@@ -27,7 +27,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle Adrenalin</nos-med-label>
@@ -38,12 +38,12 @@
           ]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Reanimation" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -58,8 +58,8 @@
           <div class="nos-u">Repetition, alle 2 Zyklen (4min)</div>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose 
@@ -71,12 +71,12 @@
             { label: 'Kinder', unit: '0,01mg', per: 'kg', color: 'child' },
             { unit: '1ml', per: '5kg', color: 'child' }]"></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Bedrohliche Anaphylaxie" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -84,8 +84,8 @@
           Atemnot, Schleimhautödem der oberen Atemwege.
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.m.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose 
@@ -99,20 +99,20 @@
         Bei intramuskulärer Gabe kommt es sonst leicht zur Überdosierung.</p>
         <p>Am besten <b>1ml</b>-Spritze benutzen.</p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Instabile Bradykardie" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p class="nos-u">
           Herzfrequenz unter 40min<sup>-1</sup>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose 
@@ -136,12 +136,12 @@
             { unit: '6 -  30ml', per: 'h' }
           ]"></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pseudokrupp" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -149,8 +149,8 @@
           <div>SpO<sub>2</sub> &lt; 90%, trotz Sauerstoff- &amp; Kortisongabe</div>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(p.i.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose 
@@ -159,7 +159,7 @@
           ]"></nos-med-dose>
           <div><span class="nos-mono">+2ml NaCl</span> in Vernebelungsmaske</div>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -204,7 +204,7 @@ import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
 import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
+import NosRowCaption from "../components/NosRowCaption.vue";
 import NosMedLabel from "../components/NosMedLabel.vue";
 import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
@@ -218,7 +218,7 @@ export default {
     NosList,
     NosLi,
     NosTable,
-    NosTabRow,
+    NosRowCaption,
     NosMedLabel,
     NosMedDose,
     NosMedEffects

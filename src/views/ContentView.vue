@@ -20,6 +20,8 @@ export default {
     return {
       contenttitle: "",
       hideAppbarActions: false,
+
+      history: {}
     };
   },
   computed: {
@@ -42,11 +44,29 @@ export default {
       return contentItem.component;
     },
   },
+  watch: {
+    $route(to, from) {
+
+      this.history[from.fullPath] = window.scrollY;
+      let scrollY = 0;
+      if (this.history.hasOwnProperty(to.fullPath))
+      {
+        scrollY = this.history[to.fullPath];
+      }
+
+      this.$nextTick(()=>{ window.scrollTo(0, scrollY) });
+
+      // setTimeout(()=>{
+      //   window.scrollTo(0, scrollY)
+      // }, 100);
+
+    }
+  },
   methods: {
     goBack: function () {
       setTimeout(() => {
         this.$router.back();
-      }, 100); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
   mounted: function () {
@@ -54,6 +74,7 @@ export default {
     if (fromSearch) {
       this.hideAppbarActions = true;
     }
+    window.scrollTo(0,0) /* reset scroll */
   },
 };
 </script>

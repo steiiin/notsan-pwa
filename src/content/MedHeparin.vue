@@ -6,7 +6,7 @@
     <nos-li>Akutes Koronarsyndrom</nos-li>
     <nos-li>Akuter peripherer Arterieller Verschluss</nos-li>
     <nos-li>Lungenembolie (nach Wells-Score)</nos-li>
-    <nos-btn-link content="score-wells">TODO</nos-btn-link>
+    <nos-btn-link content="score-wells"></nos-btn-link>
   </nos-list>
 
   <nos-header title="Kontraindikationen"></nos-header>
@@ -43,7 +43,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle Heparin</nos-med-label>
@@ -52,12 +52,12 @@
           :items="[{ unit: '5000I.E.', per: '0,2ml' }]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="ACS, Arterieller Verschluss &amp; Lungenembolie" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -69,7 +69,7 @@
           oder auf größere Spritze aufziehen.
         </p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -104,7 +104,7 @@ import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
 import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
+import NosRowCaption from "../components/NosRowCaption.vue";
 import NosMedLabel from "../components/NosMedLabel.vue";
 import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
@@ -118,7 +118,7 @@ export default {
     NosList,
     NosLi,
     NosTable,
-    NosTabRow,
+    NosRowCaption,
     NosMedLabel,
     NosMedDose,
     NosMedEffects,

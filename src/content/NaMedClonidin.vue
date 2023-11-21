@@ -3,18 +3,19 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Kreislaufunterstützung im kardiogenen Schock</nos-li>
+    <nos-li>Hypertensive Krise</nos-li>
+    <nos-li>Unterstützend bei Drogenentzugssymptomatik</nos-li>
+    <nos-li>Augeninnendrucksenkung (Glaukom)</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
       <p>
-        Stimuliert hauptsächlich β1-Adrenorezeptoren im Herzen, was die Kontraktilität und Herzfrequenz erhöht.
+        Clonidin stimuliert α2-Adrenozeptoren im Gehirn, was die Freisetzung von Noradrenalin verringert. Dies führt zu einer Abnahme des peripheren Gefäßwiderstands und der Herzfrequenz.
       </p>
       <p>
-        Verwendet bei Herzinsuffizienz und kardiogenem Schock, da es die Herzleistung verbessert, ohne den peripheren Widerstand signifikant zu erhöhen. Ideal für Patienten, die eine verbesserte Herzpumpleistung benötigen, ohne den Blutdruck wesentlich zu steigern.
+        Clonidin ist besonders nützlich in Situationen, in denen eine Senkung des Blutdrucks gewünscht wird, ohne die Herzfrequenz signifikant zu erhöhen, und hat auch eine beruhigende Wirkung.
       </p>
     </template>
   </nos-paragraphs>
@@ -24,34 +25,24 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="ampulle">1 Ampulle Dobutamin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '250mg' }]"></nos-med-dose>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Paracefan&rdquo;</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '0,15mg', per: '1ml' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
       <template v-slot:caption>Anwendung</template>
       <template v-slot:content>
         <p>
-          <div class="nos-u">Dosierung</div>
+          <div class="nos-u">(s.c.)-Dosis</div>
           <div>
-            <span class="nos-mono">2,5µg - 10µg / kg / min</span>
+            ½<span class="nos-mono"> / 1 Ampulle</span> subkutan oder intramuskulär
           </div>
         </p>
         <p>
-          <div class="nos-u">Perfusor</div>
+          <div class="nos-u">(i.v.)-Dosis</div>
           <div>
-            <span class="nos-mono">250mg</span> Dobutamin auf <span class="nos-mono">50ml = 5mg / ml</span>
-          </div>
-          <div>
-            <span class="nos-mono">1µg/min = <b>0,012ml/h</b></span>
-          </div>
-        </p>
-        <p>
-          <div>
-            <span class="nos-mono">500mg</span> Noradrenalin auf <span class="nos-mono">50ml = 10mg / ml</span>
-          </div>
-          <div>
-            <span class="nos-mono">1µg/min = <b>0,006ml/h</b></span>
+            <div>Auf <span class="nos-mono">10ml</span> aufziehen. Nicht unverdünnt.</div>
+            ½<span class="nos-mono"> / 1 Ampulle</span> sehr langsam spritzen. (10min!)
           </div>
         </p>
       </template>
@@ -60,15 +51,14 @@
 
   <nos-header title="Pharmakokinetik"></nos-header>
   <nos-med-effects>
-    <template v-slot:onset>sofort</template>
-    <template v-slot:span>~3h</template>
+    <template v-slot:onset>~15min</template>
+    <template v-slot:span>~10h</template>
   </nos-med-effects>
 
   
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -81,7 +71,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedDobutamin",
+  name: "NaMedClonidin",
   components: {
     NosTitle,
     NosHeader,
@@ -96,7 +86,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-dobutamin");
+      return this.$store.getters.getContentMeta("na-med-clonidin");
     },
   },
   methods: {},

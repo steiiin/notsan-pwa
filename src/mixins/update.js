@@ -7,18 +7,18 @@ export default {
         updateExists: false,
       }
     },
-  
     created() {
       // Listen for our custom event from the SW registration
       document.addEventListener('swUpdated', this.updateAvailable, { once: true })
     },
-  
     methods: {
       
       updateAvailable(event) {
-        this.swTarget = event?.detail?.target;
-        if (typeof (this.swTarget?.messageSkipWaiting) === 'function')
+
+        let target = event?.detail?.target;
+        if (typeof (target.messageSkipWaiting) === 'function')
         {
+          this.swTarget = target;
           this.updateExists = true;
         } 
         else

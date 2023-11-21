@@ -33,7 +33,7 @@ export default {
     delayedRoute: function (route) {
       setTimeout(() => {
         this.$router.push(route);
-      }, 250); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
 };

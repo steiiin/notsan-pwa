@@ -4,7 +4,7 @@
     <template v-for="(entry, index) in mainmenu" :key="entry.key">
       <v-list-item
         :value="entry"
-        color="#000"
+        color="#333"
         class="nos-mainmenu-item"
         @click="delayedRoute(entry.route)"
       >
@@ -42,7 +42,7 @@ export default {
     delayedRoute: function (route) {
       setTimeout(() => {
         this.$router.push(route);
-      }, 250); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
 };

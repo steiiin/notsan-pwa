@@ -42,18 +42,18 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle &bdquo;Buscopan&rdquo;</nos-med-label>
         <nos-med-dose :decent="true" :items="[{ unit: '20mg', per: '1ml' }]"></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Kolikartiger Schmerz" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -61,8 +61,8 @@
           <div><i>Bei Nierenkolik kaum wirksam.</i></div>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -78,7 +78,7 @@
         </p>
         <p>Herzfrequenz mit EKG oder SpO<sub>2</sub>-Sensor <b>überwachen</b>.</p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -111,7 +111,7 @@
   import NosList from "../components/NosList.vue";
   import NosLi from "../components/NosLi.vue";
   import NosTable from "../components/NosTable.vue";
-  import NosTabRow from "../components/NosTabRow.vue";
+  import NosRowCaption from "../components/NosRowCaption.vue";
   import NosMedLabel from "../components/NosMedLabel.vue";
   import NosMedDose from "../components/NosMedDose.vue";
   import NosMedEffects from "../components/NosMedEffects.vue";
@@ -125,7 +125,7 @@
       NosList,
       NosLi,
       NosTable,
-      NosTabRow,
+      NosRowCaption,
       NosMedLabel,
       NosMedDose,
       NosMedEffects,

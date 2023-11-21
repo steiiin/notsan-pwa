@@ -40,7 +40,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="infusion">1 Kurzinfusion Paracetamol</nos-med-label>
@@ -54,18 +54,18 @@
           :items="[{ unit: '125mg' }, { unit: '150mg' }]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Schmerzen" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p class="nos-u">NRS &gt; 6</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -77,12 +77,12 @@
         <v-divider class="my-2"></v-divider>
         <p>Über 15min laufen lassen.</p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Fiebersenkung" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p class="nos-u">Erwachsene &amp; Kinder &ge; 10 Jahre</p>
@@ -95,8 +95,8 @@
         <v-divider class="my-2"></v-divider>
         <p>Über 15min laufen lassen.</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(rect.)-Dosis</template>
       <template v-slot:content>
         <p class="nos-u">Kinder &lt; 10 Jahre</p>
@@ -108,7 +108,7 @@
           ]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -152,7 +152,7 @@ import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
 import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
+import NosRowCaption from "../components/NosRowCaption.vue";
 import NosBtnLink from "../components/NosBtnLink.vue";
 import NosMedLabel from "../components/NosMedLabel.vue";
 import NosMedDose from "../components/NosMedDose.vue";
@@ -167,7 +167,7 @@ export default {
     NosList,
     NosLi,
     NosTable,
-    NosTabRow,
+    NosRowCaption,
     NosBtnLink,
     NosMedLabel,
     NosMedDose,

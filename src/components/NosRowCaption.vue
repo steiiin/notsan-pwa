@@ -1,15 +1,15 @@
 <template>
-  <div class="nos-tab-row">
-    <div class="nos-tab-row__caption" :style="groupGrad">
+  <div class="nos-row-caption">
+    <div class="nos-row-caption__caption" :style="groupGrad">
       <slot name="caption"></slot>
     </div>
-    <div class="nos-tab-row__content"><slot name="content"></slot></div>
+    <div class="nos-row-caption__content"><slot name="content"></slot></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosTabRow",
+  name: "NosRowCaption",
   props: {
     group: {
       type: String,
@@ -53,16 +53,16 @@ export default {
 <style>
 :root {
 }
-.nos-tab-row p {
+.nos-row-caption p {
   line-height: 1.1rem;
   margin-bottom: 8px;
 }
-.nos-tab-row p:last-child {
+.nos-row-caption p:last-child {
   margin-bottom: 0;
 }
 </style>
 <style lang="scss" scoped>
-.nos-tab-row {
+.nos-row-caption {
   display: grid;
   grid-template-columns: 200px auto;
   grid-column-gap: 8px;
@@ -80,40 +80,40 @@ export default {
     padding: 12px 0;
   }
 }
-.nos-tab-row:first-child {
-  .nos-tab-row__caption {
+.nos-row-caption:first-child {
+  .nos-row-caption__caption {
     padding: 0 0 12px 0;
   }
-  .nos-tab-row__content {
+  .nos-row-caption__content {
     padding: 0 0 12px 0;
   }
 }
-.nos-tab-row:last-child {
+.nos-row-caption:last-child {
   margin-bottom: 0;
 }
 @media only screen and (max-width: 750px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 155px auto;
   }
 }
 @media only screen and (max-width: 700px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 140px auto;
     grid-column-gap: 4px;
   }
 }
 @media only screen and (max-width: 650px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 125px auto;
   }
 }
 @media only screen and (max-width: 600px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 110px auto;
   }
 }
 @media only screen and (max-width: 550px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 95px auto;
     &__caption {
       font-size: 0.95rem;
@@ -121,7 +121,7 @@ export default {
   }
 }
 @media only screen and (max-width: 500px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 80px auto;
     &__caption {
       font-size: 0.9rem;
@@ -129,7 +129,7 @@ export default {
   }
 }
 @media only screen and (max-width: 450px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 65px auto;
     &__caption {
       font-size: 0.85rem;
@@ -137,7 +137,7 @@ export default {
   }
 }
 @media only screen and (max-width: 400px) {
-  .nos-tab-row {
+  .nos-row-caption {
     grid-template-columns: 50px auto;
     &__caption {
       font-size: 0.8rem;

@@ -45,7 +45,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle Midazolam</nos-med-label>
@@ -68,12 +68,12 @@
           ]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Krampfdurchbrechung" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -81,8 +81,8 @@
           <div>Bei Kindern &gt; 2min</div>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row group="l3">
+    </nos-row-caption>
+    <nos-row-caption group="l3">
       <template v-slot:caption>(buccal)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -96,8 +96,8 @@
         <v-divider class="my-2"></v-divider>
         <p class="nos-u">Keine Repetition der buccalen Gabe.</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row group="l2">
+    </nos-row-caption>
+    <nos-row-caption group="l2">
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
@@ -112,18 +112,18 @@
           <div class="nos-mono"><b>1mg / 30s</b></div>
         </p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
   <nos-header title="Esketamin-Analgesie" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p class="nos-u">Vor Esketamingabe, zur Milderung psychischer UAW
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
@@ -139,11 +139,11 @@
             { label: 'Alle Anderen', unit: '2mg (2ml)', color: 'adult' },]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
   <nos-header title="Sedierung" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -151,8 +151,8 @@
           <div>Beim NotSan: Nach ROSC ohne Spontanes Erwachen</div>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(buccal)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -171,7 +171,7 @@
             { label: '< 50kg', unit: '1mg', per: '10kg', color: 'teen' }]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -212,7 +212,7 @@ import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
 import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
+import NosRowCaption from "../components/NosRowCaption.vue";
 import NosMedLabel from "../components/NosMedLabel.vue";
 import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
@@ -226,7 +226,7 @@ export default {
     NosList,
     NosLi,
     NosTable,
-    NosTabRow,
+    NosRowCaption,
     NosMedLabel,
     NosMedDose,
     NosMedEffects

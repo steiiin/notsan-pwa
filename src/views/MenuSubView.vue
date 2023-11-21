@@ -8,7 +8,7 @@
   <v-list class="my-2">
     <template v-for="(item, index) in loadMenu" :key="item.key">
       <v-list-subheader v-if="item.header" :title="item.header"></v-list-subheader>
-      <v-list-item v-else :value="item" color="#000" @click="delayedRoute(item.route)">
+      <v-list-item v-else :value="item" color="#333" @click="delayedRoute(item.route)">
         <v-list-item-title v-text="item.title"></v-list-item-title>
         <v-list-item-subtitle
           v-if="item.subtitle"
@@ -38,18 +38,28 @@ export default {
   computed: {
     loadMenu() {
       // load items
-      let storeItems = this.submenu
+      let branch = this.submenu
         ? this.loadFromSubMenu(this.menu)
         : this.loadFromMainMenu(this.menu);
-      if (!storeItems) {
+      if (!branch || branch.items.length == 0) {
         debugger;
         this.$router.replace("/");
         return null;
       }
 
+      let groupList = true;
+      let sortItems = true;
+      if (branch.nogroups) { groupList = false; }
+      if (branch.nosort) { sortItems = false; }
+
       // map items to listitems
-      let menuItems = this.mapStoreDataToListItem(this.$store.state, storeItems);
-      return this.groupItems ? this.groupListItems(menuItems, "title", "title", true, true) : this.sortListItems(menuItems, "title");
+      let menuItems = this.mapStoreDataToListItem(this.$store.state, branch.items ?? []);
+      
+      return this.groupItems ? 
+        this.groupListItems(menuItems, {
+            group: { prop: 'title', sort: sortItems, onlyFirst: true },
+            items: { sort: sortItems, prop: 'title' }
+          }) : this.sortListItems(menuItems, 'title');
     },
   },
   methods: {
@@ -57,7 +67,7 @@ export default {
       if (this.$store.state.menu.hasOwnProperty(name)) {
         let branch = this.$store.state.menu[name];
         this.submenutitle = branch.name;
-        return branch.items;
+        return branch
       }
       return null;
     },
@@ -65,8 +75,7 @@ export default {
       if (this.$store.state.submenu.hasOwnProperty(name)) {
         let branch = this.$store.state.submenu[name];
         this.submenutitle = branch.title;
-        if (branch.nogroups) { this.groupItems = false; }
-        return branch.items;
+        return branch;
       }
       return null;
     },
@@ -77,12 +86,12 @@ export default {
     goBack: function () {
       setTimeout(() => {
         this.$router.back();
-      }, 100); // RouteDelay
+      }, 0); // RouteDelay
     },
     delayedRoute: function (route) {
       setTimeout(() => {
         this.$router.push(route);
-      }, 250); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
   mounted: function () {

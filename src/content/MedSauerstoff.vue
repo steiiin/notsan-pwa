@@ -22,7 +22,7 @@
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-header title="Hypoxie" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Zielwert</template>
       <template v-slot:content>
         <p>
@@ -42,12 +42,12 @@
           <i>Beatmete Patienten sind trotzdem im Normalen Bereich <b>(Ohne Hyperkapnierisiko)</b> zu behandeln.</i>
         </p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="CO-Intoxikation / Tauchunfall / Schwere Atemnot" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Zielwert</template>
       <template v-slot:content>
         <p>
@@ -55,7 +55,7 @@
           <div>Hochdosierte Sauerstoffgabe</div>
         </p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
 </template>
@@ -67,7 +67,7 @@
   import NosList from "../components/NosList.vue";
   import NosLi from "../components/NosLi.vue";
   import NosTable from "../components/NosTable.vue";
-  import NosTabRow from "../components/NosTabRow.vue";
+  import NosRowCaption from "../components/NosRowCaption.vue";
   import NosMedLabel from "../components/NosMedLabel.vue";
   import NosMedDose from "../components/NosMedDose.vue";
   import NosMedEffects from "../components/NosMedEffects.vue";
@@ -81,7 +81,7 @@
       NosList,
       NosLi,
       NosTable,
-      NosTabRow,
+      NosRowCaption,
       NosMedLabel,
       NosMedDose,
       NosMedEffects,

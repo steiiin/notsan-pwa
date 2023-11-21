@@ -37,7 +37,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="ampulle">1 Ampulle &bdquo;Histakut&rdquo;</nos-med-label>
@@ -49,18 +49,18 @@
           ]"
         ></nos-med-dose>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="ANAPHYLAXIE" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p class="nos-u">Jegliches Stadium d. Anaphylaxie</p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <nos-med-dose
@@ -71,7 +71,7 @@
         <v-divider class="my-2"></v-divider>
         <p>Langsam spritzen. <br /><b>Keine</b> Wiederholungsgabe nach SAA.</p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -104,7 +104,7 @@
   import NosList from "../components/NosList.vue";
   import NosLi from "../components/NosLi.vue";
   import NosTable from "../components/NosTable.vue";
-  import NosTabRow from "../components/NosTabRow.vue";
+  import NosRowCaption from "../components/NosRowCaption.vue";
   import NosMedLabel from "../components/NosMedLabel.vue";
   import NosMedDose from "../components/NosMedDose.vue";
   import NosMedEffects from "../components/NosMedEffects.vue";
@@ -118,7 +118,7 @@
       NosList,
       NosLi,
       NosTable,
-      NosTabRow,
+      NosRowCaption,
       NosMedLabel,
       NosMedDose,
       NosMedEffects,

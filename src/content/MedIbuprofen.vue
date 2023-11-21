@@ -40,7 +40,7 @@
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
         <nos-med-label type="saft">Fiebersaft</nos-med-label>
@@ -48,12 +48,12 @@
         <nos-med-label type="suppositorium" class="mt-2">Zäpfchen &amp; Tabletten</nos-med-label>
         <div class="nos-mono">75mg, 125mg, 250mg, 200mg, 400mg, 600mg, 800mg, o.ä.</div>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Schmerzen &amp; Fiebersenkung" :decent="true" icon="$hospitalBox" />
   <nos-table>
-    <nos-tab-row>
+    <nos-row-caption>
       <template v-slot:caption>Einsatz</template>
       <template v-slot:content>
         <p>
@@ -61,8 +61,8 @@
           <span class="nos-u">Fieberkrampf</span>
         </p>
       </template>
-    </nos-tab-row>
-    <nos-tab-row>
+    </nos-row-caption>
+    <nos-row-caption>
       <template v-slot:caption>Dosis</template>
       <template v-slot:content>
         <p>Per Oral oder Zäpfchen ist dosisgleich:</p>
@@ -78,7 +78,7 @@
         <v-divider class="my-2"></v-divider>
         <p>Keine Repetition vorgesehen.</p>
       </template>
-    </nos-tab-row>
+    </nos-row-caption>
   </nos-table>
 
   <nos-header title="Pharmakokinetik"></nos-header>
@@ -115,7 +115,7 @@ import NosParagraphs from "../components/NosParagraphs.vue";
 import NosList from "../components/NosList.vue";
 import NosLi from "../components/NosLi.vue";
 import NosTable from "../components/NosTable.vue";
-import NosTabRow from "../components/NosTabRow.vue";
+import NosRowCaption from "../components/NosRowCaption.vue";
 import NosBtnLink from "../components/NosBtnLink.vue";
 import NosMedLabel from "../components/NosMedLabel.vue";
 import NosMedDose from "../components/NosMedDose.vue";
@@ -130,7 +130,7 @@ export default {
     NosList,
     NosLi,
     NosTable,
-    NosTabRow,
+    NosRowCaption,
     NosBtnLink,
     NosMedLabel,
     NosMedDose,

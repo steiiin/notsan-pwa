@@ -89,16 +89,17 @@ export default {
         return;
       }
 
-      let wholeAccuracy = 0;
       result = result.concat(this.searchContent(query));
       result = result.concat(this.searchSubmenu(query));
-      result.forEach(item => wholeAccuracy += item.accuracy );
-      result.forEach(item => item.accuracy = (item.accuracy / wholeAccuracy) * 100);
 
-      let menuItems = this.mapStoreDataToListItem(this.$store.state, result, false);
+      let menuItems = this.mapStoreDataToListItem(this.$store.state, result);
       menuItems = this.sortListItems(menuItems, 'accuracy');
 
-      this.searchResults = this.groupListItems(menuItems, "category", "accuracy", false, false);
+      this.searchResults = this.groupListItems(menuItems, {
+          group: { prop: 'category', sort: false, onlyFirst: false },
+          items: { sort: true, prop: 'accuracy' }
+        }
+      );
 
     },
     searchContent: function (query) {
@@ -129,6 +130,8 @@ export default {
       // subtitle = 2
       // hint = 1
 
+      if (item.ignoreAtSearch) { return 0; }
+      
       let title = 3 * this.getTextAccuracy(item.title, query);
       let subtitle = 2 * this.getTextAccuracy(item.subtitle, query);
       let hint = 1 * this.getTextAccuracy(item.hint, query);
@@ -140,18 +143,18 @@ export default {
 
       // text == search: 1.5
       // perc of match = 0-1
-      // if startswith *= 1.5
+      // if startswith *= 3
 
       text = text.trim().toLowerCase();
 
-      if (text.trim().toLowerCase() === search.trim().toLowerCase()) { return 1.5; }
+      if (text.trim().toLowerCase() === search.trim().toLowerCase()) { return 3; }
       if (!text.includes(search)) { return 0; }
 
       // calc percentage
       let replaced = text.length - text.replace(search, '').length;
       let perc = replaced / text.length;
 
-      return text.startsWith(search) ? perc*1.5 : perc;
+      return text.startsWith(search) ? perc*3 : perc;
     },
 
     mapStoreDataToListItem,
@@ -165,12 +168,12 @@ export default {
         } else {
           this.$router.replace("/");
         }
-      }, 100); // RouteDelay
+      }, 0); // RouteDelay
     },
     delayedRoute: function (route) {
       setTimeout(() => {
         this.$router.push(route);
-      }, 250); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
   beforeRouteEnter(to, from, next) {

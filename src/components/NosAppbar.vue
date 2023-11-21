@@ -36,7 +36,7 @@ export default {
     goSearch: function (route) {
       setTimeout(() => {
         this.$router.push("/search");
-      }, 100); // RouteDelay
+      }, 0); // RouteDelay
     },
   },
 };
