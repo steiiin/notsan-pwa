@@ -8,18 +8,21 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Hypertonie</nos-li>
+    <nos-li>Bronchospastischer Anfall / Status Asthmaticus</nos-li>
+    <nos-li>Tokolyse</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
       <p>
-        Nifedipin blockiert Kalziumkanäle in der glatten Gefäßmuskulatur, was zu einer Vasodilatation führt und den Blutdruck senkt.
+        Bei dem Terbutalin handelt es sich um ein hochwirksames β2-Mimetikum. Es hat somit eine ausgeprägte Wirkung auf sämtliche β2-Adrenozeptoren. Diese befinden sich in der glatten Muskulatur von Blutgefäßen, dem Uterus und den Bronchien. Die Wirkung auf die β1-Rezeptoren des Myokards ist relativ gering.
       </p>
       <p>
-        Nifedipin ist effektiv zur Senkung eines erhöhten Blutdrucks.
+        Das Terbutalin-Molekül bindet sich fest an die Rezeptoren und bewirkt somit eine Entspannung bzw. Erschlaffung der genannten Strukturen. Im Bereich der Bronchien sinkt durch Anwendung des Arzneistoffes der respiratorische Widerstand und das Einatmen erleichtert sich sofort.
+      </p>
+      <p>
+        Die Entspannung der glatten Muskulatur des Uterus sorgt für eine vorübergehende Verminderung der Wehentätigkeit. 
       </p>
     </template>
   </nos-paragraphs>
@@ -29,8 +32,8 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="suppositorium">1 Weichkapsel Nifedipin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '10mg' }]"></nos-med-dose>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Bricanyl&rdquo;</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '0,5mg', per: '1ml' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
@@ -38,12 +41,11 @@
       <template v-slot:content>
         <p>
           <div class="nos-u">Dosierung</div>
-          <div>
-            <span class="nos-mono">10mg (1 Kapsel)</span> zerbeißen lassen.
-          </div>
-        </p>
-        <p>
-          <div class="nos-u">Nach 30min Repetition möglich</div>
+          <nos-med-dose :items="[
+            { label: 'Subkutan', unit: '0,25mg (½ Ampulle)', color: 'adult' },
+          ]"></nos-med-dose>
+          <v-divider class="my-2"></v-divider>
+          <div class="nos-u">Repetition nach 15min möglich</div>
         </p>
       </template>
     </nos-row-caption>
@@ -52,14 +54,12 @@
   <nos-header title="Pharmakokinetik"></nos-header>
   <nos-med-effects>
     <template v-slot:onset>~5min</template>
-    <template v-slot:span>~6h</template>
+    <template v-slot:span>~4h</template>
   </nos-med-effects>
-
   
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -72,7 +72,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedNifedipin",
+  name: "NaMedBricanyl",
   components: {
     NosTitle,
     NosHeader,
@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-nifedipin");
+      return this.$store.getters.getContentMeta("na-med-bricanyl");
     },
   },
   methods: {},

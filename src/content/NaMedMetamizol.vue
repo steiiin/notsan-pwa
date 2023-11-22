@@ -8,18 +8,24 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Hypertonie</nos-li>
+    <nos-li>Schmerzen</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
       <p>
-        Nifedipin blockiert Kalziumkanäle in der glatten Gefäßmuskulatur, was zu einer Vasodilatation führt und den Blutdruck senkt.
+        <b>Analgetische Wirkung:</b> Hemmung der zentralen Cyclooxygenasen,
+          dadurch verminderte Prostaglandinsynthese sowie vermutete Aktivierung von Neuronen der zentralen
+          Schmerzhemmung.
+      </p>
+      <p><b>Spasmolytische Wirkung:</b> Hemmung der intrazellulären
+                        Kalziumausschüttung (Hemmung der Phospholipase C), hierdurch lässt die Muskelkontraktionen nach.
       </p>
       <p>
-        Nifedipin ist effektiv zur Senkung eines erhöhten Blutdrucks.
+        <strong>Antipyretische Wirkung:</strong> Vermuteter Zusammenhang mit Hemmung
+                        der
+                        Prostaglandinsynthese (nicht ausreichend erforscht).
       </p>
     </template>
   </nos-paragraphs>
@@ -29,21 +35,21 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="suppositorium">1 Weichkapsel Nifedipin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '10mg' }]"></nos-med-dose>
+        <nos-med-label type="ampulle">1 Ampulle Metamizol</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '1g', per: '2ml' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
-      <template v-slot:caption>Anwendung</template>
+      <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
           <div class="nos-u">Dosierung</div>
-          <div>
-            <span class="nos-mono">10mg (1 Kapsel)</span> zerbeißen lassen.
-          </div>
-        </p>
-        <p>
-          <div class="nos-u">Nach 30min Repetition möglich</div>
+            <nos-med-dose :items="[
+              { label: 'Ab 14 Jahren', unit: '1000mg (1 Ampulle)', color: 'adult' },
+              { label: 'Kind (1-14)', unit: '500mg (½ Ampulle)', color: 'child' }]">
+            </nos-med-dose>
+            <v-divider class="my-2"></v-divider>
+            <div>Als Kurzinfusion.</div>
         </p>
       </template>
     </nos-row-caption>
@@ -51,15 +57,14 @@
 
   <nos-header title="Pharmakokinetik"></nos-header>
   <nos-med-effects>
-    <template v-slot:onset>~5min</template>
-    <template v-slot:span>~6h</template>
+    <template v-slot:onset>~3min</template>
+    <template v-slot:span>~3h</template>
   </nos-med-effects>
 
   
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -72,7 +77,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedNifedipin",
+  name: "NaMedMetamizol",
   components: {
     NosTitle,
     NosHeader,
@@ -87,7 +92,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-nifedipin");
+      return this.$store.getters.getContentMeta("na-med-metamizol");
     },
   },
   methods: {},

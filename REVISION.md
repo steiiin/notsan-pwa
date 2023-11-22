@@ -1,0 +1,50 @@
+# notsan-pwa #
+### Daten-Revision ###
+
+CONTENT-COMPONENTS: 
+------------------- 
+ - MedAmiodaron.vue                           | 20.11.2023 
+ - MedAspirin.vue                             | 20.11.2023 
+ - MedAtropin.vue                             | 20.11.2023 
+ - MedBuscopan.vue                            | 20.11.2023 
+ - MedDimetinden.vue                          | 20.11.2023 
+ - MedEsketamin.vue                           | 20.11.2023 
+ - MedFurosemid.vue                           | 20.11.2023 
+ - MedGlucagon.vue                            | 20.11.2023 
+ - MedGlucose.vue                             | 20.11.2023 
+ - MedHeparin.vue                             | 20.11.2023 
+ - MedIbuprofen.vue                           | 20.11.2023 
+ - MedIpramol.vue                             | 20.11.2023 
+ - MedIpratropium.vue                         | 20.11.2023 
+ - MedLidocain.vue                            | 20.11.2023 
+ - MedMidazolam.vue                           | 20.11.2023 
+ - MedNaloxon.vue                             | 20.11.2023 
+ - MedNitro.vue                               | 20.11.2023 
+ - MedParacetamol.vue                         | 20.11.2023 
+ - MedPrednisolon.vue                         | 20.11.2023 
+ - MedSalbutamol.vue                          | 20.11.2023 
+ - MedSauerstoff.vue                          | 20.11.2023 
+ - MedUrapidil.vue                            | 20.11.2023 
+ - MedVomex.vue                               | 20.11.2023 
+ - NaMedAdenosin.vue                          | 20.11.2023 
+ - NaMedAkrinor.vue                           | 20.11.2023 
+ - NaMedBricanyl.vue                          | 20.11.2023 
+ - NaMedClonidin.vue                          | 20.11.2023 
+ - NaMedDipidolor.vue                         | 20.11.2023 
+ - NaMedDobutamin.vue                         | 20.11.2023 
+ - NaMedFentanyl.vue                          | 20.11.2023 
+ - NaMedMagnesium.vue                         | 20.11.2023 
+ - NaMedMetalyse.vue                          | 20.11.2023 
+ - NaMedMetamizol.vue                         | 20.11.2023 
+ - NaMedMetoprolol.vue                        | 20.11.2023 
+ - NaMedMorphin.vue                           | 20.11.2023 
+ - NaMedNahycarb.vue                          | 20.11.2023 
+ - NaMedNifedipin.vue                         | 20.11.2023 
+ - NaMedNoradrenalin.vue                      | 20.11.2023 
+ - NaMedReproterol.vue                        | 20.11.2023 
+ - NaMedVerapamil.vue                         | 20.11.2023 
+ - ScorePESI.vue                              | 20.11.2023 
+ - ScoreWells.vue                             | 20.11.2023 
+ - MedAdrenalin.vue                           | 22.11.2023 
+ - SchemeATMIST.vue                           | 22.11.2023 
+ - SchemeISOBAR.vue                           | 22.11.2023 

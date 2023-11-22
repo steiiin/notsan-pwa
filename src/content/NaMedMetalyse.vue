@@ -8,18 +8,23 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Hypertonie</nos-li>
+    <nos-li>Thrombolytische Therapie</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
       <p>
-        Nifedipin blockiert Kalziumkanäle in der glatten Gefäßmuskulatur, was zu einer Vasodilatation führt und den Blutdruck senkt.
+        Metalyse gehört zu einer Gruppe von Arzneimitteln, die als
+        Thrombolytika bezeichnet werden. Diese Arzneimittel sind in der
+        Lage, Blutgerinnsel aufzulösen. Tenecteplase ist ein rekombi-
+        nanter fibrinspezifischer Plasminogen-Aktivator.
       </p>
       <p>
-        Nifedipin ist effektiv zur Senkung eines erhöhten Blutdrucks.
+        Metalyse wird zur Behandlung von Herzinfarkten (innerhalb von
+        6 Stunden nach Symptombeginn) angewendet und dient zur
+        Auflösung von Blutgerinnseln, die sich in den Blutgefäßen des
+        Herzens gebildet haben.
       </p>
     </template>
   </nos-paragraphs>
@@ -29,37 +34,27 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="suppositorium">1 Weichkapsel Nifedipin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '10mg' }]"></nos-med-dose>
+        <nos-med-label type="infusion">Durchstechflasche &bdquo;Metalyse&rdquo;</nos-med-label>
+        <nos-med-label type="nadel">+ Fertigspritze (Wasser)</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '10.000U (5mg)' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
-      <template v-slot:caption>Anwendung</template>
+      <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
           <div class="nos-u">Dosierung</div>
-          <div>
-            <span class="nos-mono">10mg (1 Kapsel)</span> zerbeißen lassen.
-          </div>
-        </p>
-        <p>
-          <div class="nos-u">Nach 30min Repetition möglich</div>
+          <nos-med-dose :decent="true" :items="[{ unit: '1ml', per: '10kg', color: 'adult' }]"></nos-med-dose>
+          <v-divider class="my-2"></v-divider>
+          <div>Maximum:<span class="nos-mono">&nbsp;50mg (1 Spritze)</span></div>
         </p>
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-med-effects>
-    <template v-slot:onset>~5min</template>
-    <template v-slot:span>~6h</template>
-  </nos-med-effects>
-
-  
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -72,7 +67,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedNifedipin",
+  name: "NaMedMetalyse",
   components: {
     NosTitle,
     NosHeader,
@@ -87,7 +82,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-nifedipin");
+      return this.$store.getters.getContentMeta("na-med-metalyse");
     },
   },
   methods: {},

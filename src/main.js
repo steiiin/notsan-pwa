@@ -20,42 +20,57 @@ const store = createStore({
       content:
       {
         // NotSan-Medikamente
-        'med-adrenalin': { title: "Adrenalin", subtitle: "Epinephrin, Suprarenin", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedAdrenalin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-aspirin': { title: "Acetylsalicylsäure", subtitle: "ASS, Aspirin, Aspisol", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedAspirin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) }, 
-        'med-amiodaron': { title: "Amiodaron", subtitle: "Cordarex", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedAmiodaron.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-atropin': { title: "Atropin", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedAtropin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-buscopan': { title: "Butylscopulamin", subtitle: "Buscopan", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedBuscopan.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-vomex': { title: "Dimenhydrinat", subtitle: "Vomex", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedVomex.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-dimetinden': { title: "Dimetinden", subtitle: "Fenistil, Histakut", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedDimetinden.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-esketamin': { title: "Esketamin", subtitle: "Ketanest S", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedEsketamin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-furosemid': { title: "Furosemid", subtitle: "Furesis, Lasix", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedFurosemid.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-glucose': { title: "Glukose", subtitle: "G20, G5", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedGlucose.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-glucagon': { title: "Glucagon", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedGlucagon.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-nitro': { title: "Glyceroltrinitrat", subtitle: "Nitro-Spray, Nitrolingual", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedNitro.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-heparin': { title: "Heparin", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedHeparin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-ibuprofen': { title: "Ibuprofen", subtitle: "Nurofen, Dolormin", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedIbuprofen.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-ipratropium': { title: "Ipratropiumbromid", subtitle: "Atrovent", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedIpratropium.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-ipramol': { title: "Ipramol®", subtitle: "Salbutamol+Ipratropiumbromid", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedIpramol.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-midazolam': { title: "Midazolam", subtitle: "Dormicum, Buccolam", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedMidazolam.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-naloxon': { title: "Naloxon", subtitle: "Narcanti", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedNaloxon.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-paracetamol': { title: "Paracetamol", subtitle: "Perfalgan", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedParacetamol.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-prednisolon': { title: "Prednisolon", subtitle: "Prednisolut", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedPrednisolon.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-salbutamol': { title: "Salbutamol", subtitle: "Bronchospray", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedSalbutamol.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-urapidil': { title: "Urapidil", subtitle: "Ebrantil", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedUrapidil.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'med-sauerstoff': { title: "Sauerstoff", hint: "", category: "med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/MedSauerstoff.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'med-adrenalin': { title: "Adrenalin", subtitle: "Epinephrin, Suprarenin", hint: "", category: "med", component: g(() => import('./content/MedAdrenalin.vue')) },
+        'med-aspirin': { title: "Acetylsalicylsäure", subtitle: "ASS, Aspirin, Aspisol", hint: "", category: "med", component: g(() => import('./content/MedAspirin.vue')) },
+        'med-amiodaron': { title: "Amiodaron", subtitle: "Cordarex", hint: "", category: "med", component: g(() => import('./content/MedAmiodaron.vue')) },
+        'med-atropin': { title: "Atropin", hint: "", category: "med", component: g(() => import('./content/MedAtropin.vue')) },
+        'med-buscopan': { title: "Butylscopulamin", subtitle: "Buscopan", hint: "", category: "med", component: g(() => import('./content/MedBuscopan.vue')) },
+        'med-vomex': { title: "Dimenhydrinat", subtitle: "Vomex", hint: "", category: "med", component: g(() => import('./content/MedVomex.vue')) },
+        'med-dimetinden': { title: "Dimetinden", subtitle: "Fenistil, Histakut", hint: "", category: "med", component: g(() => import('./content/MedDimetinden.vue')) },
+        'med-esketamin': { title: "Esketamin", subtitle: "Ketanest S", hint: "", category: "med", component: g(() => import('./content/MedEsketamin.vue')) },
+        'med-furosemid': { title: "Furosemid", subtitle: "Furesis, Lasix", hint: "", category: "med", component: g(() => import('./content/MedFurosemid.vue')) },
+        'med-glucose': { title: "Glukose", subtitle: "G20, G5", hint: "", category: "med", component: g(() => import('./content/MedGlucose.vue')) },
+        'med-glucagon': { title: "Glucagon", hint: "", category: "med", component: g(() => import('./content/MedGlucagon.vue')) },
+        'med-nitro': { title: "Glyceroltrinitrat", subtitle: "Nitro-Spray, Nitrolingual", hint: "", category: "med", component: g(() => import('./content/MedNitro.vue')) },
+        'med-heparin': { title: "Heparin", hint: "", category: "med", component: g(() => import('./content/MedHeparin.vue')) },
+        'med-ibuprofen': { title: "Ibuprofen", subtitle: "Nurofen, Dolormin", hint: "", category: "med", component: g(() => import('./content/MedIbuprofen.vue')) },
+        'med-ipratropium': { title: "Ipratropiumbromid", subtitle: "Atrovent", hint: "", category: "med", component: g(() => import('./content/MedIpratropium.vue')) },
+        'med-ipramol': { title: "Ipramol®", subtitle: "Salbutamol+Ipratropiumbromid", hint: "", category: "med", component: g(() => import('./content/MedIpramol.vue')) },
+        'med-lidocain': { title: "Lidocain", subtitle: "", hint: "", category: "med", component: g(() => import('./content/MedLidocain.vue')) },
+        'med-midazolam': { title: "Midazolam", subtitle: "Dormicum, Buccolam", hint: "", category: "med", component: g(() => import('./content/MedMidazolam.vue')) },
+        'med-naloxon': { title: "Naloxon", subtitle: "Narcanti", hint: "", category: "med", component: g(() => import('./content/MedNaloxon.vue')) },
+        'med-paracetamol': { title: "Paracetamol", subtitle: "Perfalgan", hint: "", category: "med", component: g(() => import('./content/MedParacetamol.vue')) },
+        'med-prednisolon': { title: "Prednisolon", subtitle: "Prednisolut", hint: "", category: "med", component: g(() => import('./content/MedPrednisolon.vue')) },
+        'med-salbutamol': { title: "Salbutamol", subtitle: "Bronchospray", hint: "", category: "med", component: g(() => import('./content/MedSalbutamol.vue')) },
+        'med-urapidil': { title: "Urapidil", subtitle: "Ebrantil", hint: "", category: "med", component: g(() => import('./content/MedUrapidil.vue')) },
+        'med-sauerstoff': { title: "Sauerstoff", hint: "", category: "med", component: g(() => import('./content/MedSauerstoff.vue')) },
 
         // Notarzt-Medikamente
-        'na-med-noradrenalin': { title: "Noradrenalin", subtitle: "Arterenol", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedNoradrenalin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-dobutamin': { title: "Dobutamin", subtitle: "Dobutrex", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedDobutamin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-akrinor': { title: "Akrinor", subtitle: "Cafedrin+Theodrenalin", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedAkrinor.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-nifedipin': { title: "Nifedipin", subtitle: "Adalat", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedNifedipin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-clonidin': { title: "Clonidin", subtitle: "Paracefan", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedClonidin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-verapamil': { title: "Verapamil", subtitle: "Verahexal, Isoptin", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedVerapamil.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'na-med-adenosin': { title: "Adenosin", subtitle: "Adrekar", hint: "", category: "na-med", component: markRaw(defineAsyncComponent({ loader: () => import('./content/NaMedAdenosin.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'na-med-noradrenalin': { title: "Noradrenalin", subtitle: "Arterenol", hint: "", category: "na-med", component: g(() => import('./content/NaMedNoradrenalin.vue')) },
+        'na-med-dobutamin': { title: "Dobutamin", subtitle: "Dobutrex", hint: "", category: "na-med", component: g(() => import('./content/NaMedDobutamin.vue')) },
+        'na-med-akrinor': { title: "Akrinor", subtitle: "Cafedrin+Theodrenalin", hint: "", category: "na-med", component: g(() => import('./content/NaMedAkrinor.vue')) },
+        'na-med-nifedipin': { title: "Nifedipin", subtitle: "Adalat", hint: "", category: "na-med", component: g(() => import('./content/NaMedNifedipin.vue')) },
+        'na-med-clonidin': { title: "Clonidin", subtitle: "Paracefan", hint: "", category: "na-med", component: g(() => import('./content/NaMedClonidin.vue')) },
+        'na-med-verapamil': { title: "Verapamil", subtitle: "Verahexal, Isoptin", hint: "", category: "na-med", component: g(() => import('./content/NaMedVerapamil.vue')) },
+        'na-med-adenosin': { title: "Adenosin", subtitle: "Adrekar", hint: "", category: "na-med", component: g(() => import('./content/NaMedAdenosin.vue')) },
+        'na-med-metoprolol': { title: "Metoprolol", subtitle: "Beloc, Lopressor", hint: "", category: "na-med", component: g(() => import('./content/NaMedMetoprolol.vue')) },
+        'na-med-nahycarb': { title: "Natriumhydrogencarbonat", subtitle: "NaBi", hint: "", category: "na-med", component: g(() => import('./content/NaMedNahycarb.vue')) },
+        'na-med-magnesium': { title: "Magnesium", subtitle: "Cormagnesin", hint: "", category: "na-med", component: g(() => import('./content/NaMedMagnesium.vue')) },
+        'na-med-metalyse': { title: "Tenecteplase", subtitle: "MetaLyse", hint: "", category: "na-med", component: g(() => import('./content/NaMedMetalyse.vue')) },
+        'na-med-reproterol': { title: "Reproterol", subtitle: "Bronchospasmin", hint: "", category: "na-med", component: g(() => import('./content/NaMedReproterol.vue')) },
+        'na-med-bricanyl': { title: "Terbutalin", subtitle: "Bricanyl", hint: "", category: "na-med", component: g(() => import('./content/NaMedBricanyl.vue')) },
+        'na-med-metamizol': { title: "Metamizol", subtitle: "Berlosin, Novaminsulfon", hint: "", category: "na-med", component: g(() => import('./content/NaMedMetamizol.vue')) },
+        'na-med-morphin': { title: "Morphin", subtitle: "MSI, Morphium", hint: "", category: "na-med", component: g(() => import('./content/NaMedMorphin.vue')) },
+        'na-med-dipidolor': { title: "Piritramid", subtitle: "Dipidolor", hint: "", category: "na-med", component: g(() => import('./content/NaMedDipidolor.vue')) },
+        'na-med-fentanyl': { title: "Fentanyl", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedFentanyl.vue')) },
       
         // Scores
-        'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: markRaw(defineAsyncComponent({ loader: () => import('./content/ScoreWells.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
-        'score-pesi': { title: "sPESI-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: markRaw(defineAsyncComponent({ loader: () => import('./content/ScorePESI.vue'), loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 })) },
+        'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScoreWells.vue')) },
+        'score-pesi': { title: "sPESI-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScorePESI.vue')) },
+      
+        // Schemata
+        'scheme-atmist': { title: "Traumaübergabe", subtitle: "ATMIST", hint: "", category: "scheme", component: g(() => import('./content/SchemeATMIST.vue')) },
+        'scheme-isobar': { title: "Internistische Übergabe", subtitle: "ISOBAR", hint: "", category: "scheme", component: g(() => import('./content/SchemeISOBAR.vue')) },
       
 
       },
@@ -102,10 +117,28 @@ const store = createStore({
               { content: 'na-med-clonidin' },
               { content: 'na-med-verapamil' },
               { content: 'na-med-adenosin' },
+              { content: 'na-med-metoprolol' },
+              { content: 'na-med-nahycarb' },
+              { content: 'na-med-magnesium' },
+              { content: 'na-med-metalyse' },
+              { content: 'na-med-reproterol' },
+              { content: 'na-med-bricanyl' },
+              { content: 'na-med-metamizol' },
+              { content: 'na-med-morphin' },
+              { content: 'na-med-dipidolor' },
+              { content: 'na-med-fentanyl' },
             ],
           ignoreAtSearch: true
         },
 
+        'list-schockraum':
+        {
+          title: "Schockraum", hint: "", category: "scheme", items:
+            [
+              { content: 'scheme-atmist' },
+              { content: 'scheme-isobar' },
+            ]
+        },
         'list-scores':
         {
           title: "Medizinische Scores", hint: "", category: "score", items:
@@ -117,16 +150,17 @@ const store = createStore({
       },
       category:
       {
-        'med': { title: "Medikamente" },
+        'med': { title: "Medikamente (NotSan)" },
         'na-med': { title: "Medikamente (Notarzt)" },
         'topic': { title: "Krankheitsbilder" },
         'score': { title: "Medizinische Scores" },
+        'scheme': { title: "Schemata" },
       },
       menu:
       {
         'medis':
         {
-          name: 'Medikamente (A-Z)', icon: '$needle', items:
+          name: 'Medikamente', icon: '$needle', items:
             [
               { content: 'med-adrenalin' },
               { content: 'med-amiodaron' },
@@ -144,6 +178,7 @@ const store = createStore({
               { content: 'med-heparin' },
               { content: 'med-ipratropium' },
               { content: 'med-ipramol' },
+              { content: 'med-lidocain' },
               { content: 'med-midazolam' },
               { content: 'med-naloxon' },
               { content: 'med-paracetamol' },
@@ -154,21 +189,14 @@ const store = createStore({
               { list: 'list-na-med' }
             ],
         },
-        'topics':
-        {
-          name: 'Medikamente (thematisch)', icon: '$needle', items:
-            [
-              { list: 'list-anaphylaxie' },
-              { list: 'list-bradykardie' },
-              { list: 'list-asthma' },
-            ]
-        },
         'scheme':
         {
           name: 'Schemata & Anweisungen', icon: '$alarmPanelOutline', items:
             [
-              { list: 'list-scores' }
-            ]
+              { list: 'list-schockraum' },
+              { list: 'list-scores' },
+            ],
+          nosort: true, nogroups: true
         }
       },
     }
@@ -191,3 +219,9 @@ createApp(App)
   .use(vuetify)
   .use(store)
   .mount('#app')
+
+// HELPER
+function g(source)
+{
+  return markRaw(defineAsyncComponent({ loader: source, loadingComponent: loaderComponent, errorComponent: failureComponent, delay: 250 }))
+}

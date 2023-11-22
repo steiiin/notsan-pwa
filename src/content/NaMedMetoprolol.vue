@@ -8,19 +8,14 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Hypertonie</nos-li>
+    <nos-li>Tachykardie</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
-      <p>
-        Nifedipin blockiert Kalziumkanäle in der glatten Gefäßmuskulatur, was zu einer Vasodilatation führt und den Blutdruck senkt.
-      </p>
-      <p>
-        Nifedipin ist effektiv zur Senkung eines erhöhten Blutdrucks.
-      </p>
+      <p>Metoprolol ist ein (relativ) selektiver β1-Rezeptorblocker mit dementsprechend vorwiegend kardialer Wirkung. Erst bei hohen Dosen kommt es zur Wirkung an β2-Rezeptoren (Bronchokonstriktion). Durch die Blockade von β1-Rezeptoren wird der Einfluss von Katecholaminen auf das Herzen verringert.</p>
+      <p>Metoprolol reguliert die Herzfrequenz, vermindert das Herzminutenvolumen und die Kontraktilität und senkt zeitverzögert den Blutdruck.</p>
     </template>
   </nos-paragraphs>
 
@@ -29,8 +24,8 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="suppositorium">1 Weichkapsel Nifedipin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '10mg' }]"></nos-med-dose>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Lopressor&rdquo;</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '5mg', per: '5ml' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
@@ -38,12 +33,12 @@
       <template v-slot:content>
         <p>
           <div class="nos-u">Dosierung</div>
-          <div>
-            <span class="nos-mono">10mg (1 Kapsel)</span> zerbeißen lassen.
-          </div>
-        </p>
-        <p>
-          <div class="nos-u">Nach 30min Repetition möglich</div>
+            <nos-med-dose :items="[
+              { unit: '5mg (1 Ampulle)', color: 'adult' }]">
+            </nos-med-dose>
+            <v-divider class="my-2"></v-divider>
+            <div>Wiederholung nach 10min möglich.</div>
+            <div>Maximal <span class="nos-mono">15mg</span></div>
         </p>
       </template>
     </nos-row-caption>
@@ -51,15 +46,14 @@
 
   <nos-header title="Pharmakokinetik"></nos-header>
   <nos-med-effects>
-    <template v-slot:onset>~5min</template>
-    <template v-slot:span>~6h</template>
+    <template v-slot:onset>~2min</template>
+    <template v-slot:span>~5h</template>
   </nos-med-effects>
 
   
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -72,7 +66,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedNifedipin",
+  name: "NaMedMetoprolol",
   components: {
     NosTitle,
     NosHeader,
@@ -87,7 +81,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-nifedipin");
+      return this.$store.getters.getContentMeta("na-med-metoprolol");
     },
   },
   methods: {},

@@ -8,16 +8,15 @@
 
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Reanimation</nos-li>
+    <nos-li>Reanimation als Amiodaron-Alternative</nos-li>
   </nos-list>
 
   <nos-header title="Kontraindikationen"></nos-header>
   <nos-list contragroup="intolerable">
-    <nos-li>Allergie ggb. Jod</nos-li>
-    <nos-li>Unverträglichkeit ggb. Amiodaron</nos-li>
+    <nos-li>Unverträglichkeit ggb. Lidocain</nos-li>
   </nos-list>
-  <nos-list contragroup="family">
-    <nos-li>Keine Säuglinge (&lt; 3J wg. Gehalt von Benzylalkohol)</nos-li>
+  <nos-list>
+    <nos-li variant="cave">Nicht mehr als Analgesie beim i.o-Zugang für NotSan</nos-li>
   </nos-list>
 
   <nos-header title="Nebenwirkungen"></nos-header>
@@ -26,7 +25,6 @@
   </nos-list>
   <nos-list>
     <nos-li>Bradykardie, Hypotonie</nos-li>
-    <nos-li>Schilddrüsenfunktionsstörungen</nos-li>
   </nos-list>
 
   <nos-header title="Dosierung &amp;Anwendung"></nos-header>
@@ -34,12 +32,12 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="ampulle"> 1 Ampulle &bdquo;Cordarex&rdquo; </nos-med-label>
+        <nos-med-label type="ampulle">2 Ampullen Lidocain</nos-med-label>
         <nos-med-dose
           :decent="true"
           :items="[
-            { unit: '150mg', per: '3ml' },
-            { unit: '50mg', per: 'ml', prefix: '=' },
+            { label: '2%', unit: '100mg', per: '5ml' },
+            { label: '1%', unit: '50mg', per: '5ml' },
           ]"
         ></nos-med-dose>
       </template>
@@ -54,53 +52,27 @@
         <p class="nos-u">Nach 3. Defibrillation</p>
         <nos-med-dose
           :items="[
-            { label: 'Erwachsene', unit: '300mg (2 Ampullen)', color: 'adult' },
-            { label: 'Kind (>3)', unit: '50mg', per: '10kg', color: 'child' },
-            { unit: '1ml', per: '10kg', color: 'child' },
-            { unit: '300mg maximal (2 Ampullen)', color: 'child' },
+            { label: 'Erwachsene', unit: '100mg (1 Ampulle-2%)', color: 'adult' },
+            { label: 'Kind', unit: '10mg', per: '10kg', color: 'child' },
+            { unit: '1ml', per: '10kg (2%)', color: 'child' },
+            { unit: '0,5ml', per: '10kg (1%)', color: 'child' }
           ]"
         >
         </nos-med-dose>
         <p class="nos-u mt-2">Nach 5. Defibrillation</p>
         <nos-med-dose
           :items="[
-            { label: 'Erwachsene', unit: '150mg (1 Ampulle)', color: 'adult' },
-            { hint: 'Dosierung beim Kinder wieder wie oben, aber: ' },
-            { unit: '150mg maximal (1 Ampulle)', color: 'child' },
+            { label: 'Erwachsene', unit: '50mg (½ Ampulle-2%)', color: 'adult' },
+            { label: 'Kinder', unit: 'Keine Repetition', color: 'child' },
           ]"
         >
         </nos-med-dose>
         <v-divider class="my-2"></v-divider>
-        <p>Langsam spritzen &amp; Nachspülen.</p>
+        <p>Nachspülen.</p>
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Pharmakokinetik"></nos-header>
-  <nos-med-effects>
-    <template v-slot:onset>~5min</template>
-    <template v-slot:span>~15min</template>
-  </nos-med-effects>
-
-  <nos-header title="Wirkweise"></nos-header>
-  <nos-paragraphs>
-    <template v-slot:heading> Amiodaron gehört zu den wichtigsten Medikamenten zur Behandlung einiger Herzrhythmusstörungen. </template>
-    <template v-slot:text>
-      <p>
-        Die Wirkungsweise von Amiodaron leider noch nicht vollständig bekannt. Allerdings wird es durch die von ihm induzierte Verlängerung des
-        Aktionspotentials und der Refraktärzeit im Myokard den Klasse III-Antiarrhythmika zugeordnet.
-      </p>
-      <p>
-        Amiodaron hemmt spannungssensitive Kaliumkanäle im Myokard, wodurch es zu einem verzögerten Kaliumausstrom während der Repolarisationsphase
-        des Aktionspotenzials kommt. Hierdurch wird die Repolarisationsdauer und die Refraktärzeit ebendieses verlängert und Re-Entry-Mechanismen
-        unterbunden.
-      </p>
-      <p>
-        Die Herzfrequenz sinkt, im Rahmen der Reanimation steigt die Chance auf eine erfolgreiche Defibrillation mit Erreichen eines ROSC (return of
-        spontaneous circulation).
-      </p>
-    </template>
-  </nos-paragraphs>
 </template>
 
 <script>
@@ -116,7 +88,7 @@
   import NosMedEffects from "../components/NosMedEffects.vue";
 
   export default {
-    name: "MedAmiodaron",
+    name: "MedLidocain",
     components: {
       NosTitle,
       NosHeader,
@@ -131,7 +103,7 @@
     },
     computed: {
       meta() {
-        return this.$store.getters.getContentMeta("med-amiodaron");
+        return this.$store.getters.getContentMeta("med-lidocain");
       },
     },
     methods: {},

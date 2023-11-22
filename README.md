@@ -2,50 +2,9 @@
 ### Notfallsanitäter-Taschenbuch ###
 
 #### Inhalt ####
-- [ ] NotSan-Medikamente nach SAA
-    - [x] Acetylsalicylsäure            
-    - [x] Amiodaron                
-    - [x] Atropin                                                  
-    - [x] Butylscopolamin
-    - [x] Dimenhydrinat
-    - [x] Dimetinden
-    - [x] Epinephrin
-    - [x] Esketamin
-    - [x] Furosemid
-    - [x] Glucagon
-    - [x] Glucose
-    - [x] Glyceroltrinitrat
-    - [x] Heparin
-    - [x] Ibuprofen
-    - [x] Ipratropiumbromid
-    - [x] Ipramol        
-    - [x] Midazolam
-    - [x] Naloxon
-    - [x] Paracetamol
-    - [x] Prednisolon
-    - [x] Salbutamol
-    - [x] Urapidil
-    - [x] Sauerstoff
-    - [ ] Lidocain (PrioIII: Nur noch als Alternative zu Cordarex)
-
-    - [x] Notarzt-Medikamente
-        - [x] Noradrenalin      
-        - [x] Dobutamin         
-        - [x] Akrinor           
-        - [x] Nifedipin        
-        - [x] Clonidin         
-        - [x] Verapamil         
-        - [x] Adrekar
-        - [ ] Beloc
-        - [ ] Nabi
-        - [ ] Cormagnesium
-        - [ ] Metalyse
-        - [ ] Bronchospasmin
-        - [ ] Bricanyl
-        - [ ] Berlosin
-        - [ ] Morphin
-        - [ ] Dipi
-        - [ ] Fentanyl 7
+- NotSan-Medikamente nach SAA
+    - Medikamete
+    - Zusatz: Notarzt-Medikamente
         - [ ] Haldol
         - [ ] Tavor
         - [ ] Propofol
@@ -67,13 +26,10 @@
         - [ ] Calcium
         - [ ] Tranexamsäure
     
-- [ ] Schemata
-    - [ ] Schockraum
+- Schemata
+    - Schockraum
         - [ ] Schockraumindikation
-        - [ ] Trauma-Übergabe
-        - [ ] Internistische Übergabe
         - [ ] Anmeldung (ZOABCDE)   (S.77)
-
     - [ ] Beurteilung
         - [ ] Gefahren
             - [ ] WWVD
@@ -83,13 +39,9 @@
         - [ ] GCS
         - [ ] SAMPLER
         - [ ] OPQRST
-
-    - [x] Scores
-        - [x] Wells
-        - [x] sPESI
+    - Scores
         - [ ] APGAR
         - [ ] qSOFA
-    
     - [ ] Behandlungspfade
         - [ ] Einwilligunsfähigkeit     (S.15)
         - [ ] EZ-IO                     (S.21)

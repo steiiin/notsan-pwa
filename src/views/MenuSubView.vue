@@ -1,5 +1,10 @@
+<!-------------------------------------------------------------------------------------------------
+{ 
+  "Revision": "20.11.2023"
+}
+-------------------------------------------------------------------------------------------------->
 <template>
-  <NosAppbar
+  <nosAppbar
     :title="submenutitle"
     :showBack="true"
     :hideActions="hideAppbarActions"
@@ -32,7 +37,6 @@ export default {
     return {
       submenutitle: "",
       hideAppbarActions: false,
-      groupItems: true,
     };
   },
   computed: {
@@ -55,11 +59,11 @@ export default {
       // map items to listitems
       let menuItems = this.mapStoreDataToListItem(this.$store.state, branch.items ?? []);
       
-      return this.groupItems ? 
+      return groupList ? 
         this.groupListItems(menuItems, {
             group: { prop: 'title', sort: sortItems, onlyFirst: true },
             items: { sort: sortItems, prop: 'title' }
-          }) : this.sortListItems(menuItems, 'title');
+          }) : (sortItems ? this.sortListItems(menuItems, 'title') : menuItems);
     },
   },
   methods: {

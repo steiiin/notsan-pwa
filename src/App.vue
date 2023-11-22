@@ -32,12 +32,20 @@ export default {
 body {
   font-family: "Mukta";
 }
+
 .nos-u {
   text-decoration: underline;
 }
+
 .nos-mono {
   font-family: monospace;
   font-size: 0.9rem;
   line-height: 1.1rem;
 }
+
+q {
+  opacity: 0.9;
+  font-style: italic;
+}
+
 </style>

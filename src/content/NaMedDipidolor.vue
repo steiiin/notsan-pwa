@@ -8,18 +8,17 @@
   
   <nos-header title="Indikationen"></nos-header>
   <nos-list>
-    <nos-li>Hypertonie</nos-li>
+    <nos-li>Schmerzen</nos-li>
   </nos-list>
 
   <nos-header title="Wirkweise"></nos-header>
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
     <template v-slot:text>
       <p>
-        Nifedipin blockiert Kalziumkanäle in der glatten Gefäßmuskulatur, was zu einer Vasodilatation führt und den Blutdruck senkt.
+        Piritramid ist ein Opioid-Analgetikum, welches durch die Stimulation zentraler Opioidrezeptoren (μ-Rezeptoren) analgetisch und sedierend wirkt.
       </p>
       <p>
-        Nifedipin ist effektiv zur Senkung eines erhöhten Blutdrucks.
+        Piritramid besitzt eine geringere analgetische Potenz als Morphin (0,7).
       </p>
     </template>
   </nos-paragraphs>
@@ -29,21 +28,36 @@
     <nos-row-caption>
       <template v-slot:caption>Größen</template>
       <template v-slot:content>
-        <nos-med-label type="suppositorium">1 Weichkapsel Nifedipin</nos-med-label>
-        <nos-med-dose :decent="true" :items="[{ unit: '10mg' }]"></nos-med-dose>
+        <nos-med-label type="ampulle">1 Ampulle &bdquo;Dipidolor&rdquo;</nos-med-label>
+        <nos-med-dose :decent="true" :items="[{ unit: '15mg', per: '2ml' }]"></nos-med-dose>
       </template>
     </nos-row-caption>
     <nos-row-caption>
-      <template v-slot:caption>Anwendung</template>
+      <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
-          <div class="nos-u">Dosierung</div>
-          <div>
-            <span class="nos-mono">10mg (1 Kapsel)</span> zerbeißen lassen.
-          </div>
+          <div>Ampulle auf <span class="nos-mono">10ml</span> aufziehen.</div>
+          <nos-med-dose :items="[
+            { label: 'Erwachsene', unit: '7,5mg (5ml)', color: 'adult' },
+            { label: 'Kinder', unit: '0,75mg (½ml)', per: '10kg', color: 'child' }
+          ]"></nos-med-dose>
         </p>
+        <p class="nos-u">Repetition nach 15min möglich</p>
+      </template>
+    </nos-row-caption>
+    <nos-row-caption>
+      <template v-slot:caption>(s.c.)-Dosis</template>
+      <template v-slot:content>
         <p>
-          <div class="nos-u">Nach 30min Repetition möglich</div>
+          <div class="nos-u">Intramuskulär / Subkutan möglich</div>
+          <nos-med-dose :items="[
+            { label: 'Erwachsene', unit: '15mg (1 Ampulle)', color: 'adult' }
+          ]"></nos-med-dose>
+          <v-divider class="my-2"></v-divider>
+          <div>Für Kinder Ampulle auf <span class="nos-mono">10ml</span> aufziehen.</div>
+          <nos-med-dose :items="[
+            { label: 'Kinder', unit: '1,5mg (1ml)', per: '10kg', color: 'child' }
+          ]"></nos-med-dose>
         </p>
       </template>
     </nos-row-caption>
@@ -54,12 +68,10 @@
     <template v-slot:onset>~5min</template>
     <template v-slot:span>~6h</template>
   </nos-med-effects>
-
   
 </template>
 
 <script>
-
 import NosTitle from "../components/NosTitle.vue";
 import NosHeader from "../components/NosHeader.vue";
 import NosParagraphs from "../components/NosParagraphs.vue";
@@ -72,7 +84,7 @@ import NosMedDose from "../components/NosMedDose.vue";
 import NosMedEffects from "../components/NosMedEffects.vue";
 
 export default {
-  name: "NaMedNifedipin",
+  name: "NaMedDipidolor",
   components: {
     NosTitle,
     NosHeader,
@@ -87,7 +99,7 @@ export default {
   },
   computed: {
     meta() {
-      return this.$store.getters.getContentMeta("na-med-nifedipin");
+      return this.$store.getters.getContentMeta("na-med-dipidolor");
     },
   },
   methods: {},

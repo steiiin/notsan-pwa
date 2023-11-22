@@ -1,5 +1,10 @@
+<!-------------------------------------------------------------------------------------------------
+{ 
+  "Revision": "20.11.2023"
+}
+-------------------------------------------------------------------------------------------------->
 <template>
-  <NosAppbar :showBack="false" />
+  <nosAppbar :showBack="false" />
   <v-list class="my-2">
     <template v-for="(entry, index) in mainmenu" :key="entry.key">
       <v-list-item

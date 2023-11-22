@@ -1,3 +1,8 @@
+<!-------------------------------------------------------------------------------------------------
+{ 
+  "Revision": "20.11.2023"
+}
+-------------------------------------------------------------------------------------------------->
 <template>
   <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
   
@@ -29,7 +34,7 @@
       </template>
     </nos-row-caption>
     <nos-row-caption>
-      <template v-slot:caption>Anwendung</template>
+      <template v-slot:caption>(i.v.)-Dosis</template>
       <template v-slot:content>
         <p>
           <div class="nos-u">Dosierung</div>
