@@ -13,4 +13,4 @@ jobs:
       with:
         server: notsan.steiiin.de
         username: sync@notsan.steiiin.de
-        password: ${{ secrets.notsan_ftp_password }}
+        password: ${{ secrets.NOTSAN_FTP_PASSWORD }}
