@@ -51,3 +51,5 @@
 
 - [ ] Notfall (Interaktiv)
     - [ ] Kinderlineal
+    - [ ] Dosistabelle
+    - [ ] Umrechner (mmol/mg)

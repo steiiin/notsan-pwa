@@ -16,15 +16,29 @@ export default {
       type: String,
       required: false,
     },
+    query: {
+      type: Array,
+      required: false,
+      default: []
+    }
   },
   computed: {
     meta() {
+      
+      let querySuffix = '';
+      if (this.query.length > 0) {
+        querySuffix += '?';
+        this.query.forEach(element => {
+          querySuffix += element.key + '=' + element.value
+        });
+      }
+      
       if (this.content) {
         let content = this.$store.state.content[this.content];
-        return { title: content.title, route: "/content/" + this.content };
+        return { title: content.title, route: "/content/" + this.content + querySuffix };
       } else if (this.list) {
         let list = this.$store.state.submenu[this.list];
-        return { title: list.title, route: "/submenu/" + this.list };
+        return { title: list.title, route: "/submenu/" + this.list + querySuffix };
       }
       return { title: "", route: "" };
     },

@@ -33,6 +33,7 @@ CONTENT-COMPONENTS:
  - NaMedDipidolor.vue                         | 20.11.2023 
  - NaMedDobutamin.vue                         | 20.11.2023 
  - NaMedFentanyl.vue                          | 20.11.2023 
+ - NaMedHaloperidol.vue                       | 20.11.2023 
  - NaMedMagnesium.vue                         | 20.11.2023 
  - NaMedMetalyse.vue                          | 20.11.2023 
  - NaMedMetamizol.vue                         | 20.11.2023 
@@ -48,3 +49,5 @@ CONTENT-COMPONENTS:
  - MedAdrenalin.vue                           | 22.11.2023 
  - SchemeATMIST.vue                           | 22.11.2023 
  - SchemeISOBAR.vue                           | 22.11.2023 
+ - CalcChildSpecs.vue                         | 25.11.2023 
+ - CalcDoses.vue                              | 25.11.2023 

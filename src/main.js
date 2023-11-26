@@ -63,6 +63,7 @@ const store = createStore({
         'na-med-morphin': { title: "Morphin", subtitle: "MSI, Morphium", hint: "", category: "na-med", component: g(() => import('./content/NaMedMorphin.vue')) },
         'na-med-dipidolor': { title: "Piritramid", subtitle: "Dipidolor", hint: "", category: "na-med", component: g(() => import('./content/NaMedDipidolor.vue')) },
         'na-med-fentanyl': { title: "Fentanyl", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedFentanyl.vue')) },
+        'na-med-haloperidol': { title: "Haloperidol", subtitle: "Haldol", hint: "", category: "na-med", component: g(() => import('./content/NaMedHaloperidol.vue')) },
       
         // Scores
         'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScoreWells.vue')) },
@@ -71,6 +72,10 @@ const store = createStore({
         // Schemata
         'scheme-atmist': { title: "Traumaübergabe", subtitle: "ATMIST", hint: "", category: "scheme", component: g(() => import('./content/SchemeATMIST.vue')) },
         'scheme-isobar': { title: "Internistische Übergabe", subtitle: "ISOBAR", hint: "", category: "scheme", component: g(() => import('./content/SchemeISOBAR.vue')) },
+      
+        // Rechner
+        'calc-childspecs': { title: "Kinderlineal", subtitle: "Gewicht, Normwerte & Dosierung", hint: "", category: "scheme", component: g(() => import('./content/CalcChildSpecs.vue')) },
+        'calc-doses': { title: "Dosierungsrechner", subtitle: "Gewichtsadapt. Dosis & Einstellungen", hint: "", category: "scheme", component: g(() => import('./content/CalcDoses.vue')) },
       
 
       },
@@ -127,6 +132,7 @@ const store = createStore({
               { content: 'na-med-morphin' },
               { content: 'na-med-dipidolor' },
               { content: 'na-med-fentanyl' },
+              { content: 'na-med-haloperidol' },
             ],
           ignoreAtSearch: true
         },
@@ -191,10 +197,19 @@ const store = createStore({
         },
         'scheme':
         {
-          name: 'Schemata & Anweisungen', icon: '$alarmPanelOutline', items:
+          name: 'Schemata & Anweisungen', icon: '$fileTree', items:
             [
               { list: 'list-schockraum' },
               { list: 'list-scores' },
+            ],
+          nosort: true, nogroups: true
+        },
+        'calculator':
+        {
+          name: 'Rechner', icon: '$alarmPanelOutline', items:
+            [
+              { content: 'calc-doses' },
+              { content: 'calc-childspecs' }
             ],
           nosort: true, nogroups: true
         }

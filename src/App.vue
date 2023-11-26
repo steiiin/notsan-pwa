@@ -42,7 +42,12 @@ body {
   font-size: 0.9rem;
   line-height: 1.1rem;
 }
-
+.nos-colorbox {
+  display: inline-block;
+  width: 30px;
+  line-height: 1;
+  border: 1px solid black;
+}
 q {
   opacity: 0.9;
   font-style: italic;

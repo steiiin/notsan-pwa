@@ -8,6 +8,7 @@ import
   mdiNeedle,
   mdiShapeOutline,
   mdiAlarmPanelOutline,
+  mdiFileTree,
 
   // Ui
   mdiChevronLeft,
@@ -34,6 +35,8 @@ import
   mdiTextBoxRemoveOutline,
   mdiTextBoxSearchOutline,
   mdiCloudOffOutline,
+  mdiWeight,
+  mdiFormatParagraphSpacing,
 } 
 from '@mdi/js'
 
@@ -52,6 +55,7 @@ export default createVuetify({
       needle: mdiNeedle,
       shapeOutline: mdiShapeOutline,
       alarmPanelOutline: mdiAlarmPanelOutline,
+      fileTree: mdiFileTree,
 
       chevronLeft: mdiChevronLeft,
       chevronRight: mdiChevronRight,
@@ -75,7 +79,9 @@ export default createVuetify({
       databasePlusOutline: mdiDatabasePlusOutline,
       textBoxRemoveOutline: mdiTextBoxRemoveOutline,
       textBoxSearchOutline: mdiTextBoxSearchOutline,
-      cloudOffOutline: mdiCloudOffOutline
+      cloudOffOutline: mdiCloudOffOutline,
+      weight: mdiWeight,
+      formatParagraphSpacing: mdiFormatParagraphSpacing,
     },
     sets: {
       mdi,
