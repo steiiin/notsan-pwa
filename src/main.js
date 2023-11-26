@@ -211,7 +211,6 @@ const store = createStore({
               { content: 'calc-doses' },
               { content: 'calc-childspecs' }
             ],
-          nosort: true, nogroups: true
         }
       },
     }

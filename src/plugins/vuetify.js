@@ -37,6 +37,7 @@ import
   mdiCloudOffOutline,
   mdiWeight,
   mdiFormatParagraphSpacing,
+  mdiLink,
 } 
 from '@mdi/js'
 
@@ -82,6 +83,7 @@ export default createVuetify({
       cloudOffOutline: mdiCloudOffOutline,
       weight: mdiWeight,
       formatParagraphSpacing: mdiFormatParagraphSpacing,
+      link: mdiLink,
     },
     sets: {
       mdi,

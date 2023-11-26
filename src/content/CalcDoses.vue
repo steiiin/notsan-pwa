@@ -59,7 +59,7 @@
             <div class="nos-u">Dosierung</div>
           </template>
           <div class="nos-mono">{{ this.roundToFixed(adrenalinReaDose,1) }} mg</div>
-          <div v-if="adrenalinReaDose<1"><span class="nos-mono">{{ this.roundToFixed(this.roundUpToNextFive((adrenalinReaDose / 0.1)*10)/10,1) }}ml</span> von der 10er-Spritze.</div>
+          <div v-if="adrenalinReaDose<1"><span class="nos-mono"><b>{{ this.roundToFixed(this.roundUpToNextFive((adrenalinReaDose / 0.1)*10)/10,1) }}ml</b></span> von der 10er-Spritze.</div>
         </template>
       </nos-row-caption>
       <nos-row-caption>
@@ -72,7 +72,7 @@
               <div v-if="amiodaronReaDose>=300"><span class="nos-mono">300mg (2 Ampullen)</span></div>
               <template v-else>
                 <div class="nos-mono">{{ amiodaronReaDose }}mg</div>
-                <div><span class="nos-mono">{{ this.roundToFixed(amiodaronReaDose/50,1) }}ml</span></div>
+                <div><span class="nos-mono"><b>{{ this.roundToFixed(amiodaronReaDose/50,1) }}ml</b></span></div>
               </template>
             </p>
             <p>
@@ -80,7 +80,7 @@
               <div v-if="amiodaronReaDose>=150"><span class="nos-mono">150mg (1 Ampulle)</span></div>
               <template v-else>
                 <div class="nos-mono">{{ amiodaronReaDose }}mg</div>
-                <div><span class="nos-mono">{{ this.roundToFixed(amiodaronReaDose/50,1) }}ml</span></div>
+                <div><span class="nos-mono"><b>{{ this.roundToFixed(amiodaronReaDose/50,1) }}ml</b></span></div>
               </template>
             </p>
           </template>
@@ -93,16 +93,167 @@
       <nos-row-caption>
         <template v-slot:caption >(ET)-Tubus</template>
         <template v-slot:content>
-            <div>Größe <span class="nos-mono">{{ tubeET.toFixed(1) }}</span> (+/- 1 Größe)</div>
+            <div>Größe <span class="nos-mono"><b>{{ tubeET.toFixed(1) }}</b></span> (+/- 1 Größe)</div>
         </template>
       </nos-row-caption>
       <nos-row-caption>
         <template v-slot:caption >(iGel)-Tubus</template>
         <template v-slot:content>
-            <div>Größe <span class="nos-mono">{{ tubeIGel.size }}</span><span class="nos-colorbox ms-2" :class="'bg-'+tubeIGel.color">&nbsp;</span></div>
+            <div>Größe <span class="nos-mono"><b>{{ tubeIGel.size }}</b></span><span class="nos-colorbox ms-2" :class="'bg-'+tubeIGel.color">&nbsp;</span></div>
         </template>
       </nos-row-caption>
     </nos-table>
+
+    <nos-header title="Adrenalin" class="mt-2"></nos-header>
+    <nos-header title="Anaphylaxie" :decent="true"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption>Vorbereitung</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">1 Ampulle</span> auf <span class="nos-mono">10ml</span> aufziehen.</div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption >(i.m.)-Dosis</template>
+        <template v-slot:content>
+          <div v-if="weight<=20" class="nos-mono">1,5ml</div>
+          <div v-else-if="weight>20&&weight<=40" class="nos-mono">3ml</div>
+          <div v-else class="nos-mono">5ml</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-adrenalin" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Butylscopulamin" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption>Vorbereitung</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">1 Ampulle</span> auf <span class="nos-mono">20ml</span> aufziehen.</div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption >(i.v.)-Dosis</template>
+        <template v-slot:content>
+          <div class="nos-mono">{{ buscopanDose }}mg</div>
+          <div><span class="nos-mono"><b>{{ this.roundToFixed(buscopanDose/2,1) }}ml</b></span> von der 20er-Spritze.</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-buscopan" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Dimetinden (Fenistil)" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption>Vorbereitung</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">1 Ampulle</span> auf <span class="nos-mono">20ml</span> aufziehen.</div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption >(i.v.)-Dosis</template>
+        <template v-slot:content>
+          <div class="nos-mono">{{ dimetindenDose }}mg</div>
+          <div><span class="nos-mono"><b>{{ this.roundToFixed(dimetindenDose/0.2) }}ml</b></span> von der 20er-Spritze.</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-dimetinden" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Esketamin" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption>Vorbereitung</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">1 Ampulle</span> auf <span class="nos-mono">10ml</span> aufziehen.</div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption >(i.v.)-Dosis</template>
+        <template v-slot:content>
+          <div class="nos-u">Initialdosis</div>
+          <div class="nos-mono">{{ ketanestDose.init }}mg</div>
+          <div><span class="nos-mono"><b>{{ this.roundToFixed(ketanestDose.init/2.5,1) }}ml</b></span> von der 10er-Spritze.</div>
+          <v-divider class="my-2"></v-divider>
+          <div class="nos-u">Maximaldosis</div>
+          <div class="nos-mono">{{ ketanestDose.max }}mg</div>
+          <div><span class="nos-mono"><b>{{ this.roundToFixed(ketanestDose.max/2.5) }}ml</b></span> von der 10er-Spritze.</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-esketamin" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Glukose" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption >(i.v.)-Dosis</template>
+        <template v-slot:content>
+          <div class="nos-u">Einzeldosis</div>
+          <div class="nos-mono">{{ roundToFixed(glucoseDose) }}g</div>
+          <div><span class="nos-mono"><b>{{ this.roundToFixed(glucoseDose/2) }}</b> Ampullen G20</span></div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-glucose" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Glucagon" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption >(i.m.)-Dosis</template>
+        <template v-slot:content>
+          <div class="nos-mono">{{ (weight>=25 ? '1mg (1 Ampulle)' : '0,5mg (½ Ampulle)') }}</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-glucagon" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Ibuprofen" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption >Dosis</template>
+        <template v-slot:content>
+          <div class="nos-u">Maximale Einzeldosis</div>
+          <div class="nos-mono">{{ ibuprofenDose }}mg</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-ibuprofen" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Midazolam" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption>
+        <template v-slot:caption>Buccolam</template>
+        <template v-slot:content>
+          <div class="nos-mono">{{ midazolamDose.buccolam.dose }}mg<span class="nos-colorbox ms-2" :class="'bg-'+midazolamDose.buccolam.color">&nbsp;</span></div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption>nasal (MAD)</template>
+        <template v-slot:content>
+          <div class="nos-mono">{{ midazolamDose.nasal.dose }}mg</div>
+          <div class="nos-mono">{{ midazolamDose.nasal.amp }}</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-midazolam" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+
+    <nos-header title="Paracetamol" class="mt-2"></nos-header>
+    <nos-table>
+      <nos-row-caption v-if="weight<40">
+        <template v-slot:caption>Rektal</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">{{ weight<=10 ? '125' : '250' }}mg</span> Zäpfchen</div>
+        </template>
+      </nos-row-caption>
+      <nos-row-caption>
+        <template v-slot:caption>(i.v.)-Dosis</template>
+        <template v-slot:content>
+          <div><span class="nos-mono">{{ weight<50 ? '½' : '1' }}</span> Kurzinfusion</div>
+        </template>
+      </nos-row-caption>
+    </nos-table>
+    <nos-btn-link content="med-paracetamol" :backLink="true" class="nos-doses-backlink"></nos-btn-link>
+    
   </template>
 </template>
 
@@ -174,6 +325,54 @@
         else if (this.weight > 35 && this.weight <= 55) { return { size: '3.0', color: 'yellow-accent-3' } }
         else if (this.weight > 55 && this.weight <= 90) { return { size: '4.0', color: 'green-darken-1' } }
         else { return { size: '5.0', color: 'orange-darken-1' } }
+      },
+      buscopanDose() { 
+        return Math.min(this.roundUpToNextFive(this.weight*0.3),20)
+      },
+      dimetindenDose() { 
+        return Math.min(this.roundToFixed(this.weight*0.1,1),8)
+      },
+      ketanestDose() { 
+        let dose = (Math.ceil(this.weight/10)*10)*0.25
+        return {
+          init: Math.min(dose/2,25),
+          max: Math.min(dose, 25)
+        }
+      },
+      glucoseDose() {
+        return Math.min(this.weight*0.2, 10)
+      },
+      ibuprofenDose() {
+        if (this.weight<10) { return 50 }
+        else if (this.weight<15) { return 100 }
+        else if (this.weight<20) { return 150 }
+        else if (this.weight<40) { return 200 }
+        return Math.ceil((this.weight*10)/10)*10
+      },
+      midazolamDose() {
+        // buccolam
+        let buccolam = { dose: 10, color: 'red-darken-3' }
+        if (this.weight <= 10) {
+          buccolam = { dose: 2.5, color: 'yellow-darken-1' }
+        }
+        else if (this.weight < 25) {
+          buccolam = { dose: 5.0, color: 'blue-darken-4' }
+        }
+        else if (this.weight < 40) {
+          buccolam = { dose: 7.5, color: 'deep-purple-darken-1' }
+        }
+        // nasal
+        let nasal = { dose: 10, amp: '2 Ampullen' }
+        if (this.weight < 10) {
+          nasal = { dose: 2.5, amp: '½ Ampulle' }
+        }
+        else if (this.weight < 20) {
+          nasal = { dose: 5, amp: '1 Ampulle' }
+        }
+        // i.v.
+        let iv = this.weight*0.1
+        
+        return { iv: iv, buccolam: buccolam, nasal: nasal }
       }
     },
     methods: {
@@ -213,9 +412,15 @@
       else {
         this.weight = this.roundToFixed(weightQuery);
         setTimeout(() => {
-          window.scrollTo({ top: 300, behavior: 'smooth' }) 
+          let lastScroll = this.$router.options?.history?.state?.scroll?.top ?? 0 
+          window.scrollTo({ top: lastScroll == 0 ? 300 : lastScroll, behavior: 'smooth' }) 
         }, 500);
       }
     },
   };
 </script>
+<style lang="scss" scoped>
+.nos-doses-backlink {
+  margin: -18px 0 0 0;
+}
+</style>
