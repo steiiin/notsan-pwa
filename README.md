@@ -5,8 +5,6 @@
 - NotSan-Medikamente nach SAA
     - Medikamete
     - Zusatz: Notarzt-Medikamente
-        - [ ] Haldol
-        - [ ] Tavor
         - [ ] Propofol
         - [ ] Eketamin
         - [ ] Lystenon

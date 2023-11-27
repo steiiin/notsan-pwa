@@ -64,6 +64,7 @@ const store = createStore({
         'na-med-dipidolor': { title: "Piritramid", subtitle: "Dipidolor", hint: "", category: "na-med", component: g(() => import('./content/NaMedDipidolor.vue')) },
         'na-med-fentanyl': { title: "Fentanyl", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedFentanyl.vue')) },
         'na-med-haloperidol': { title: "Haloperidol", subtitle: "Haldol", hint: "", category: "na-med", component: g(() => import('./content/NaMedHaloperidol.vue')) },
+        'na-med-lorazepam': { title: "Lorazepam", subtitle: "Tavor", hint: "", category: "na-med", component: g(() => import('./content/NaMedLorazepam.vue')) },
       
         // Scores
         'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScoreWells.vue')) },
@@ -133,6 +134,7 @@ const store = createStore({
               { content: 'na-med-dipidolor' },
               { content: 'na-med-fentanyl' },
               { content: 'na-med-haloperidol' },
+              { content: 'na-med-lorazepam' },
             ],
           ignoreAtSearch: true
         },

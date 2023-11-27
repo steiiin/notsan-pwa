@@ -27,15 +27,15 @@
   <template v-if="step1 === 'estimate'">
     <nos-header
       :decent="true"
-      title="Gewicht anhand Größe oder Alter ermitteln"
+      title="Gewicht anhand Alter oder Größe ermitteln"
       icon="$formatParagraphSpacing"
       class="mt-2"
     ></nos-header>
     <nos-btn-group
       v-model="step2"
       :items="[
-        { label: 'Größe', state: 'height' },
         { label: 'Alter', state: 'age' },
+        { label: 'Größe', state: 'height' },
       ]"
     ></nos-btn-group>
 
@@ -114,6 +114,7 @@
             label="Altersgruppe"
             :items="ageGroups"
             :item-props="ageGroupSelectProps"
+            ref="vselectAgeEstimate"
             id="id-input-age-estimate"
             hide-details="auto"
             variant="solo"
@@ -143,7 +144,7 @@
   </template>
 
   <!-- RESULT -->
-  <template v-if="weight > 0">
+  <template v-if="weightValue > 0">
     <nos-header title="Ergebnis" icon="$hospitalBox" class="mt-4"></nos-header>
     <nos-table>
       <nos-row-result :color="weightResult.broselow.color">
@@ -181,8 +182,8 @@
         </template>
       </nos-row-caption>
     </nos-table>
-    <v-btn :to="'/content/calc-doses?weight='+weight" color="error" size="large"
-      prepend-icon="$alarmPanelOutline" class="mx-2 my-2">Dosisrechner mit {{ weight }}kg aufrufen</v-btn>
+    <v-btn :to="'/content/calc-doses?weight='+weightValue" color="error" size="large"
+      prepend-icon="$alarmPanelOutline" class="mx-2 my-2">Dosisrechner mit {{ weightValue }}kg aufrufen</v-btn>
   </template>
 </template>
 
@@ -227,6 +228,9 @@
         ageMonths: "",
 
         weight: "",
+
+        inputTimeout: 0,
+        weightValue: 0,
       };
     },
     watch: {
@@ -240,6 +244,10 @@
           this.$nextTick(() => {
             document.getElementById("id-input-weight")?.focus();
           });
+        } else {
+          this.$nextTick(() => {
+            window.scrollTo({ top: 280, behavior: 'smooth' }) 
+          })
         }
       },
       step2(newValue, oldValue) {
@@ -251,6 +259,10 @@
           this.$nextTick(() => {
             document.getElementById("id-input-height")?.focus();
           });
+        } else {
+          this.$nextTick(() => {
+            window.scrollTo({ top: 380, behavior: 'smooth' }) 
+          })
         }
       },
       step3(newValue, oldValue) {
@@ -263,6 +275,11 @@
           this.$nextTick(() => {
             document.getElementById("id-input-age-year")?.focus();
           });
+        } 
+        else if (newValue === "estimate") {
+          this.$nextTick(() => {
+            this.$refs.vselectAgeEstimate.menu = true;
+          });
         }
       },
 
@@ -271,7 +288,7 @@
         if (newValue.includes(".") || (number <= 2 && newValue.length === 1)) {
           number = number * 100;
         }
-        this.weight = this.getFromHeight(number);
+        this.weightValue = this.getFromHeight(number);
       },
       ageYears(newValue, oldValue) {
         if (newValue === "0") {
@@ -280,12 +297,21 @@
           });
         } else {
           let age = parseInt(!newValue ? "0" : newValue) + parseInt(!this.ageMonths ? "0" : this.ageMonths) / 12;
-          this.weight = this.getFromAge(age);
+          this.weightValue = this.getFromAge(age);
         }
       },
       ageMonths(newValue, oldValue) {
         let age = parseInt(!this.ageYears ? "0" : this.ageYears) + parseInt(!newValue ? "0" : newValue) / 12;
-        this.weight = this.getFromAge(age);
+        this.weightValue = this.getFromAge(age);
+      },
+
+      weight(newValue, oldValue) {
+        if (newValue === '') { this.weightValue = 0; return }
+        this.weightValue = parseInt(newValue)
+      },
+
+      weightValue(newValue, oldValue) {
+        this.decideScrollToResult(newValue>0)
       },
     },
     computed: {
@@ -350,7 +376,7 @@
           pulse: "60-100",
           breath: "12-18",
         };
-        if (this.weight <= 5) {
+        if (this.weightValue <= 5) {
           vitals = {
             rrNorm: "70/50",
             rrLow: "70/45",
@@ -358,7 +384,7 @@
             pulse: "120-160",
             breath: "30-60",
           };
-        } else if (this.weight > 5 && this.weight <= 7.5) {
+        } else if (this.weightValue > 5 && this.weightValue <= 7.5) {
           vitals = {
             rrNorm: "80/55",
             rrLow: "75/50",
@@ -366,7 +392,7 @@
             pulse: "120-160",
             breath: "30-50",
           };
-        } else if (this.weight > 7.5 && this.weight <= 10) {
+        } else if (this.weightValue > 7.5 && this.weightValue <= 10) {
           vitals = {
             rrNorm: "85/60",
             rrLow: "80/55",
@@ -374,7 +400,7 @@
             pulse: "100-140",
             breath: "24-40",
           };
-        } else if (this.weight > 10 && this.weight <= 12.5) {
+        } else if (this.weightValue > 10 && this.weightValue <= 12.5) {
           vitals = {
             rrNorm: "85/55",
             rrLow: "80/50",
@@ -382,7 +408,7 @@
             pulse: "100-140",
             breath: "22-34",
           };
-        } else if (this.weight > 12.5 && this.weight <= 15) {
+        } else if (this.weightValue > 12.5 && this.weightValue <= 15) {
           vitals = {
             rrNorm: "90/60",
             rrLow: "85/55",
@@ -390,7 +416,7 @@
             pulse: "80-120",
             breath: "18-30",
           };
-        } else if (this.weight > 15 && this.weight <= 18.5) {
+        } else if (this.weightValue > 15 && this.weightValue <= 18.5) {
           vitals = {
             rrNorm: "95/65",
             rrLow: "90/60",
@@ -398,7 +424,7 @@
             pulse: "80-120",
             breath: "18-30",
           };
-        } else if (this.weight > 18.5 && this.weight <= 23.5) {
+        } else if (this.weightValue > 18.5 && this.weightValue <= 23.5) {
           vitals = {
             rrNorm: "100/65",
             rrLow: "95/60",
@@ -406,7 +432,7 @@
             pulse: "70-110",
             breath: "16-22",
           };
-        } else if (this.weight > 23.5 && this.weight <= 29) {
+        } else if (this.weightValue > 23.5 && this.weightValue <= 29) {
           vitals = {
             rrNorm: "105/70",
             rrLow: "100/65",
@@ -414,7 +440,7 @@
             pulse: "70-110",
             breath: "16-22",
           };
-        } else if (this.weight > 29 && this.weight <= 36) {
+        } else if (this.weightValue > 29 && this.weightValue <= 36) {
           vitals = {
             rrNorm: "110/75",
             rrLow: "105/70",
@@ -422,7 +448,7 @@
             pulse: "60-100",
             breath: "12-20",
           };
-        } else if (this.weight > 36 && this.weight <= 40) {
+        } else if (this.weightValue > 36 && this.weightValue <= 40) {
           vitals = {
             rrNorm: "115/75",
             rrLow: "110/70",
@@ -435,58 +461,58 @@
         // get broselow-code
         let broselow = {
           title: "Größer als das Kinderlineal",
-          range: this.weight + " kg (der grüne Broselow-Code endet ab 36kg)",
+          range: this.weightValue + " kg (der grüne Broselow-Code endet ab 36kg)",
           color: "grey-lighten-5",
         };
-        if (this.weight <= 5) {
+        if (this.weightValue <= 5) {
           broselow = {
             title: "Broselow: Grau",
             range: "3 - 5kg",
             color: "grey-lighten-2",
           };
-        } else if (this.weight > 5 && this.weight <= 7.5) {
+        } else if (this.weightValue > 5 && this.weightValue <= 7.5) {
           broselow = {
             title: "Broselow: Pink",
             range: "6 - 7kg",
             color: "pink-lighten-3",
           };
-        } else if (this.weight > 7.5 && this.weight <= 9.5) {
+        } else if (this.weightValue > 7.5 && this.weightValue <= 9.5) {
           broselow = {
             title: "Broselow: Rot",
             range: "8 - 9kg",
             color: "red-accent-1",
           };
-        } else if (this.weight > 9.5 && this.weight <= 11.5) {
+        } else if (this.weightValue > 9.5 && this.weightValue <= 11.5) {
           broselow = {
             title: "Broselow: Lila",
             range: "10 - 11kg",
             color: "purple-lighten-4",
           };
-        } else if (this.weight > 11.5 && this.weight <= 14.5) {
+        } else if (this.weightValue > 11.5 && this.weightValue <= 14.5) {
           broselow = {
             title: "Broselow: Gelb",
             range: "12 - 14kg",
             color: "yellow-lighten-2",
           };
-        } else if (this.weight > 14.5 && this.weight <= 18.5) {
+        } else if (this.weightValue > 14.5 && this.weightValue <= 18.5) {
           broselow = {
             title: "Broselow: Weiß",
             range: "15 - 18kg",
             color: "grey-lighten-5",
           };
-        } else if (this.weight > 18.5 && this.weight <= 23.5) {
+        } else if (this.weightValue > 18.5 && this.weightValue <= 23.5) {
           broselow = {
             title: "Broselow: Blau",
             range: "19 - 23kg",
             color: "blue-lighten-2",
           };
-        } else if (this.weight > 23.5 && this.weight <= 29.5) {
+        } else if (this.weightValue > 23.5 && this.weightValue <= 29.5) {
           broselow = {
             title: "Broselow: Orange",
             range: "24 - 29kg",
             color: "orange-lighten-1",
           };
-        } else if (this.weight > 29.5 && this.weight <= 36) {
+        } else if (this.weightValue > 29.5 && this.weightValue <= 36) {
           broselow = {
             title: "Broselow: Grün",
             range: "30 - 36kg",
@@ -606,6 +632,7 @@
         return Math.floor((under.weight + over.weight) / 2);
       },
       getFromAge(age) {
+        if (age <= 0) { return 0; }
         let under = this.calcTable.findLast((e) => age >= e.age);
         let over = this.calcTable.find((e) => age < e.age);
         if (under && !over) {
@@ -627,8 +654,19 @@
         };
       },
       ageGroupSelectChanged(item) {
-        this.weight = this.getFromAge(item.age);
+        this.weightValue = this.getFromAge(item.age);
       },
+
+      decideScrollToResult(restart=true) {
+        clearTimeout(this.inputTimeout)
+        if (!restart) { return }
+
+        this.inputTimeout = setTimeout(() => {
+
+          window.scrollTo({ top: 555, behavior: 'smooth' }) 
+
+        }, 1000)
+      }
     },
   };
 </script>

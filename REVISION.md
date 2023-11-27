@@ -7,7 +7,6 @@ CONTENT-COMPONENTS:
  - MedAspirin.vue                             | 20.11.2023 
  - MedAtropin.vue                             | 20.11.2023 
  - MedBuscopan.vue                            | 20.11.2023 
- - MedDimetinden.vue                          | 20.11.2023 
  - MedEsketamin.vue                           | 20.11.2023 
  - MedFurosemid.vue                           | 20.11.2023 
  - MedGlucagon.vue                            | 20.11.2023 
@@ -18,6 +17,8 @@ CONTENT-COMPONENTS:
  - MedIpratropium.vue                         | 20.11.2023 
  - MedLidocain.vue                            | 20.11.2023 
  - MedMidazolam.vue                           | 20.11.2023 
+      Zu Erledigen: 
+      - Nasale Gabe laut SAA erlaubt 
  - MedNaloxon.vue                             | 20.11.2023 
  - MedNitro.vue                               | 20.11.2023 
  - MedParacetamol.vue                         | 20.11.2023 
@@ -51,3 +52,5 @@ CONTENT-COMPONENTS:
  - SchemeISOBAR.vue                           | 22.11.2023 
  - CalcChildSpecs.vue                         | 25.11.2023 
  - CalcDoses.vue                              | 25.11.2023 
+ - MedDimetinden.vue                          | 26.11.2023 
+ - NaMedLorazepam.vue                         | 27.11.2023 
