@@ -60,6 +60,9 @@ export default {
 .nos-row-caption p:last-child {
   margin-bottom: 0;
 }
+.nos-row-caption__content .nos-list {
+  margin: 0 !important;
+}
 </style>
 <style lang="scss" scoped>
 .nos-row-caption {
@@ -80,14 +83,15 @@ export default {
     padding: 12px 0;
   }
 }
-.nos-row-caption:first-child {
-  .nos-row-caption__caption {
-    padding: 0 0 12px 0;
-  }
-  .nos-row-caption__content {
-    padding: 0 0 12px 0;
-  }
-}
+
+// .nos-row-caption:first-child {
+//   .nos-row-caption__caption {
+//     padding: 0 0 12px 0;
+//   }
+//   .nos-row-caption__content {
+//     padding: 0 0 12px 0;
+//   }
+// }
 .nos-row-caption:last-child {
   margin-bottom: 0;
 }

@@ -1,13 +1,13 @@
 <template>
   <div class="mt-2 mb-4 mx-4">
-    <div class="nos-medeffects-row">
+    <div class="nos-medeffects-row" v-if="hasOnSet">
       <div class="nos-medeffects-row__caption">
         <v-icon icon="$timerOutline" size="small"></v-icon>
         <span class="nos--obsolete">Wirkeintritt:</span>
       </div>
       <div class="nos-medeffects-row__content"><slot name="onset"></slot></div>
     </div>
-    <div class="nos-medeffects-row">
+    <div class="nos-medeffects-row" v-if="hasSpan">
       <div class="nos-medeffects-row__caption">
         <v-icon icon="$timer" size="small"></v-icon>
         <span class="nos--obsolete">Wirkdauer:</span>
@@ -21,6 +21,10 @@
 export default {
   name: "NosMedEffects",
   props: {},
+  computed: {
+    hasOnSet() { return this.$slots.hasOwnProperty('onset'); },
+    hasSpan() { return this.$slots.hasOwnProperty('span'); }
+  },
 };
 </script>
 

@@ -18,7 +18,7 @@
 
   <nos-header title="Rechner"></nos-header>
   <nos-table>
-    <nos-row-score>
+    <nos-row-score class="mt-2">
       <template v-slot:caption>Patient &gt; 80 Jahre alt</template>
       <template v-slot:t1>
         <nos-btn-toggle v-model="tgOld"></nos-btn-toggle>

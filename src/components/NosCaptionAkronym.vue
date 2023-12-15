@@ -36,13 +36,17 @@ export default {
   &__letter {
     font-size: 2rem;
     font-weight: bold;
-    font-family: 'Teko'
+    font-family: 'Teko';
+    position: relative;
+    top: 6px;
   }
   &__meaning {
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
     text-align: center;
+    position: relative;
+    top: 6px;
   }
 }
 

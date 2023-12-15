@@ -65,7 +65,24 @@ const store = createStore({
         'na-med-fentanyl': { title: "Fentanyl", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedFentanyl.vue')) },
         'na-med-haloperidol': { title: "Haloperidol", subtitle: "Haldol", hint: "", category: "na-med", component: g(() => import('./content/NaMedHaloperidol.vue')) },
         'na-med-lorazepam': { title: "Lorazepam", subtitle: "Tavor", hint: "", category: "na-med", component: g(() => import('./content/NaMedLorazepam.vue')) },
-      
+        'na-med-propofol': { title: "Propofol", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedPropofol.vue')) },
+        'na-med-succi': { title: "Succinylcholin", subtitle: "Lysthenon, Succi", hint: "", category: "na-med", component: g(() => import('./content/NaMedSucci.vue')) },
+        'na-med-esmeron': { title: "Rocuronium", subtitle: "Esmeron", hint: "", category: "na-med", component: g(() => import('./content/NaMedEsmeron.vue')) },
+        'na-med-anticholium': { title: "Physostigmin", subtitle: "Anticholium", hint: "", category: "na-med", component: g(() => import('./content/NaMedAnticholium.vue')) },
+        'na-med-anexate': { title: "Flumazenil", subtitle: "Anexate", hint: "", category: "na-med", component: g(() => import('./content/NaMedAnexate.vue')) },
+        'na-med-dmap': { title: "4-DMAP", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedDMAP.vue')) },
+        'na-med-dimeticon': { title: "Dimeticon", subtitle: "SabSimplex", hint: "Sab Simplex", category: "na-med", component: g(() => import('./content/NaMedDimeticon.vue')) },
+        'na-med-nathiosulfat': { title: "Natriumthiosulfat", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedNathiosulfat.vue')) },
+        'na-med-atropin': { title: "Atropin", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedAtropin.vue')) },
+        'na-med-kohle': { title: "Kohlepulver", subtitle: "Aktivkohle, Kohle-Pulvis", hint: "Kohle Pulvis", category: "na-med", component: g(() => import('./content/NaMedKohle.vue')) },
+        'na-med-methylenblau': { title: "Methylenblau", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedMethylenblau.vue')) },
+        'na-med-odansetron': { title: "Odansetron", subtitle: "Zofran", hint: "", category: "na-med", component: g(() => import('./content/NaMedOndansetron.vue')) },
+        'na-med-cimetiden': { title: "Cimetiden", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedCimetiden.vue')) },
+        'na-med-oxytocin': { title: "Oxytocin", subtitle: "", hint: "", category: "na-med", component: g(() => import('./content/NaMedOxytocin.vue')) },
+        'na-med-fenoterol': { title: "Fenoterol", subtitle: "Partusisten", hint: "Tokolyse,Wehenhemmung,Geburt", category: "na-med", component: g(() => import('./content/NaMedFenoterol.vue')) },
+        'na-med-calcium': { title: "Calcium", subtitle: "Calcium 10%", hint: "", category: "na-med", component: g(() => import('./content/NaMedCalcium.vue')) },
+        'na-med-tranexam': { title: "Tranexamsäure", subtitle: "Cyklokapron", hint: "", category: "na-med", component: g(() => import('./content/NaMedTranexam.vue')) },
+
         // Scores
         'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScoreWells.vue')) },
         'score-pesi': { title: "sPESI-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScorePESI.vue')) },
@@ -73,10 +90,16 @@ const store = createStore({
         // Schemata
         'scheme-atmist': { title: "Traumaübergabe", subtitle: "ATMIST", hint: "", category: "scheme", component: g(() => import('./content/SchemeATMIST.vue')) },
         'scheme-isobar': { title: "Internistische Übergabe", subtitle: "ISOBAR", hint: "", category: "scheme", component: g(() => import('./content/SchemeISOBAR.vue')) },
+        'scheme-zoabcde': { title: "Patientenanmeldung", subtitle: "ZOABCDE", hint: "", category: "scheme", component: g(() => import('./content/SchemeZOABCDE.vue')) },
+        'scheme-ezio': { title: "Intraossärer Zugang", subtitle: "EZ-IO", hint: "", category: "scheme", component: g(() => import('./content/SchemeEZIO.vue')) },
+        'scheme-schockraumind': { title: "Schockraumindikation", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/SchemeSchockraumInd.vue')) },
+        'scheme-einwilligung': { title: "Einwilligungsfähigkeit", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/SchemeEinwilligung.vue')) },
       
         // Rechner
         'calc-childspecs': { title: "Kinderlineal", subtitle: "Gewicht, Normwerte & Dosierung", hint: "", category: "scheme", component: g(() => import('./content/CalcChildSpecs.vue')) },
         'calc-doses': { title: "Dosierungsrechner", subtitle: "Gewichtsadapt. Dosis & Einstellungen", hint: "", category: "scheme", component: g(() => import('./content/CalcDoses.vue')) },
+        'calc-converter': { title: "Umrechner", subtitle: "Einheiten umrechnen", hint: "", category: "scheme", component: g(() => import('./content/CalcConverter.vue')) },
+        'calc-schockindex': { title: "Schockindex", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/CalcSchockindex.vue')) },
       
 
       },
@@ -135,6 +158,23 @@ const store = createStore({
               { content: 'na-med-fentanyl' },
               { content: 'na-med-haloperidol' },
               { content: 'na-med-lorazepam' },
+              { content: 'na-med-propofol' },
+              { content: 'na-med-succi' },
+              { content: 'na-med-esmeron' },
+              { content: 'na-med-anticholium' },
+              { content: 'na-med-anexate' },
+              { content: 'na-med-dmap' },
+              { content: 'na-med-dimeticon' },
+              { content: 'na-med-nathiosulfat' },
+              { content: 'na-med-atropin' },
+              { content: 'na-med-kohle' },
+              { content: 'na-med-methylenblau' },
+              { content: 'na-med-odansetron' },
+              { content: 'na-med-cimetiden' },
+              { content: 'na-med-oxytocin' },
+              { content: 'na-med-fenoterol' },
+              { content: 'na-med-calcium' },
+              { content: 'na-med-tranexam' },
             ],
           ignoreAtSearch: true
         },
@@ -145,6 +185,8 @@ const store = createStore({
             [
               { content: 'scheme-atmist' },
               { content: 'scheme-isobar' },
+              { content: 'scheme-zoabcde' },
+              { content: 'scheme-schockraumind' },
             ]
         },
         'list-scores':
@@ -154,7 +196,15 @@ const store = createStore({
               { content: 'score-wells' },
               { content: 'score-pesi' },
             ]
-        }
+        },
+        'list-bpr':
+        {
+          title: "Behandlungspfade", hint: "", category: "scheme", items:
+            [
+              { content: 'scheme-ezio' },
+              { content: 'scheme-einwilligung' },
+            ]
+        },
       },
       category:
       {
@@ -203,6 +253,7 @@ const store = createStore({
             [
               { list: 'list-schockraum' },
               { list: 'list-scores' },
+              { list: 'list-bpr' },
             ],
           nosort: true, nogroups: true
         },
@@ -211,7 +262,9 @@ const store = createStore({
           name: 'Rechner', icon: '$alarmPanelOutline', items:
             [
               { content: 'calc-doses' },
-              { content: 'calc-childspecs' }
+              { content: 'calc-childspecs' },
+              { content: 'calc-converter' },
+              { content: 'calc-schockindex' },
             ],
         }
       },
