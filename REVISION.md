@@ -19,6 +19,9 @@ CONTENT-COMPONENTS:
  - NaMedCalcium.vue                           | 12.12.2023 
  - NaMedFenoterol.vue                         | 12.12.2023 
  - NaMedTranexam.vue                          | 12.12.2023 
+ - CalcSchockindex.vue                        | 15.12.2023 
+ - SchemeEZIO.vue                             | 15.12.2023 
+ - SchemeEinwilligung.vue                     | 15.12.2023 
  - SchemeSchockraumInd.vue                    | 15.12.2023 
  - MedAmiodaron.vue                           | 20.11.2023 
  - MedAspirin.vue                             | 20.11.2023 
@@ -73,5 +76,4 @@ CONTENT-COMPONENTS:
  - MedDimetinden.vue                          | 26.11.2023 
  - CalcConverter.vue                          | 27.11.2023 
  - NaMedLorazepam.vue                         | 27.11.2023 
- - SchemeEZIO.vue                             | 27.11.2023 
  - SchemeZOABCDE.vue                          | 27.11.2023 

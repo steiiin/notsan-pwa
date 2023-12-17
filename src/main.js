@@ -86,6 +86,8 @@ const store = createStore({
         // Scores
         'score-wells': { title: "Wells-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScoreWells.vue')) },
         'score-pesi': { title: "sPESI-Score", subtitle: "Lungenembolie", hint: "", category: "score", component: g(() => import('./content/ScorePESI.vue')) },
+        'score-apgar': { title: "APGAR-Score", subtitle: "Postnatale Adaption", hint: "", category: "score", component: g(() => import('./content/ScoreAPGAR.vue')) },
+        'score-sofa': { title: "qSOFA", subtitle: "Sepsis-Score", hint: "", category: "score", component: g(() => import('./content/ScoreSOFA.vue')) },
       
         // Schemata
         'scheme-atmist': { title: "Traumaübergabe", subtitle: "ATMIST", hint: "", category: "scheme", component: g(() => import('./content/SchemeATMIST.vue')) },
@@ -94,13 +96,17 @@ const store = createStore({
         'scheme-ezio': { title: "Intraossärer Zugang", subtitle: "EZ-IO", hint: "", category: "scheme", component: g(() => import('./content/SchemeEZIO.vue')) },
         'scheme-schockraumind': { title: "Schockraumindikation", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/SchemeSchockraumInd.vue')) },
         'scheme-einwilligung': { title: "Einwilligungsfähigkeit", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/SchemeEinwilligung.vue')) },
+        'scheme-gefahren': { title: "Gefahrenabwehr", subtitle: "& Beurteilung", hint: "", category: "scheme", component: g(() => import('./content/SchemeGefahren.vue')) },
+        'scheme-opqrst': { title: "OPQRST", subtitle: "Erfassung akuter Symptomatik", hint: "", category: "scheme", component: g(() => import('./content/SchemeOPQRST.vue')) },
+        'scheme-sampler': { title: "SAMPLER", subtitle: "Secondary Survey", hint: "", category: "scheme", component: g(() => import('./content/SchemeSAMPLER.vue')) },
+        'scheme-vigilanz': { title: "WASB & GCS", subtitle: "Beurteilung der Bewusstseinslage", hint: "", category: "scheme", component: g(() => import('./content/SchemeVigilanz.vue')) },
+        'scheme-entlastung': { title: "Entlastungspunktion", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/SchemeEntlastung.vue')) },
       
         // Rechner
         'calc-childspecs': { title: "Kinderlineal", subtitle: "Gewicht, Normwerte & Dosierung", hint: "", category: "scheme", component: g(() => import('./content/CalcChildSpecs.vue')) },
         'calc-doses': { title: "Dosierungsrechner", subtitle: "Gewichtsadapt. Dosis & Einstellungen", hint: "", category: "scheme", component: g(() => import('./content/CalcDoses.vue')) },
         'calc-converter': { title: "Umrechner", subtitle: "Einheiten umrechnen", hint: "", category: "scheme", component: g(() => import('./content/CalcConverter.vue')) },
         'calc-schockindex': { title: "Schockindex", subtitle: "", hint: "", category: "scheme", component: g(() => import('./content/CalcSchockindex.vue')) },
-      
 
       },
       submenu:
@@ -179,6 +185,15 @@ const store = createStore({
           ignoreAtSearch: true
         },
 
+        'list-anamnese': 
+        {
+          title: "Anamnese", hint: "", category: "scheme", items:
+            [
+              { content: 'scheme-opqrst' },
+              { content: 'scheme-sampler' },
+              { content: 'scheme-vigilanz' },
+            ]
+        },
         'list-schockraum':
         {
           title: "Schockraum", hint: "", category: "scheme", items:
@@ -195,6 +210,8 @@ const store = createStore({
             [
               { content: 'score-wells' },
               { content: 'score-pesi' },
+              { content: 'score-apgar' },
+              { content: 'score-sofa' },
             ]
         },
         'list-bpr':
@@ -203,8 +220,11 @@ const store = createStore({
             [
               { content: 'scheme-ezio' },
               { content: 'scheme-einwilligung' },
+              { content: 'scheme-gefahren' },
+              { content: 'scheme-entlastung' },
             ]
         },
+
       },
       category:
       {
@@ -251,6 +271,7 @@ const store = createStore({
         {
           name: 'Schemata & Anweisungen', icon: '$fileTree', items:
             [
+              { list: 'list-anamnese' },
               { list: 'list-schockraum' },
               { list: 'list-scores' },
               { list: 'list-bpr' },

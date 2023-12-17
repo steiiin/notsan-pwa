@@ -44,14 +44,40 @@
   <nos-header title="Minderjährigkeit" :decent="true"></nos-header>
   <nos-paragraphs :decent="true">
     <template v-slot:text>
+      <p>Minderjährige sind grundsätzlich nicht einwilligungsfähig.</p>
       <p>
-        Minderjährige sind grundsätzlich nicht einwilligungsfähig.
+        Je älter die Person, desto eher sind Ausnahmen möglich. Eine Prüfung muss und kann nur im Einzelfall erfolgen.
       </p>
-      <p> 
-        Je älter die Person, desto eher sind Ausnahmen
-        möglich. Eine Prüfung muss und kann nur im Einzelfall erfolgen. Bei einer Entscheidungsfindung sind sowohl das
-        Alter wie auch die feststellbare Reife der zu betrachtenden Person und die Art und Schwere der Erkrankung bzw.
-        Situation zu berücksichtigen.
+      <p>
+        Bei einer Entscheidungsfindung sind sowohl das Alter wie auch die feststellbare Reife der Person und die Art und
+        Schwere der Erkrankung bzw. Situation zu berücksichtigen.
+      </p>
+      <p>Eine feste Altersgrenze gibt es nicht, als Anhaltswerte gelten:</p>
+    </template>
+  </nos-paragraphs>
+  <nos-list class="mt-n3">
+    <nos-li>Kinder &lt; 14J sind nicht einwilligungsfähig</nos-li>
+    <nos-li>Jugendliche &gt; sind oft schon einwilligungsfähig</nos-li>
+  </nos-list>
+  <nos-paragraphs :decent="true">
+    <template v-slot:text>
+      <p>
+        Besondere Konstellationen können sich ergeben, wenn die Eltern nicht einwilligungsfähiger Kinder und
+        Jugendlicher anwesend sind, das Kind bzw. die / der Jugendliche aber ausdrücklich die Schweigepflicht bezüglich
+        der erhobenen Befunde einfordert.
+      </p>
+    </template>
+  </nos-paragraphs>
+  <nos-list class="mt-n3">
+    <nos-li>Notarzt in diesem Falle hinzuziehen.</nos-li>
+  </nos-list>
+
+  <nos-paragraphs :decent="true">
+    <template v-slot:text>
+      <p>
+        Sind die <b>Eltern oder der Vormund</b> nicht einwilligungsfähiger Kinder und Jugendlicher nicht anwesend bzw.
+        erreichbar, ist <b>wie bei Erwachsenen mit rechtlich nicht wirksamer Behandlungs- und/oder Transportverweigerung</b> zu
+        verfahren.
       </p>
     </template>
   </nos-paragraphs>
