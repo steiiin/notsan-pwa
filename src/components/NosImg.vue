@@ -1,17 +1,20 @@
 <template>
-  <img class="nos-img" :src="src" />
+  <img
+    class="nos-img"
+    :src="src"
+  >
 </template>
 
 <script>
-  export default {
-    name: "NosImg",
-    props: {
-      src: {
-        type: String,
-        required: true,
-      },
-    },
-  };
+export default {
+  name: 'NosImg',
+  props: {
+    src: {
+      type: String,
+      required: true
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

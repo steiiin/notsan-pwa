@@ -9,8 +9,18 @@
 - Schemata
     - Schockraum
     - Beurteilung
-        - [ ] ABCDE
     - Scores
     - Behandlungspfade
-        - [ ] CPAP                      (S.28)
         - [ ] EKG
+            - [ ] 12-Kanal
+            - [ ] Rückenableitung
+            - [ ] Lewis-Ableitung
+        - [ ] Flexüledurchflussraten
+        - [ ] Arterieller Verschluss
+
+- Rechner
+    - [ ] Spritzenrechner
+    - [ ] Perfusorrechner
+    - [ ] Medikamentensuche
+        - MedPlan-Scanner
+        - Gelbe Liste

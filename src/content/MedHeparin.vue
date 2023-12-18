@@ -1,20 +1,23 @@
 <!-------------------------------------------------------------------------------------------------
-{ 
-  "Revision": "20.11.2023"
+{
+
 }
 -------------------------------------------------------------------------------------------------->
 <template>
-  <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
-  
-  <nos-header title="Indikationen"></nos-header>
+  <nos-title
+    :headline="meta.title"
+    :subtitle="meta.subtitle"
+  />
+
+  <nos-header title="Indikationen" />
   <nos-list>
     <nos-li>Akutes Koronarsyndrom</nos-li>
     <nos-li>Akuter peripherer Arterieller Verschluss</nos-li>
     <nos-li>Lungenembolie (nach Wells-Score)</nos-li>
-    <nos-btn-link content="score-wells"></nos-btn-link>
+    <nos-btn-link content="score-wells" />
   </nos-list>
 
-  <nos-header title="Kontraindikationen"></nos-header>
+  <nos-header title="Kontraindikationen" />
   <nos-list contragroup="intolerable">
     <nos-li>Orale Antikoagulation als Dauermedikation, außer ASS</nos-li>
     <nos-li>Unverträglichkeit ggb. Heparin</nos-li>
@@ -41,81 +44,89 @@
     <nos-li>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li>
   </nos-list>
 
-  <nos-header title="Nebenwirkungen"></nos-header>
+  <nos-header title="Nebenwirkungen" />
   <nos-list>
     <nos-li>Erhöhte Blutungsneigung</nos-li>
   </nos-list>
 
-  <nos-header title="Dosierung &amp;Anwendung"></nos-header>
+  <nos-header title="Dosierung &amp;Anwendung" />
   <nos-table>
     <nos-row-caption>
-      <template v-slot:caption>Größen</template>
-      <template v-slot:content>
-        <nos-med-label type="ampulle">1 Ampulle Heparin</nos-med-label>
+      <template #caption>
+        Größen
+      </template>
+      <template #content>
+        <nos-med-label type="ampulle">
+          1 Ampulle Heparin
+        </nos-med-label>
         <nos-med-dose
           :decent="true"
           :items="[{ unit: '5000I.E.', per: '0,2ml' }]"
-        ></nos-med-dose>
+        />
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="ACS, Arterieller Verschluss &amp; Lungenembolie" :decent="true" icon="$hospitalBox" />
+  <nos-header
+    title="ACS, Arterieller Verschluss &amp; Lungenembolie"
+    :decent="true"
+    icon="$hospitalBox"
+  />
   <nos-table>
     <nos-row-caption>
-      <template v-slot:caption>(i.v.)-Dosis</template>
-      <template v-slot:content>
-        <nos-med-dose
-          :items="[{ label: 'Ab 12J', unit: '5000I.E. (1 Ampulle)', color: 'adult' }]"
-        ></nos-med-dose>
-        <v-divider class="my-2"></v-divider>
-        <p>
-          Totraumfreie Spritze verwenden, <br />
+      <template #caption>
+        (i.v.)-Dosis
+      </template>
+      <template #content>
+        <nos-med-dose :items="[{ label: 'Ab 12J', unit: '5000I.E. (1 Ampulle)', color: 'adult' }]" />
+        <v-divider class="my-2" />
+        <div-paragraph>
+          Totraumfreie Spritze verwenden, <br>
           oder auf größere Spritze aufziehen.
-        </p>
+        </div-paragraph>
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Pharmakokinetik"></nos-header>
+  <nos-header title="Pharmakokinetik" />
   <nos-med-effects>
-    <template v-slot:onset>sofort</template>
-    <template v-slot:span>~4h</template>
+    <template #onset>
+      sofort
+    </template>
+    <template #span>
+      ~4h
+    </template>
   </nos-med-effects>
 
-  <nos-header title="Wirkweise"></nos-header>
+  <nos-header title="Wirkweise" />
   <nos-paragraphs>
-    <template v-slot:header
-      >Verhindert den endgültigen Wundverschluss und hemmt die sekundäre
-      Hämostase.</template
-    >
-    <template v-slot:text>
-      <p>
-        Es bildet mit verschiedenen Proteinen Komplexe, allen voran mit Antithrombin III
-        (ATIII), welches eine etwa 700fache Aktivitätssteigerung erfährt. Aktiviertes
-        ATIII hemmt Serinproteasen und damit die Gerinnungsfaktoren XIIa, XIa, Xa, VIIa,
-        IIa (Thrombin). Durch diese Wirkung wird die plasmatische Gerinnung gehemmt. In
-        hohen Dosen inaktiviert Heparin überschüssig gebildetes Thrombin und verhindert
-        die Umwandlung von Fibrinogen zu Fibrin.
-      </p>
+    <template #header>
+      Verhindert den endgültigen Wundverschluss und hemmt die sekundäre Hämostase.
+    </template>
+    <template #text>
+      <div-paragraph>
+        Es bildet mit verschiedenen Proteinen Komplexe, allen voran mit Antithrombin III (ATIII), welches eine etwa 700fache Aktivitätssteigerung erfährt. Aktiviertes ATIII hemmt
+        Serinproteasen und damit die Gerinnungsfaktoren XIIa, XIa, Xa, VIIa, IIa (Thrombin). Durch diese Wirkung wird die plasmatische Gerinnung gehemmt. In hohen Dosen inaktiviert
+        Heparin überschüssig gebildetes Thrombin und verhindert die Umwandlung von Fibrinogen zu Fibrin.
+      </div-paragraph>
     </template>
   </nos-paragraphs>
 </template>
 
 <script>
-import NosTitle from "../components/NosTitle.vue";
-import NosHeader from "../components/NosHeader.vue";
-import NosParagraphs from "../components/NosParagraphs.vue";
-import NosList from "../components/NosList.vue";
-import NosLi from "../components/NosLi.vue";
-import NosTable from "../components/NosTable.vue";
-import NosRowCaption from "../components/NosRowCaption.vue";
-import NosMedLabel from "../components/NosMedLabel.vue";
-import NosMedDose from "../components/NosMedDose.vue";
-import NosMedEffects from "../components/NosMedEffects.vue";
+import NosTitle from '../components/NosTitle.vue'
+import NosHeader from '../components/NosHeader.vue'
+import NosParagraphs from '../components/NosParagraphs.vue'
+import NosList from '../components/NosList.vue'
+import NosLi from '../components/NosLi.vue'
+import NosTable from '../components/NosTable.vue'
+import NosRowCaption from '../components/NosRowCaption.vue'
+import NosMedLabel from '../components/NosMedLabel.vue'
+import NosMedDose from '../components/NosMedDose.vue'
+import NosMedEffects from '../components/NosMedEffects.vue'
 
 export default {
-  name: "MedHeparin",
+  name: 'MedHeparin',
   components: {
     NosTitle,
     NosHeader,
@@ -126,13 +137,13 @@ export default {
     NosRowCaption,
     NosMedLabel,
     NosMedDose,
-    NosMedEffects,
+    NosMedEffects
   },
   computed: {
-    meta() {
-      return this.$store.getters.getContentMeta("med-heparin");
-    },
+    meta () {
+      return this.$store.getters.getContentMeta('med-heparin')
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>

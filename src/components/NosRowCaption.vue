@@ -1,38 +1,43 @@
 <template>
   <div class="nos-row-caption">
-    <div class="nos-row-caption__caption" :style="groupGrad">
-      <slot name="caption"></slot>
+    <div
+      class="nos-row-caption__caption"
+      :style="groupGrad"
+    >
+      <slot name="caption" />
     </div>
-    <div class="nos-row-caption__content"><slot name="content"></slot></div>
+    <div class="nos-row-caption__content">
+      <slot name="content" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosRowCaption",
+  name: 'NosRowCaption',
   props: {
     group: {
       type: String,
       required: false,
-      default: "transparent",
-    },
+      default: 'transparent'
+    }
   },
   computed: {
-    groupGrad() {
-      let color = "transparent";
+    groupGrad () {
+      let color = 'transparent'
       switch (this.group) {
-        case "l1":
-          color = "#EF5350"; /* red */
-          break;
-        case "l2":
-          color = "#42A5F5"; /* blue */
-          break;
-        case "l3":
-          color = "#9CCC65"; /* green */
-          break;
-        case "l4":
-          color = "#FFEA00"; /* yellow */
-          break;
+        case 'l1':
+          color = '#EF5350' /* red */
+          break
+        case 'l2':
+          color = '#42A5F5' /* blue */
+          break
+        case 'l3':
+          color = '#9CCC65' /* green */
+          break
+        case 'l4':
+          color = '#FFEA00' /* yellow */
+          break
       }
 
       return (
@@ -40,24 +45,24 @@ export default {
         linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5) 2%, rgba(255, 255, 255, 0.5) 98%, rgba(255, 255, 255, 1)),
         linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 95%, ` +
         color +
-        ` 98%, ` +
+        ' 98%, ' +
         color +
         ` 100%, rgba(255, 255, 255, 0) 100%);
         background-blend-mode: normal, normal;`
-      );
-    },
-  },
-};
+      )
+    }
+  }
+}
 </script>
 
 <style>
 :root {
 }
-.nos-row-caption p {
+.nos-row-caption .paragraph {
   line-height: 1.1rem;
   margin-bottom: 8px;
 }
-.nos-row-caption p:last-child {
+.nos-row-caption .paragraph:last-child {
   margin-bottom: 0;
 }
 .nos-row-caption__content .nos-list {

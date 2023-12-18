@@ -1,26 +1,28 @@
 <template>
-  <div class="nos-row-result"
-    :class="'bg-'+color">
+  <div
+    class="nos-row-result"
+    :class="'bg-'+color"
+  >
     <div class="nos-row-result__heading">
-      <slot name="heading"></slot>
+      <slot name="heading" />
     </div>
     <div class="nos-row-result__text">
-      <slot name="text"></slot>
+      <slot name="text" />
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "NosRowCaptionResult",
-    props: {
-      color: {
-        type: String,
-        required: false,
-        default: 'grey-lighten-1'
-      }
+export default {
+  name: 'NosRowCaptionResult',
+  props: {
+    color: {
+      type: String,
+      required: false,
+      default: 'grey-lighten-1'
     }
-  };
+  }
+}
 </script>
 
 <style lang="scss" scoped>

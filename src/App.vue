@@ -1,31 +1,32 @@
 <template>
   <v-app>
     <v-main>
-      <router-view></router-view>
+      <router-view />
 
-      <nos-app-nag 
-        :showUpdateNag="updateExists"
-        :showInstallNag="installPromoted"
+      <nos-app-nag
+        :show-update-nag="updateExists"
+        :show-install-nag="installPromoted"
         @updateclick="refreshApp()"
-        @installclick="promptInstall()"></nos-app-nag>
+        @installclick="promptInstall()"
+      />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import NosAppNag from "./components/NosAppNag.vue"
-import update from "./mixins/update";
-import install from "./mixins/install";
+import NosAppNag from './components/NosAppNag.vue'
+import update from './mixins/update'
+import install from './mixins/install'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     NosAppNag
   },
-  data() {
-    return {};
-  },
   mixins: [update, install],
-};
+  data () {
+    return {}
+  }
+}
 </script>
 
 <style>
@@ -33,21 +34,37 @@ body {
   font-family: "Mukta";
 }
 
-.nos-u {
+/* special-tags */
+div-paragraph {
+  display: block;
+  margin-top: 8px;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+span-u {
+  display: inline;
+  text-decoration: underline;
+}
+div-u {
+  display: block;
   text-decoration: underline;
 }
 
-.nos-mono {
+span-mono {
+  display: inline;
   font-family: monospace;
   font-size: 0.9rem;
   line-height: 1.1rem;
 }
-.nos-colorbox {
-  display: inline-block;
-  width: 30px;
-  line-height: 1;
-  border: 1px solid black;
+div-mono {
+  display: block;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.1rem;
 }
+
 q {
   opacity: 0.9;
   font-style: italic;

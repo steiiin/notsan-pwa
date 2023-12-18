@@ -1,17 +1,20 @@
 <!-------------------------------------------------------------------------------------------------
-{ 
-  "Revision": "20.11.2023"
+{
+
 }
 -------------------------------------------------------------------------------------------------->
 <template>
-  <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
-  
-  <nos-header title="Indikationen"></nos-header>
+  <nos-title
+    :headline="meta.title"
+    :subtitle="meta.subtitle"
+  />
+
+  <nos-header title="Indikationen" />
   <nos-list>
     <nos-li>Kardiales Lungenödem</nos-li>
   </nos-list>
 
-  <nos-header title="Kontraindikationen"></nos-header>
+  <nos-header title="Kontraindikationen" />
   <nos-list contragroup="intolerable">
     <nos-li> Unverträglichkeit ggb. Furosemid &amp; andere Schleifendiuretika </nos-li>
   </nos-list>
@@ -28,92 +31,105 @@
     <nos-li>Kinder &lt; 12 Jahre (durch SAA untersagt)</nos-li>
   </nos-list>
 
-  <nos-header title="Nebenwirkungen"></nos-header>
+  <nos-header title="Nebenwirkungen" />
   <nos-list>
-    <nos-li variant="cave">Blutdruckabfall</nos-li>
+    <nos-li variant="cave">
+      Blutdruckabfall
+    </nos-li>
     <nos-li>Kopfschmerzen, Schwindel</nos-li>
-    <nos-li variant="todo">Flachere Lagerung</nos-li>
+    <nos-li variant="todo">
+      Flachere Lagerung
+    </nos-li>
   </nos-list>
   <nos-list>
     <nos-li>Ohrengeräusche, wenn zu schnell appliziert</nos-li>
     <nos-li>Hypovolämie</nos-li>
     <nos-li>Elektrolytverschiebung</nos-li>
   </nos-list>
-  
-  <nos-header title="Dosierung &amp;Anwendung"></nos-header>
+
+  <nos-header title="Dosierung &amp;Anwendung" />
   <nos-table>
     <nos-row-caption>
-      <template v-slot:caption>Größen</template>
-      <template v-slot:content>
-        <nos-med-label type="ampulle">1 Ampulle Furosemid</nos-med-label>
+      <template #caption>
+        Größen
+      </template>
+      <template #content>
+        <nos-med-label type="ampulle">
+          1 Ampulle Furosemid
+        </nos-med-label>
         <nos-med-dose
           :decent="true"
           :items="[{ unit: '20mg', per: '2ml' }]"
-        ></nos-med-dose>
+        />
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Kardiales Lungenödem" :decent="true" icon="$hospitalBox" />
+  <nos-header
+    title="Kardiales Lungenödem"
+    :decent="true"
+    icon="$hospitalBox"
+  />
   <nos-table>
     <nos-row-caption>
-      <template v-slot:caption>(i.v.)-Dosis</template>
-      <template v-slot:content>
-        <nos-med-dose
-          :items="[{ label: 'Ab 12J', unit: '20mg (1 Ampulle)', color: 'adult' }]"
-        ></nos-med-dose>
-        <v-divider class="my-2"></v-divider>
-        <p>Langsam spritzen.</p>
-        <p class="nos-u">Einmalige Repetition nach 15min möglich</p>
+      <template #caption>
+        (i.v.)-Dosis
+      </template>
+      <template #content>
+        <nos-med-dose :items="[{ label: 'Ab 12J', unit: '20mg (1 Ampulle)', color: 'adult' }]" />
+        <v-divider class="my-2" />
+        <div-paragraph> Langsam spritzen. </div-paragraph>
+        <div-paragraph>
+          <div-u>Einmalige Repetition nach 15min möglich</div-u>
+        </div-paragraph>
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Pharmakokinetik"></nos-header>
+  <nos-header title="Pharmakokinetik" />
   <nos-med-effects>
-    <template v-slot:onset>~2-15min</template>
-    <template v-slot:span>~2h</template>
+    <template #onset>
+      ~2-15min
+    </template>
+    <template #span>
+      ~2h
+    </template>
   </nos-med-effects>
 
-  <nos-header title="Wirkweise"></nos-header>
+  <nos-header title="Wirkweise" />
   <nos-paragraphs>
-    <template v-slot:heading>
+    <template #heading>
       Starkes, kurz und schnell wirkendes Schleifendiuretikum.
     </template>
-    <template v-slot:text>
-      <p>
-        Es wirkt im aufsteigenden Teil der Henle-Schleife und blockiert dort den
-        Na+/2Cl-/K+-Ionen-Carrier und damit die Rückresorption dieser Ionen. Durch die
-        fehlende Rückresorption wird mehr Natrium ausgeschieden, welches durch den
-        osmotischen Druck Wasser bindet. Hierdurch steigt die Menge an Harn und es werden
-        vermehrt Elektrolyte und Wasser ausgeschieden.
-      </p>
-      <p>
-        Bei einer Herzinsuffizienz führt Furosemid zu einer Senkung der Vorlast durch
-        Erweiterung der venösen Kapazitäten. Es wirkt blutdrucksenkend infolge einer
-        gesteigerten Natriumchlorid-Ausscheidung und einer verminderten Ansprechbarkeit
-        der glatten Gefäßmuskulatur auf vasokonstriktorische Reize infolge einer
-        Blutvolumenabnahme. Der Einsatz im Rahmen des hypertensiven Notfalls ist möglich,
-        im Rettungsdienst jedoch unüblich.
-      </p>
+    <template #text>
+      <div-paragraph>
+        Es wirkt im aufsteigenden Teil der Henle-Schleife und blockiert dort den Na+/2Cl-/K+-Ionen-Carrier und damit die Rückresorption dieser Ionen. Durch die fehlende
+        Rückresorption wird mehr Natrium ausgeschieden, welches durch den osmotischen Druck Wasser bindet. Hierdurch steigt die Menge an Harn und es werden vermehrt Elektrolyte und
+        Wasser ausgeschieden.
+      </div-paragraph>
+      <div-paragraph>
+        Bei einer Herzinsuffizienz führt Furosemid zu einer Senkung der Vorlast durch Erweiterung der venösen Kapazitäten. Es wirkt blutdrucksenkend infolge einer gesteigerten
+        Natriumchlorid-Ausscheidung und einer verminderten Ansprechbarkeit der glatten Gefäßmuskulatur auf vasokonstriktorische Reize infolge einer Blutvolumenabnahme. Der Einsatz
+        im Rahmen des hypertensiven Notfalls ist möglich, im Rettungsdienst jedoch unüblich.
+      </div-paragraph>
     </template>
   </nos-paragraphs>
 </template>
 
 <script>
-import NosTitle from "../components/NosTitle.vue";
-import NosHeader from "../components/NosHeader.vue";
-import NosParagraphs from "../components/NosParagraphs.vue";
-import NosList from "../components/NosList.vue";
-import NosLi from "../components/NosLi.vue";
-import NosTable from "../components/NosTable.vue";
-import NosRowCaption from "../components/NosRowCaption.vue";
-import NosMedLabel from "../components/NosMedLabel.vue";
-import NosMedDose from "../components/NosMedDose.vue";
-import NosMedEffects from "../components/NosMedEffects.vue";
+import NosTitle from '../components/NosTitle.vue'
+import NosHeader from '../components/NosHeader.vue'
+import NosParagraphs from '../components/NosParagraphs.vue'
+import NosList from '../components/NosList.vue'
+import NosLi from '../components/NosLi.vue'
+import NosTable from '../components/NosTable.vue'
+import NosRowCaption from '../components/NosRowCaption.vue'
+import NosMedLabel from '../components/NosMedLabel.vue'
+import NosMedDose from '../components/NosMedDose.vue'
+import NosMedEffects from '../components/NosMedEffects.vue'
 
 export default {
-  name: "MedFurosemid",
+  name: 'MedFurosemid',
   components: {
     NosTitle,
     NosHeader,
@@ -124,13 +140,13 @@ export default {
     NosRowCaption,
     NosMedLabel,
     NosMedDose,
-    NosMedEffects,
+    NosMedEffects
   },
   computed: {
-    meta() {
-      return this.$store.getters.getContentMeta("med-furosemid");
-    },
+    meta () {
+      return this.$store.getters.getContentMeta('med-furosemid')
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>

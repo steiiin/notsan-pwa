@@ -1,29 +1,33 @@
 <template>
-  <div class="nos-paragraphs"
-    :class="{ 'nos-paragraphs-decent': decent }">
-    <div class="nos-paragraphs-heading" v-if="headingExisting">
-      <slot name="heading"></slot>
+  <div
+    class="nos-paragraphs"
+    :class="{ 'nos-paragraphs-decent': decent }"
+  >
+    <div
+      v-if="headingExisting"
+      class="nos-paragraphs-heading"
+    >
+      <slot name="heading" />
     </div>
     <div class="nos-paragraphs-text">
-      <slot name="text"></slot>
+      <slot name="text" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosParagraphs",
+  name: 'NosParagraphs',
   props: {
     decent: {
       type: Boolean,
-      required: false,
       default: false
     }
   },
   computed: {
-    headingExisting() { return this.$slots.hasOwnProperty('heading'); }
-  },
-};
+    headingExisting () { return Object.prototype.hasOwnProperty.call(this.$slots, 'heading') }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,7 +45,7 @@ export default {
     font-weight: normal;
     line-height: 1.3;
   }
-  & .nos-paragraphs-text :deep(p) {
+  & .nos-paragraphs-text :deep(div-paragraph) {
     margin-top: 12px;
   }
 

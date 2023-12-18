@@ -11,48 +11,52 @@
         type === 'nadel',
     }"
   >
-    <v-icon :icon="icon" size="small" class="ps-0 pe-1"></v-icon>
-    <slot></slot>
+    <v-icon
+      :icon="icon"
+      size="small"
+      class="ps-0 pe-1"
+    />
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosMedLabel",
+  name: 'NosMedLabel',
   props: {
     type: {
       type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      icon: "",
-    };
-  },
-  mounted() {
-    switch (this.type) {
-      case "suppositorium":
-        this.icon = "$pill";
-        break;
-      case "spray":
-        this.icon = "$spray";
-        break;
-      case "infusion":
-        this.icon = "$ivBag";
-        break;
-      case "saft":
-        this.icon = "$lotion";
-        break;
-      case "nadel":
-        this.icon = "$needle";
-        break;
-      default:
-        this.icon = "$flask";
-        break;
+      required: true
     }
   },
-};
+  data () {
+    return {
+      icon: ''
+    }
+  },
+  mounted () {
+    switch (this.type) {
+      case 'suppositorium':
+        this.icon = '$pill'
+        break
+      case 'spray':
+        this.icon = '$spray'
+        break
+      case 'infusion':
+        this.icon = '$ivBag'
+        break
+      case 'saft':
+        this.icon = '$lotion'
+        break
+      case 'nadel':
+        this.icon = '$needle'
+        break
+      default:
+        this.icon = '$flask'
+        break
+    }
+  }
+}
 </script>
 
 <style>

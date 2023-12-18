@@ -1,25 +1,42 @@
 <template>
-  <v-btn-toggle :rounded="0" :elevation="1" color="#000" mandatory divided>
-    <v-btn v-for="(item, index) in items" 
-      :ripple="true" @click="setState(item.state)"
-    >{{ item.label }}</v-btn>
+  <v-btn-toggle
+    :rounded="0"
+    :elevation="1"
+    color="#000"
+    mandatory
+    divided
+  >
+    <v-btn
+      v-for="(item) in items"
+      :key="item.label"
+      :ripple="true"
+      @click="setState(item.state)"
+    >
+      {{ item.label }}
+    </v-btn>
   </v-btn-toggle>
 </template>
 
 <script>
-  export default {
-    name: "NosBtnGroup",
-    emits: ["update:modelValue"],
-    props: {
-      modelValue: String,
-      items: Array
+export default {
+  name: 'NosBtnGroup',
+  props: {
+    modelValue: {
+      type: String,
+      required: true
     },
-    methods: {
-      setState: function (state) {
-        this.$emit("update:modelValue", state);
-      },
-    },
-  };
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    setState: function (state) {
+      this.$emit('update:modelValue', state)
+    }
+  }
+}
 </script>
 
 <style>

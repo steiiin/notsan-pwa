@@ -1,28 +1,28 @@
 <template>
   <div class="nos-tab-row-multi">
     <div class="nos-tab-row-multi__caption">
-      <slot name="caption"></slot>
+      <slot name="caption" />
     </div>
     <div class="nos-tab-row-multi__slot">
-      <slot name="t1"></slot>
+      <slot name="t1" />
     </div>
     <div class="nos-tab-row-multi__slot">
-      <slot name="t2"></slot>
+      <slot name="t2" />
     </div>
     <div class="nos-tab-row-multi__slot">
-      <slot name="t3"></slot>
+      <slot name="t3" />
     </div>
     <div class="nos-tab-row-multi__slot">
-      <slot name="t4"></slot>
+      <slot name="t4" />
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "NosRowCaptionMulti",
-    computed: {},
-  };
+export default {
+  name: 'NosRowCaptionMulti',
+  computed: {}
+}
 </script>
 
 <style>

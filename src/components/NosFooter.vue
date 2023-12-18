@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import { getBuildDate, getBuildVersion, getSaaVersion } from "@/plugins/version";
+import { getBuildDate, getBuildVersion, getSaaVersion } from '@/plugins/version'
 export default {
-  name: "NosFooter",
+  name: 'NosFooter',
   methods: {
     getBuildDate,
     getBuildVersion,
-    getSaaVersion,
-  },
-};
+    getSaaVersion
+  }
+}
 </script>
 
 <style lang="scss" scoped>

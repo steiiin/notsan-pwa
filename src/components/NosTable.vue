@@ -1,14 +1,14 @@
 <template>
   <div class="mb-4 mx-4">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosTable",
-  props: {},
-};
+  name: 'NosTable',
+  props: {}
+}
 </script>
 
 <style>

@@ -1,25 +1,28 @@
 <template>
   <v-fade-transition>
-    <v-btn 
-      :color="color" 
+    <v-btn
+      :color="color"
       icon=""
       :ripple="true"
       rounded="xl"
       :elevation="1"
 
       @click="$emit('click')"
-    ></v-btn>
+    />
   </v-fade-transition>
 </template>
 
 <script>
 export default {
-  name: "NosBtnChip",
-  emits: [ 'click' ],
+  name: 'NosBtnChip',
   props: {
-    color: String,
+    color: {
+      type: String,
+      default: null
+    }
   },
-};
+  emits: ['click']
+}
 </script>
 
 <style>

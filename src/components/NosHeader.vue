@@ -8,31 +8,36 @@
       'bg-grey-lighten-3': decent,
     }"
   >
-    <v-icon v-if="icon" :icon="icon" size="small" class="ms-n1 me-1 nos-header__image" />
+    <v-icon
+      v-if="icon"
+      :icon="icon"
+      size="small"
+      class="ms-n1 me-1 nos-header__image"
+    />
     <span>{{ title }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosHeader",
+  name: 'NosHeader',
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
     decent: {
       type: Boolean,
       required: false,
-      default: false,
+      default: false
     },
     icon: {
       type: String,
       required: false,
-      default: null,
-    },
-  },
-};
+      default: null
+    }
+  }
+}
 </script>
 
 <style>

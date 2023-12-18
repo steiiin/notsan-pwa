@@ -1,86 +1,100 @@
 <!-------------------------------------------------------------------------------------------------
-{ 
-  "Revision": "20.11.2023"
+{
+
 }
 -------------------------------------------------------------------------------------------------->
 <template>
-  <nos-title :headline="meta.title" :subtitle="meta.subtitle"></nos-title>
-  
-  <nos-header title="Indikationen"></nos-header>
+  <nos-title
+    :headline="meta.title"
+    :subtitle="meta.subtitle"
+  />
+
+  <nos-header title="Indikationen" />
   <nos-list>
     <nos-li>Unspezifische Kreislaufunterstützung</nos-li>
   </nos-list>
 
-  <nos-header title="Wirkweise"></nos-header>
+  <nos-header title="Wirkweise" />
   <nos-paragraphs :decent="true">
-    <template v-slot:heading></template>
-    <template v-slot:text>
-      <p>
+    <template #heading />
+    <template #text>
+      <div-paragraph>
         Akrinor wirkt hauptsächlich auf β-Adrenorezeptoren und in geringerem Maße auf α-Adrenorezeptoren. Es steigert die Herzleistung und bewirkt eine mäßige Vasokonstriktion.
-      </p>
-      <p>
+      </div-paragraph>
+      <div-paragraph>
         Primär eingesetzt bei Hypotonie und Kreislaufstörungen. Es erhöht den Blutdruck und das Herzminutenvolumen, ohne die Herzfrequenz stark zu beeinflussen.
-      </p>
-      <p>
-        Akrinor ist besonders nützlich in Situationen, in denen ein schneller und kontrollierter Anstieg des Blutdrucks erforderlich ist, ohne eine ausgeprägte Tachykardie zu verursachen.
-      </p>
+      </div-paragraph>
+      <div-paragraph>
+        Akrinor ist besonders nützlich in Situationen, in denen ein schneller und kontrollierter Anstieg des Blutdrucks erforderlich ist, ohne eine ausgeprägte Tachykardie zu
+        verursachen.
+      </div-paragraph>
     </template>
   </nos-paragraphs>
 
-  <nos-header title="Anwendung"></nos-header>
+  <nos-header title="Anwendung" />
   <nos-table>
     <nos-row-caption>
-      <template v-slot:caption>Größen</template>
-      <template v-slot:content>
-        <nos-med-label type="ampulle">1 Ampulle &bdquo;Akrinor&rdquo;</nos-med-label>
+      <template #caption>
+        Größen
+      </template>
+      <template #content>
+        <nos-med-label type="ampulle">
+          1 Ampulle &bdquo;Akrinor&rdquo;
+        </nos-med-label>
         <div>
-          <span class="nos-mono">&nbsp;200mg</span> Cafedrin<br />
-          <span class="nos-mono">+10mg</span> Theodrenalin
+          <span-mono>&nbsp;200mg</span-mono> Cafedrin<br>
+          <span-mono>+10mg</span-mono> Theodrenalin
         </div>
-        <div class="nos-mono">&nbsp;2ml Ampulle</div>
+        <div-mono>&nbsp;2ml Ampulle</div-mono>
       </template>
     </nos-row-caption>
     <nos-row-caption>
-      <template v-slot:caption>(i.v.)-Dosis</template>
-      <template v-slot:content>
-        <p>
-          <div class="nos-u">Fraktioniert nach Wirkung</div>
-          <div>Ampulle auf <span class="nos-mono">10ml</span> aufziehen.</div>
-          <div>Initial <span class="nos-mono"><b>2ml</b></span></div>
+      <template #caption>
+        (i.v.)-Dosis
+      </template>
+      <template #content>
+        <div-paragraph>
+          <div-u>Fraktioniert nach Wirkung</div-u>
+          <div>Ampulle auf <span-mono>10ml</span-mono> aufziehen.</div>
+          <div>
+            Initial <span-mono><b>2ml</b></span-mono>
+          </div>
           <div>Alle 60s repetieren.</div>
-        </p>
-        <p>
-          <div class="nos-u">Intramuskuläre Gabe</div>
-          <div><span class="nos-mono"><b>2ml</b> (1 Ampulle)</span> i.m.</div>
-        </p>
+        </div-paragraph>
+        <div-paragraph>
+          <div-u>Intramuskuläre Gabe</div-u>
+          <div>
+            <span-mono><b>2ml</b> (1 Ampulle)</span-mono> i.m.
+          </div>
+        </div-paragraph>
       </template>
     </nos-row-caption>
   </nos-table>
 
-  <nos-header title="Pharmakokinetik"></nos-header>
+  <nos-header title="Pharmakokinetik" />
   <nos-med-effects>
-    <template v-slot:onset>~5min</template>
-    <template v-slot:span>~1h</template>
+    <template #onset>
+      ~5min
+    </template>
+    <template #span>
+      ~1h
+    </template>
   </nos-med-effects>
-
-  
 </template>
 
 <script>
-
-import NosTitle from "../components/NosTitle.vue";
-import NosHeader from "../components/NosHeader.vue";
-import NosParagraphs from "../components/NosParagraphs.vue";
-import NosList from "../components/NosList.vue";
-import NosLi from "../components/NosLi.vue";
-import NosTable from "../components/NosTable.vue";
-import NosRowCaption from "../components/NosRowCaption.vue";
-import NosMedLabel from "../components/NosMedLabel.vue";
-import NosMedDose from "../components/NosMedDose.vue";
-import NosMedEffects from "../components/NosMedEffects.vue";
+import NosTitle from '../components/NosTitle.vue'
+import NosHeader from '../components/NosHeader.vue'
+import NosParagraphs from '../components/NosParagraphs.vue'
+import NosList from '../components/NosList.vue'
+import NosLi from '../components/NosLi.vue'
+import NosTable from '../components/NosTable.vue'
+import NosRowCaption from '../components/NosRowCaption.vue'
+import NosMedLabel from '../components/NosMedLabel.vue'
+import NosMedEffects from '../components/NosMedEffects.vue'
 
 export default {
-  name: "NaMedAkrinor",
+  name: 'NaMedAkrinor',
   components: {
     NosTitle,
     NosHeader,
@@ -90,14 +104,13 @@ export default {
     NosTable,
     NosRowCaption,
     NosMedLabel,
-    NosMedDose,
     NosMedEffects
   },
   computed: {
-    meta() {
-      return this.$store.getters.getContentMeta("na-med-akrinor");
-    },
+    meta () {
+      return this.$store.getters.getContentMeta('na-med-akrinor')
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>

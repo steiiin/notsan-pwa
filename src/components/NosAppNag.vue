@@ -1,26 +1,30 @@
 <template>
-  <footer v-if="showUpdateNag || showInstallNag"
-    class="nos-appnag">
-    <v-btn v-if="showUpdateNag"
-      color="success" 
+  <footer
+    v-if="showUpdateNag || showInstallNag"
+    class="nos-appnag"
+  >
+    <v-btn
+      v-if="showUpdateNag"
+      color="success"
       class="my-2"
       @click="$emit('updateclick')"
-    >Neue Version installieren</v-btn>
-    <v-btn v-if="showInstallNag"
-      color="error" 
+    >
+      Neue Version installieren
+    </v-btn>
+    <v-btn
+      v-if="showInstallNag"
+      color="error"
       class="my-2"
       @click="$emit('installclick')"
-    >Als App installieren</v-btn>
+    >
+      Als App installieren
+    </v-btn>
   </footer>
 </template>
 
 <script>
 export default {
-  name: "NosAppNag",
-  emits: [
-    'updateclick',
-    'installclick'
-  ],
+  name: 'NosAppNag',
   props: {
     showUpdateNag: {
       type: Boolean,
@@ -33,7 +37,11 @@ export default {
       default: false
     }
   },
-};
+  emits: [
+    'updateclick',
+    'installclick'
+  ]
+}
 </script>
 
 <style lang="scss" scoped>

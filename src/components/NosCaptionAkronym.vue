@@ -1,14 +1,20 @@
 <template>
   <div class="nos-caption-akro">
-    <div class="nos-caption-akro__letter"
-      :class="'text-'+color">{{ letter }}</div>
-    <div class="nos-caption-akro__meaning">{{ meaning }}</div>
+    <div
+      class="nos-caption-akro__letter"
+      :class="'text-'+color"
+    >
+      {{ letter }}
+    </div>
+    <div class="nos-caption-akro__meaning">
+      {{ meaning }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosCaptionAkronym",
+  name: 'NosCaptionAkronym',
   props: {
     letter: {
       type: String,
@@ -16,14 +22,15 @@ export default {
     },
     meaning: {
       type: String,
+      default: null
     },
     color: {
       type: String,
       required: false,
       default: 'black'
     }
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>

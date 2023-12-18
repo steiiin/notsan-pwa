@@ -5,15 +5,15 @@
       indeterminate
       :size="75"
       :width="5"
-    ></v-progress-circular>
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "ContentViewLoading",
-  components: {},
-};
+  name: 'ContentViewLoading',
+  components: {}
+}
 </script>
 
 <style></style>

@@ -2,8 +2,8 @@
 import 'vuetify/styles'
 
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import 
-{ 
+import
+{
   // MainMenu
   mdiNeedle,
   mdiShapeOutline,
@@ -37,17 +37,17 @@ import
   mdiCloudOffOutline,
   mdiWeight,
   mdiFormatParagraphSpacing,
-  mdiLink,
-} 
-from '@mdi/js'
+  mdiLink
+}
+  from '@mdi/js'
 
 // Vuetify
 import { createVuetify } from 'vuetify'
 export default createVuetify({
   defaults: {
     global: {
-      ripple: false,
-    },
+      ripple: false
+    }
   },
   icons: {
     defaultSet: 'mdi',
@@ -70,7 +70,7 @@ export default createVuetify({
       hospitalBox: mdiHospitalBox,
       closeThick: mdiCloseThick,
       checkBold: mdiCheckBold,
-      
+
       flask: mdiFlask,
       pill: mdiPill,
       spray: mdiSpray,
@@ -83,10 +83,10 @@ export default createVuetify({
       cloudOffOutline: mdiCloudOffOutline,
       weight: mdiWeight,
       formatParagraphSpacing: mdiFormatParagraphSpacing,
-      link: mdiLink,
+      link: mdiLink
     },
     sets: {
-      mdi,
-    },
-  },
+      mdi
+    }
+  }
 })

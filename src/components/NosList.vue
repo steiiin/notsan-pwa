@@ -1,6 +1,9 @@
 <template>
-  <ol v-if="numeric" class="nos-list nos-list-numeric mt-2 mb-4 mx-4">
-    <slot></slot>
+  <ol
+    v-if="numeric"
+    class="nos-list nos-list-numeric mt-2 mb-4 mx-4"
+  >
+    <slot />
   </ol>
 
   <ul
@@ -14,25 +17,26 @@
       'nos-list-ci-known': contragroup === 'known',
     }"
   >
-    <slot></slot>
+    <slot />
   </ul>
 </template>
 
 <script>
-  export default {
-    name: "NosList",
-    props: {
-      contragroup: {
-        type: String,
-        required: false,
-      },
-      numeric: {
-        type: Boolean,
-        required: false,
-        default: false,
-      },
+export default {
+  name: 'NosList',
+  props: {
+    contragroup: {
+      type: String,
+      required: false,
+      default: null
     },
-  };
+    numeric: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  }
+}
 </script>
 <style lang="scss">
   .nos-list-numeric {

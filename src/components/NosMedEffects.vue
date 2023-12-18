@@ -1,31 +1,47 @@
 <template>
   <div class="mt-2 mb-4 mx-4">
-    <div class="nos-medeffects-row" v-if="hasOnSet">
+    <div
+      v-if="hasOnSet"
+      class="nos-medeffects-row"
+    >
       <div class="nos-medeffects-row__caption">
-        <v-icon icon="$timerOutline" size="small"></v-icon>
+        <v-icon
+          icon="$timerOutline"
+          size="small"
+        />
         <span class="nos--obsolete">Wirkeintritt:</span>
       </div>
-      <div class="nos-medeffects-row__content"><slot name="onset"></slot></div>
+      <div class="nos-medeffects-row__content">
+        <slot name="onset" />
+      </div>
     </div>
-    <div class="nos-medeffects-row" v-if="hasSpan">
+    <div
+      v-if="hasSpan"
+      class="nos-medeffects-row"
+    >
       <div class="nos-medeffects-row__caption">
-        <v-icon icon="$timer" size="small"></v-icon>
+        <v-icon
+          icon="$timer"
+          size="small"
+        />
         <span class="nos--obsolete">Wirkdauer:</span>
       </div>
-      <div class="nos-medeffects-row__content"><slot name="span"></slot></div>
+      <div class="nos-medeffects-row__content">
+        <slot name="span" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NosMedEffects",
+  name: 'NosMedEffects',
   props: {},
   computed: {
-    hasOnSet() { return this.$slots.hasOwnProperty('onset'); },
-    hasSpan() { return this.$slots.hasOwnProperty('span'); }
-  },
-};
+    hasOnSet () { return Object.prototype.hasOwnProperty.call(this.$slots, 'onset') },
+    hasSpan () { return Object.prototype.hasOwnProperty.call(this.$slots, 'span') }
+  }
+}
 </script>
 
 <style>
